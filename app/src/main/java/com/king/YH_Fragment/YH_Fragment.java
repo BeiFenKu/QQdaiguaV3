@@ -32,6 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.king.Caculer_Fragment.caculer_Fragment;
 import com.king.level_Fragment.level_Fragment;
 import com.king.qqdaigua.MainActivity;
 import com.king.qqdaigua.R;
@@ -67,7 +68,7 @@ public class YH_Fragment extends Fragment {
     private ScaleAnimation sa2 = new ScaleAnimation(0, 1, 1, 1,
             Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.0f);
     private RotateAnimation animation, animation1;
-    private ProgressDialog pgDialog, switchDialog;
+    private ProgressDialog pgDialog, switchDialog, waitDialog;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private View view;
@@ -127,13 +128,17 @@ public class YH_Fragment extends Fragment {
 
 
     private void setBlack() {
-        sid = preferences.getString("sid", "");
-        Log.e("SID为", "");
-        String post_url = MainActivity.app_url + "ajax/dg" +
-                ".php?ajax=true&star=post&do=yewu&info=dginfo1&sid=" + sid;
+//        sid = preferences.getString("sid", "");
+        user = preferences.getString("account", "");
+        pwd = preferences.getString("pwd", "");
+        Log.e("用户中心进入，QQ为", user);
+        String post_url = MainActivity
+                .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "black");
+            jsonObject.put("qq", user);
+            jsonObject.put("pwd", pwd);
             HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
             http.start();
         } catch (JSONException e) {
@@ -173,18 +178,18 @@ public class YH_Fragment extends Fragment {
             } else if (msg.what == 4) {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
-                    String serverday = preferences.getString("serverday", "");
+//                    String serverday = preferences.getString("serverday", "");
                     String dgtime = json.getString("dgtime");
-                    System.out.println("在线天数" + serverday + "剩余天数" + dgtime);
-                    Double double_1 = Double.parseDouble(serverday);
-                    Double double_2 = Double.parseDouble(dgtime);
-                    Long double_finis = Math.round(Double.parseDouble(String.valueOf
-                            (double_2 +
-                                    double_1 * 1.2)));
-                    System.out.println("积分：" + double_finis);
+//                    System.out.println("在线天数" + serverday + "剩余天数" + dgtime);
+//                    Double double_1 = Double.parseDouble(serverday);
+//                    Double double_2 = Double.parseDouble(dgtime);
+//                    Long double_finis = Math.round(Double.parseDouble(String.valueOf
+//                            (double_2 +
+//                                    double_1 * 1.2)));
+//                    System.out.println("积分：" + double_finis);
                     editor = preferences.edit();
                     editor.putString("dgtime", dgtime);
-                    editor.putString("score", double_finis+"");
+//                    editor.putString("score", double_finis+"");
                     editor.apply();
                     String code = json.getString("code");
                     String black = json.getString("black");
@@ -228,20 +233,23 @@ public class YH_Fragment extends Fragment {
                      *
                      */
                     bt_xufei.setText("续费[剩余" + dgtime + "天]");
-                    if (double_finis < 36 && double_finis > 0) {
-                        tv_viplevel.setText("VIP 1");
-                    } else if (double_finis >= 36 && double_finis < 126) {
-                        tv_viplevel.setText("VIP 2");
-                    } else if (double_finis >= 126 && double_finis < 306) {
-                        tv_viplevel.setText("VIP 3");
-                    } else if (double_finis >= 306 && double_finis < 720) {
-                        tv_viplevel.setText("VIP 4");
-                    } else if (double_finis >= 720) {
-                        tv_viplevel.setText("VIP 5");
-                    } else if (double_finis <= 0) {
-                        tv_viplevel.setTextColor(Color.BLACK);
-                        tv_viplevel.setText("VIP 0");
-                    }
+
+                    tv_viplevel.setText("临时整修中...");
+                    tv_viplevel.setTextColor(Color.GRAY);
+//                    if (double_finis < 36 && double_finis > 0) {
+//                        tv_viplevel.setText("VIP 1");
+//                    } else if (double_finis >= 36 && double_finis < 126) {
+//                        tv_viplevel.setText("VIP 2");
+//                    } else if (double_finis >= 126 && double_finis < 306) {
+//                        tv_viplevel.setText("VIP 3");
+//                    } else if (double_finis >= 306 && double_finis < 720) {
+//                        tv_viplevel.setText("VIP 4");
+//                    } else if (double_finis >= 720) {
+//                        tv_viplevel.setText("VIP 5");
+//                    } else if (double_finis <= 0) {
+//                        tv_viplevel.setTextColor(Color.BLACK);
+//                        tv_viplevel.setText("VIP 0");
+//                    }
 
                     pgdialog_cancel();
                 } catch (JSONException e) {
@@ -251,8 +259,9 @@ public class YH_Fragment extends Fragment {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
+                    String error = json.getString("error");
                     switchDialog.cancel();
-                    if (code.equals("1")) {
+                    if (error.equals("修改代挂成功，21点后操作请第二天提交补挂")) {
                         String word = "";
                         String word1 = textViews[switch_sign].getText().toString();
                         for (int j = 0; j < word1.length() - 3; j++) {
@@ -298,12 +307,13 @@ public class YH_Fragment extends Fragment {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
-                    if (code.equals("1")) {
+                    String error = json.getString("error");
+                    if (!error.equals("现在的时间是禁止操作的时间[16-10]")) {
                         if (getActivity() != null) {
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(getContext(), "补挂提交成功，补挂场时间16-24点", Toast
+                                    Toast.makeText(getContext(), "补挂提交成功，补挂开始时间16-24点", Toast
                                             .LENGTH_LONG)
                                             .show();
                                 }
@@ -324,7 +334,7 @@ public class YH_Fragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                switchDialog.cancel();
+                waitDialog.cancel();
             } else if (msg.what == 11) {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
@@ -400,15 +410,15 @@ public class YH_Fragment extends Fragment {
         bt_viplevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
-                        .content_main, new level_Fragment()).commit();
+                new qun_dialog().show(getFragmentManager(), "");
             }
         });
         Button bt_newuser = (Button) view.findViewById(R.id.bt_newuser);
         bt_newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openURL("http://www.dkingdg.com/bz.php");
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
+                        .content_main, new caculer_Fragment()).commit();
             }
         });
         bt_kf = (Button) view.findViewById(R.id.bt_kf);
@@ -475,6 +485,7 @@ public class YH_Fragment extends Fragment {
         bt_lou_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                waitDialog.show();
                 Log.e("检测Group", "" + group_rb.getText());
                 String func = "";
                 switch (group_rb.getText().toString()) {
@@ -505,11 +516,14 @@ public class YH_Fragment extends Fragment {
                     default:
                         break;
                 }
-                String post_url = MainActivity.web_jiekou + "api/submit" +
-                        ".php?act=fill&id=" + sid + "&uin=" + user + "&func=" + func;
+                String post_url = MainActivity
+                        .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("type", "bg");
+                    jsonObject.put("qq", user);
+                    jsonObject.put("pwd", pwd);
+                    jsonObject.put("func", func);
                     HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
                     http.start();
                 } catch (JSONException e) {
@@ -529,6 +543,10 @@ public class YH_Fragment extends Fragment {
         switchDialog.setTitle("修改中");
         switchDialog.setMessage("修改中，请稍等...");
         switchDialog.setCancelable(false);
+        waitDialog = new ProgressDialog(getContext());
+        waitDialog.setTitle("提交中");
+        waitDialog.setMessage("提交中，请稍等...");
+        waitDialog.setCancelable(false);
         img_game = (ImageView) view.findViewById(R.id.img_game);
         img_game.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -736,11 +754,15 @@ public class YH_Fragment extends Fragment {
         } else if (status[sign].equals("1") || status[sign].equals("2")) {
             status[sign] = "0";
         }
-        String post_url = MainActivity.web_jiekou + "api/submit" +
-                ".php?act=switch&id=" + sid + "&uin=" + user + "&func=" + switch_name + "&star=" + status[sign];
+        String post_url = MainActivity
+                .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "switch");
+            jsonObject.put("qq", user);
+            jsonObject.put("pwd", pwd);
+            jsonObject.put("id", switch_name);
+            jsonObject.put("star", status[sign]);
             HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
             http.start();
         } catch (JSONException e) {

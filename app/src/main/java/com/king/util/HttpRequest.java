@@ -82,28 +82,44 @@ public class HttpRequest extends Thread {
             String type = jsonObject1.getString("type");
             if (type.equals("login")) {
                 //登录判断
-                body = new FormBody.Builder().build();
+                String qq = jsonObject1.getString("qq");
+                String pwd = jsonObject1.getString("pwd");
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
             } else if (type.equals("pay")) {
                 //开通判断
                 String qq = jsonObject1.getString("qq");
-                String kami = jsonObject1.getString("kami");
-                String pwd = jsonObject1.getString("pwd");
+                String kami = jsonObject1.getString("cami");
+                String pwd = jsonObject1.getString("cpwd");
                 body = new FormBody.Builder().add("qq", qq).add("cami", kami).add("cpwd", pwd).build();
             } else if (type.equals("board")) {
                 //公告获取判断
                 body = new FormBody.Builder().build();
             } else if (type.equals("black")) {
                 //拉黑状态显示
-                body = new FormBody.Builder().build();
+                String qq = jsonObject1.getString("qq");
+                String pwd = jsonObject1.getString("pwd");
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
             } else if (type.equals("switch")) {
                 //代挂开关获取
-                body = new FormBody.Builder().build();
+                String qq = jsonObject1.getString("qq");
+                String pwd = jsonObject1.getString("pwd");
+                String id = jsonObject1.getString("id");
+                String star = jsonObject1.getString("star");
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
+                body1 = new FormBody.Builder().add("qq", qq).add("id", id).add("star", star).build();
             } else if (type.equals("xufei")) {
                 //代挂续费
-                body = new FormBody.Builder().build();
+                String qq = jsonObject1.getString("qq");
+                String kami = jsonObject1.getString("cami");
+                String pwd = jsonObject1.getString("pwd");
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
+                body1 = new FormBody.Builder().add("qq", qq).add("cami", kami).build();
             } else if (type.equals("rblack")) {
                 //代挂解除拉黑
-                body = new FormBody.Builder().build();
+                String qq = jsonObject1.getString("qq");
+                String pwd = jsonObject1.getString("pwd");
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
+                body1 = new FormBody.Builder().add("qq", qq).build();
             } else if (type.equals("gengx")) {
                 //代挂更新密码
                 String qq = jsonObject1.getString("qq");
@@ -113,7 +129,12 @@ public class HttpRequest extends Thread {
                 body1 = new FormBody.Builder().add("qqpwd", npwd).build();
             } else if (type.equals("bg")) {
                 //代挂补挂
+                String qq = jsonObject1.getString("qq");
+                String pwd = jsonObject1.getString("pwd");
+                String func = jsonObject1.getString("func");
                 body = new FormBody.Builder().build();
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
+                body1 = new FormBody.Builder().add("qq", qq).add("bgid", func).build();
             } else if (type.equals("update")) {
                 //检测更新
                 body = new FormBody.Builder().build();
@@ -141,6 +162,15 @@ public class HttpRequest extends Thread {
                 String str = response.body().string().toString();
                 if (type.equals("login")) {
                     // 登录判断
+                    String cookie = response.headers().get("Set-cookie").toString();
+                    request = request.newBuilder().url
+                            (MainActivity
+                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=dginfo")
+                            .header
+                                    ("Cookie", cookie).post(body)
+                            .build();
+                    response = client.newCall(request).execute();
+                    str = response.body().string().toString();
                     message.what = 1;
                 } else if (type.equals("pay")) {
                     //购买代挂判断
@@ -158,15 +188,63 @@ public class HttpRequest extends Thread {
                     str = jsonObject.toString();
                 } else if (type.equals("black")) {
                     //拉黑状态显示
+                    String cookie = response.headers().get("Set-cookie").toString();
+                    request = request.newBuilder().url
+                            (MainActivity
+                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=dginfo")
+                            .header
+                                    ("Cookie", cookie).post(body)
+                            .build();
+                    response = client.newCall(request).execute();
+                    str = response.body().string().toString();
                     message.what = 4;
                 } else if (type.equals("switch")) {
                     //代挂开关获取
+                    String cookie = response.headers().get("Set-cookie").toString();
+                    request = request.newBuilder().url
+                            (MainActivity
+                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=sw")
+                            .header
+                                    ("Cookie", cookie).post(body1)
+                            .build();
+                    response = client.newCall(request).execute();
+                    str = response.body().string().toString();
+                    String error_decode = new JSONObject(str).getString("error");
+                    JSONObject jsonObject = new JSONObject(str);
+                    jsonObject.put("error", error_decode);
+                    str = jsonObject.toString();
                     message.what = 5;
                 } else if (type.equals("xufei")) {
                     //代挂续费
+                    String cookie = response.headers().get("Set-cookie").toString();
+                    request = request.newBuilder().url
+                            (MainActivity
+                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=renew")
+                            .header
+                                    ("Cookie", cookie).post(body1)
+                            .build();
+                    response = client.newCall(request).execute();
+                    str = response.body().string().toString();
+                    String error_decode = new JSONObject(str).getString("error");
+                    JSONObject jsonObject = new JSONObject(str);
+                    jsonObject.put("error", error_decode);
+                    str = jsonObject.toString();
                     message.what = 6;
                 } else if (type.equals("rblack")) {
                     //代挂解除拉黑
+                    String cookie = response.headers().get("Set-cookie").toString();
+                    request = request.newBuilder().url
+                            (MainActivity
+                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=rblack")
+                            .header
+                                    ("Cookie", cookie).post(body1)
+                            .build();
+                    response = client.newCall(request).execute();
+                    str = response.body().string().toString();
+                    String error_decode = new JSONObject(str).getString("error");
+                    JSONObject jsonObject = new JSONObject(str);
+                    jsonObject.put("error", error_decode);
+                    str = jsonObject.toString();
                     message.what = 7;
                 } else if (type.equals("gengx")) {
                     //代挂更新密码
@@ -181,14 +259,26 @@ public class HttpRequest extends Thread {
                     str = response.body().string().toString();
                     message.what = 8;
                 } else if (type.equals("bg")) {
-                    //代挂解除拉黑
+                    //代挂补挂
+                    String cookie = response.headers().get("Set-cookie").toString();
+                    request = request.newBuilder().url
+                            (MainActivity
+                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=bg")
+                            .header
+                                    ("Cookie", cookie).post(body1)
+                            .build();
+                    response = client.newCall(request).execute();
+                    str = response.body().string().toString();
+                    String error_decode = new JSONObject(str).getString("error");
+                    JSONObject jsonObject = new JSONObject(str);
+                    jsonObject.put("error", error_decode);
+                    str = jsonObject.toString();
                     message.what = 9;
                 } else if (type.equals("update")) {
                     //检测更新
                     message.what = 10;
                 } else if (type.equals("gengx_phonetype")) {
                     //切换安卓/苹果在线状态
-                    //代挂更新密码
                     String cookie = response.headers().get("Set-cookie").toString();
                     request = request.newBuilder().url
                             (MainActivity

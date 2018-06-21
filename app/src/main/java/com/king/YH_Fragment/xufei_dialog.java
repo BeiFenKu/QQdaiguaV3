@@ -79,11 +79,14 @@ public class xufei_dialog extends DialogFragment {
                     getDialog().cancel();
                     xufeiDialog.cancel();
                 } else {
-                    String post_url = MainActivity.web_jiekou + "api/submit" +
-                            ".php?act=active&id=" + sid + "&uin=" + user + "&km=" + kami;
+                    String post_url = MainActivity
+                            .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("type", "xufei");
+                        jsonObject.put("qq", user);
+                        jsonObject.put("pwd", pwd);
+                        jsonObject.put("cami", kami);
                         HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler1);
                         http.start();
                     } catch (JSONException e) {
@@ -109,13 +112,14 @@ public class xufei_dialog extends DialogFragment {
                     xufeiDialog.cancel();
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
-                    if (code.equals("1")) {
+                    String error = json.getString("error");
+                    if (error.equals("续期代挂成功")) {
                         Toast.makeText(getContext(), "续费代挂成功", Toast.LENGTH_SHORT).show();
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
                                 .content_main, new YH_Fragment()).commit();
                         getDialog().cancel();
                     } else {
-                        Toast.makeText(getContext(), "续费失败，卡密错误", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
                         getDialog().cancel();
                     }
                 } catch (JSONException e) {

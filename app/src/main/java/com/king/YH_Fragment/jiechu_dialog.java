@@ -34,6 +34,8 @@ public class jiechu_dialog extends DialogFragment {
     private ProgressDialog jiechuDialog;
     private SharedPreferences preferences;
     private String sid;
+    private String user;
+    private String pwd;
 
     @Nullable
     @Override
@@ -47,6 +49,9 @@ public class jiechu_dialog extends DialogFragment {
 
     private void bindViews() {
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        user = preferences.getString("account", "");
+        pwd = preferences.getString("pwd", "");
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         sid = preferences.getString("sid", "");
         bt_jiechu = (Button) view.findViewById(R.id.bt_jiechu);
         bt_jiechu.setOnClickListener(new View.OnClickListener() {
@@ -59,11 +64,13 @@ public class jiechu_dialog extends DialogFragment {
                 jiechuDialog.setCancelable(false);
                 jiechuDialog.show();
 
-                String post_url = MainActivity.web_jiekou + "api/submit" +
-                        ".php?act=rblack&id=" + sid;
+                String post_url = MainActivity
+                        .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("type", "rblack");
+                    jsonObject.put("qq", user);
+                    jsonObject.put("pwd", pwd);
                     HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler1);
                     http.start();
                 } catch (JSONException e) {
@@ -88,7 +95,8 @@ public class jiechu_dialog extends DialogFragment {
                     jiechuDialog.cancel();
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
-                    if (code.equals("1")) {
+                    String error = json.getString("error");
+                    if (error.equals("解除黑名单成功，21点后操作请第二天提交补挂！")) {
                         Toast.makeText(getContext(), "解除成功，当天21点后解除的，请于明天提交补挂参加补挂场", Toast
                                 .LENGTH_LONG)
                                 .show();

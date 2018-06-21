@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.method.HideReturnsTransformationMethod;
@@ -134,6 +135,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
     public BlankFragment1() {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -150,6 +152,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     private void setMultiAccount() {
         view.getViewTreeObserver().addOnWindowFocusChangeListener(new ViewTreeObserver
                 .OnWindowFocusChangeListener() {
@@ -456,13 +459,14 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         dialog_login.setCancelable(false);
         dialog_login.show();
         JSONObject json = new JSONObject();
-        String post_url = MainActivity.app_url + "ajax/dg" +
-                ".php?ajax=true&star=post&do=yewu&info=paydg";
+        String post_url = MainActivity
+                .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=paydg";
+
         try {
             json.put("type", "pay");
             json.put("qq", account);
-            json.put("kami", kami);
-            json.put("pwd", pwd);
+            json.put("cami", kami);
+            json.put("cpwd", pwd);
             HttpRequest http = new HttpRequest(post_url, json.toString(), handler);
             http.start();
         } catch (JSONException e) {
@@ -493,14 +497,12 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         }
         JSONObject jsonobject = new JSONObject();
         String post_url = null;
-        try {
-            post_url = MainActivity.web_jiekou + "api/submit.php?act=query&qq=" + qq + "&pwd=" +
-                    URLEncoder.encode(pwd, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        post_url = MainActivity
+                .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
         try {
             jsonobject.put("type", "login");
+            jsonobject.put("qq", qq);
+            jsonobject.put("pwd", pwd);
             HttpRequest http = new HttpRequest(post_url, jsonobject.toString(), handler);
             http.start();
         } catch (JSONException e) {
@@ -516,18 +518,18 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
-                    if (code.equals("1")) {
+                    if (code.equals("0")) {
                         //登录成功
-                        String sid = json.getString("id");
-                        System.out.println("登录成功SID为" + sid);
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        Date adddate = sdf.parse(json.getString("adddate"));
-                        Date enddate = sdf.parse(sdf.format(new Date()));
+//                        String sid = json.getString("id");
+//                        System.out.println("登录成功SID为" + sid);
+//                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//                        Date adddate = sdf.parse(json.getString("adddate"));
+//                        Date enddate = sdf.parse(sdf.format(new Date()));
                         editor = preferences.edit();
-                        editor.putString("serverday", getGapCount(adddate, enddate) + "");
+//                        editor.putString("serverday", getGapCount(adddate, enddate) + "");
                         editor.apply();
                         editor = preferences.edit();
-                        editor.putString("sid", sid);
+//                        editor.putString("sid", sid);
                         editor.apply();
                         ajax_login1(account);
 //                        handler.post(new Runnable() {
@@ -547,8 +549,12 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                         });
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "获取信息失败，请尝试重新登录", Toast.LENGTH_LONG).show();
+                        }
+                    });
                     e.printStackTrace();
                 }
             } else if (msg.what == 2) {
@@ -557,13 +563,14 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
                     String error = json.getString("error");
+                    Log.e("",error);
                     if (code.equals("0")) {
                         dialog_login.cancel();
                         Toast.makeText(getContext(), "代挂开通成功，请返回登录", Toast.LENGTH_LONG).show();
                     } else if (code.equals("1")) {
-                        if (!error.equals("此激活码不存在") && !error.equals("卡密格式错误")) {
+                        if (!error.equals("卡密不存在") && !error.equals("卡密格式错误")) {
                             dialog_login.cancel();
-                            Toast.makeText(getContext(), error, Toast.LENGTH_LONG)
+                            Toast.makeText(getContext(), "此激活码不能被此QQ使用，请联系站长处理", Toast.LENGTH_LONG)
                                     .show();
                         } else {
                             dialog_login.cancel();
@@ -572,7 +579,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                         }
                     } else {
                         dialog_login.cancel();
-                        Toast.makeText(getContext(), "未知错误，建议返回登录尝试", Toast.LENGTH_LONG)
+                        Toast.makeText(getContext(), "未知错误，建议重启尝试", Toast.LENGTH_LONG)
                                 .show();
                     }
                 } catch (JSONException e) {
