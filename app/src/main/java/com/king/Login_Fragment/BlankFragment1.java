@@ -312,8 +312,8 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                         editor.putString("user_qq", account);
                         editor.putString("pwd", pwd);
                         editor.putString("account", account);
-                        saveUserData(UserData, account, pwd, cb_remaber.isChecked());
                         editor.apply();
+                        saveUserData(UserData, account, pwd, cb_remaber.isChecked());
                         ajax_login(account, pwd);
                     }
                 }

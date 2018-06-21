@@ -118,6 +118,7 @@ public class YH_Fragment extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_yh, container, false);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         bindviews();
         setTitle();
 
@@ -137,6 +138,16 @@ public class YH_Fragment extends Fragment {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "black");
+            Log.e("SetBlack这","user:"+user+"--pwd:"+pwd);
+            int i = 0 ;
+            while (user.length() == 0){
+                user = preferences.getString("account", "");
+                pwd = preferences.getString("pwd", "");
+                i++;
+                if (i > 10){
+                    break;
+                }
+            }
             jsonObject.put("qq", user);
             jsonObject.put("pwd", pwd);
             HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
@@ -253,6 +264,7 @@ public class YH_Fragment extends Fragment {
 
                     pgdialog_cancel();
                 } catch (JSONException e) {
+                    Toast.makeText(getContext(), "信息获取失败，请尝试重新登录", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             } else if (msg.what == 5) {
@@ -658,7 +670,6 @@ public class YH_Fragment extends Fragment {
             }
         });
         tv_lhzt = (TextView) view.findViewById(R.id.lhzt);
-        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String sid = preferences.getString("sid", "");
         Log.e("SID1为", sid);
         user = preferences.getString("account", "");
