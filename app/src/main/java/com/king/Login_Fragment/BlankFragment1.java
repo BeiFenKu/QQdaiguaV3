@@ -360,7 +360,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         bt_zh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openURL(MainActivity.app_url + "find.html");
+                new zhaohui_dialog().show(getFragmentManager(), "");
             }
         });
         bt_buy = (Button) view.findViewById(R.id.bt_buy);

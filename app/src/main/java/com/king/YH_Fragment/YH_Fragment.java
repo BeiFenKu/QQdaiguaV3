@@ -429,8 +429,7 @@ public class YH_Fragment extends Fragment {
         bt_newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
-                        .content_main, new caculer_Fragment()).commit();
+                new bz_dialogfrg().show(getFragmentManager(), "");
             }
         });
         bt_kf = (Button) view.findViewById(R.id.bt_kf);

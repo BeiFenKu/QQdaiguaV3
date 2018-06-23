@@ -45,7 +45,7 @@
         android:id="@+id/textView5"/>
 
     <TextView
-        android:text="服务条款   |   隐私政策"
+        android:text="服务条款   |   隐私政策   |   开源许可"
         android:gravity="center"
         android:textColor="@color/blue_title"
         android:layout_width="match_parent"

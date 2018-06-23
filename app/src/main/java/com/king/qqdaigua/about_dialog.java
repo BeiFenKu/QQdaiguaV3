@@ -1,5 +1,7 @@
 package com.king.qqdaigua;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  * Created by KingLee on 2018/4/17.
@@ -17,6 +20,7 @@ public class about_dialog extends DialogFragment {
 
     private View view;
     private RelativeLayout r1_1;
+    private TextView textView9;
 
 
     @Nullable
@@ -37,5 +41,20 @@ public class about_dialog extends DialogFragment {
                 getDialog().cancel();
             }
         });
+        textView9 = (TextView) view.findViewById(R.id.textView9);
+        textView9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openURL("https://github.com/qq576777915/QQdaiguaV3");
+            }
+        });
+    }
+
+    private void openURL(String s) {
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri content_url = Uri.parse(s);
+        intent.setData(content_url);
+        startActivity(intent);
     }
 }

@@ -162,15 +162,10 @@ public class HttpRequest extends Thread {
                 String str = response.body().string().toString();
                 if (type.equals("login")) {
                     // 登录判断
-                    String cookie = response.headers().get("Set-cookie").toString();
-                    request = request.newBuilder().url
-                            (MainActivity
-                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=dginfo")
-                            .header
-                                    ("Cookie", cookie).post(body)
-                            .build();
-                    response = client.newCall(request).execute();
-                    str = response.body().string().toString();
+                    String error_decode = new JSONObject(str).getString("error");
+                    JSONObject jsonObject = new JSONObject(str);
+                    jsonObject.put("error", error_decode);
+                    str = jsonObject.toString();
                     message.what = 1;
                 } else if (type.equals("pay")) {
                     //购买代挂判断
