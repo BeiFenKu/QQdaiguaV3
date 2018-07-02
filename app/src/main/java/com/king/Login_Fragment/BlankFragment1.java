@@ -131,6 +131,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
 
     private FloatingActionButton fab;
     private String account;
+    private TextView tv_kf;
 
     public BlankFragment1() {
     }
@@ -260,6 +261,13 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
     }
 
     private void init() {
+        tv_kf = (TextView) view.findViewById(R.id.tv_kf);
+        tv_kf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openURL("http://wpa.qq.com/msgrd?v=3&uin=" + MainActivity.app_qq + "&site=qq&menu=yes");
+            }
+        });
         ll4 = (LinearLayout) view.findViewById(R.id.ll4);
         ll2 = (LinearLayout) view.findViewById(R.id.ll2);
         rl_regkm = (RelativeLayout) view.findViewById(R.id.rl_regkm);
@@ -563,15 +571,21 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
                     String error = json.getString("error");
-                    Log.e("",error);
+                    Log.e("", error);
                     if (code.equals("0")) {
                         dialog_login.cancel();
                         Toast.makeText(getContext(), "代挂开通成功，请返回登录", Toast.LENGTH_LONG).show();
                     } else if (code.equals("1")) {
                         if (!error.equals("卡密不存在") && !error.equals("卡密格式错误")) {
-                            dialog_login.cancel();
-                            Toast.makeText(getContext(), "此激活码不能被此QQ使用，请联系站长处理", Toast.LENGTH_LONG)
-                                    .show();
+                            if (error.equals("此激活码已被使用")) {
+                                dialog_login.cancel();
+                                Toast.makeText(getContext(), "此激活码已被使用！", Toast.LENGTH_LONG)
+                                        .show();
+                            } else {
+                                dialog_login.cancel();
+                                Toast.makeText(getContext(), "此激活码不能被此QQ使用，请联系站长处理", Toast.LENGTH_LONG)
+                                        .show();
+                            }
                         } else {
                             dialog_login.cancel();
                             Toast.makeText(getContext(), "开通失败，卡密错误，卡密购买请点击下方按钮", Toast.LENGTH_LONG)

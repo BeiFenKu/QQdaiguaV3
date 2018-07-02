@@ -1,10 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                tools:context="com.king.YH_Fragment.YH_Fragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.king.YH_Fragment.YH_Fragment">
 
 
     <RelativeLayout
@@ -345,55 +345,55 @@
                 android:layout_above="@+id/ll10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-            <RadioGroup
-                android:id="@+id/group_1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                android:gravity="center">
+                <RadioGroup
+                    android:id="@+id/group_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:gravity="center">
 
-                <RadioButton
-                    android:id="@+id/rd_1"
-                    android:text="电脑管家"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-                <RadioButton
-                    android:id="@+id/rd_2"
-                    android:text="电脑QQ"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-                <RadioButton
-                    android:id="@+id/rd_3"
-                    android:text="手机QQ"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-                <RadioButton
-                    android:id="@+id/rd_4"
-                    android:text="勋章墙"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-                <RadioButton
-                    android:id="@+id/rd_5"
-                    android:text="QQ音乐"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-                <RadioButton
-                    android:id="@+id/rd_6"
-                    android:text="QQ手游"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-                <RadioButton
-                    android:id="@+id/rd_7"
-                    android:text="空间访客（易冻结）"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
-                <RadioButton
-                    android:id="@+id/rd_8"
-                    android:text="QQ微视"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_1"
+                        android:text="电脑管家"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_2"
+                        android:text="电脑QQ"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_3"
+                        android:text="手机QQ"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_4"
+                        android:text="勋章墙"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_5"
+                        android:text="QQ音乐"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_6"
+                        android:text="QQ手游"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_7"
+                        android:text="空间访客（易冻结）"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
+                    <RadioButton
+                        android:id="@+id/rd_8"
+                        android:text="QQ微视"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"/>
 
-            </RadioGroup>
+                </RadioGroup>
             </ScrollView>
             <LinearLayout
                 android:background="@color/mestitle_gray"

@@ -245,7 +245,7 @@ public class YH_Fragment extends Fragment {
                      */
                     bt_xufei.setText("续费[剩余" + dgtime + "天]");
 
-                    tv_viplevel.setText("临时整修中...");
+                    tv_viplevel.setText("此功能整修中...");
                     tv_viplevel.setTextColor(Color.GRAY);
 //                    if (double_finis < 36 && double_finis > 0) {
 //                        tv_viplevel.setText("VIP 1");

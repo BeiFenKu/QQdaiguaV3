@@ -28,10 +28,10 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     //版本号控制更新提示
-    public static String app_ver = "3.70";
+    public static String app_ver = "3.73";
 
     public static String admin_pwd = "123456";
-    public static String app_qq = "1776885812";
+    public static String app_qq = "44658735";
     public static String app_name = "帝王代挂";
     public static String app_subName = " For Android";
     public static String app_url = "https://www.dkingdg.com/";
@@ -149,6 +149,18 @@ public class MainActivity extends AppCompatActivity {
             fab.setVisibility(View.VISIBLE);
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new
                     BlankFragment1()).commit();
+        } else if (id == R.id.action_settings4) {
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "QQ运动一键加速功能即将上线！软件端一个按钮本地完成运动加速任务，敬请期待！", Toast.LENGTH_LONG)
+                            .show();
+                }
+            });
+        } else if (id == R.id.action_settings5) {
+
+            openURL("http://wpa.qq.com/msgrd?v=3&uin=" + MainActivity.app_qq + "&site=qq&menu=yes");
         }
 
         return super.onOptionsItemSelected(item);
