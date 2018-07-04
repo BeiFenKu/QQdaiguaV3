@@ -38,6 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.king.YH_Fragment.YH_Fragment;
+import com.king.YH_Fragment.update_dialog;
 import com.king.ewrite.CircleImageView;
 import com.king.modul.UserAccount;
 import com.king.qqdaigua.MainActivity;
@@ -80,6 +81,8 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
 
     //记录下拉列表数量
     private String multi_count = "0";
+
+    private String update_sign = "0";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -150,6 +153,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         setTitle();
         checkReamber();
         setMultiAccount();
+        updateCheck();
         return view;
     }
 
@@ -629,6 +633,19 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                     }
                 } else {
                 }
+            } else if (msg.what == 10) {
+                try {
+                    JSONObject json = new JSONObject((String) msg.obj);
+                    String code = json.getString("code");
+                    if (Double.parseDouble(code) > Double.parseDouble(MainActivity.app_ver)) {
+                        update_sign = "1";
+                        new update_dialog().show(getActivity().getSupportFragmentManager(), "");
+                    } else {
+                        update_sign = "0";
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             } else {
                 dialog_login.cancel();
                 Toast.makeText(getContext(), "请求失败，请稍等登录", Toast.LENGTH_LONG).show();
@@ -878,5 +895,18 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
 
     public static int getGapCount(Date startDate, Date endDate) {
         return (int) ((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    }
+
+    public void updateCheck() {
+        String post_url = MainActivity.app_url + "ajax/dg" +
+                ".php?ajax=true&star=update_ver";
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("type", "update");
+            HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
+            http.start();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initv();
         new Handler().postDelayed(new LoadMainTabTask(), 0);
-        updateCheck();
+//        updateCheck();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new BlankFragment1())
                 .commit();
     }
