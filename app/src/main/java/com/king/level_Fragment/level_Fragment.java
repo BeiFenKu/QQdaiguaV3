@@ -1,8 +1,10 @@
 package com.king.level_Fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -15,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.king.YH_Fragment.YH_Fragment;
+import com.king.YH_Fragment.bz_dialogfrg;
 import com.king.qqdaigua.R;
 
 /**
@@ -47,6 +50,7 @@ public class level_Fragment extends Fragment {
     private ImageView iv_5;
     private TextView tv_5;
     private TextView tv_level;
+    private TextView tv_6;
 
     @Nullable
     @Override
@@ -85,6 +89,13 @@ public class level_Fragment extends Fragment {
             }
         });
 
+        tv_6 = (TextView) view.findViewById(R.id.tv_6);
+        tv_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openURL("https://wj.qq.com/s/2252850/c329/");
+            }
+        });
         String serverday = preferences.getString("serverday", "");
         String dgtime = preferences.getString("dgtime", "");
         String score = preferences.getString("score", "");
@@ -164,5 +175,12 @@ public class level_Fragment extends Fragment {
                 waitDialog.cancel();
             }
         }).start();
+    }
+    private void openURL(String s) {
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri content_url = Uri.parse(s);
+        intent.setData(content_url);
+        startActivity(intent);
     }
 }

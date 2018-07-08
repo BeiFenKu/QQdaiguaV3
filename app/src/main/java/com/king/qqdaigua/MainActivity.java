@@ -28,10 +28,10 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     //版本号控制更新提示
-    public static String app_ver = "3.73";
+    public static String app_ver = "3.78";
 
     public static String admin_pwd = "123456";
-    public static String app_qq = "44658735";
+    public static String app_qq = "1776885812";
     public static String app_name = "帝王代挂";
     public static String app_subName = " For Android";
     public static String app_url = "https://www.dkingdg.com/";
@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateCheck();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initv();
         new Handler().postDelayed(new LoadMainTabTask(), 0);
-//        updateCheck();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new BlankFragment1())
                 .commit();
     }

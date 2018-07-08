@@ -153,7 +153,12 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         setTitle();
         checkReamber();
         setMultiAccount();
-        updateCheck();
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                updateCheck();
+//            }
+//        }, 1000);
         return view;
     }
 
@@ -639,7 +644,9 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                     String code = json.getString("code");
                     if (Double.parseDouble(code) > Double.parseDouble(MainActivity.app_ver)) {
                         update_sign = "1";
-                        new update_dialog().show(getActivity().getSupportFragmentManager(), "");
+                       // new update_dialog().show(getFragmentManager(), "");
+                        update_dialog update_dialog = new update_dialog();
+                        update_dialog.show(getFragmentManager(), "");
                     } else {
                         update_sign = "0";
                     }

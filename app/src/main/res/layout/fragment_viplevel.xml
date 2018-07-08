@@ -474,15 +474,18 @@
             android:layout_below="@+id/textView15"
             android:gravity="center"
             android:text="总积分 = 已代挂 x 1.2 + 剩余天数 x 1.0"
-            android:textColor="@color/gray"/>
+            android:textColor="@color/gray"
+            android:layout_alignParentLeft="true" />
+
 
         <TextView
+            android:id="@+id/tv_6"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:paddingBottom="3dp"
-            android:text="后期将上线等级奖励计划，敬请期待"
+            android:text="等级奖励即将上线，来这里提供您的【奖品建议】"
             android:textColor="@color/gray"/>
         <!--<ImageView-->
         <!--android:layout_width="10dp"-->

@@ -41,6 +41,10 @@ import com.king.util.HttpRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -121,10 +125,26 @@ public class YH_Fragment extends Fragment {
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         bindviews();
         setTitle();
-
         setBoard();
         setBlack();
         return view;
+    }
+
+    private void setLevel() {
+        user = preferences.getString("account", "");
+        pwd = preferences.getString("pwd", "");
+        String post_url = MainActivity
+                .web_jiekou + "api/submit.php?act=query&qq=" + user + "&pwd=" + pwd + "";
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("type", "level");
+            jsonObject.put("qq", user);
+            jsonObject.put("pwd", pwd);
+            HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
+            http.start();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -138,13 +158,13 @@ public class YH_Fragment extends Fragment {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "black");
-            Log.e("SetBlack这","user:"+user+"--pwd:"+pwd);
-            int i = 0 ;
-            while (user.length() == 0){
+            Log.e("SetBlack这", "user:" + user + "--pwd:" + pwd);
+            int i = 0;
+            while (user.length() == 0) {
                 user = preferences.getString("account", "");
                 pwd = preferences.getString("pwd", "");
                 i++;
-                if (i > 10){
+                if (i > 10) {
                     break;
                 }
             }
@@ -223,46 +243,16 @@ public class YH_Fragment extends Fragment {
                         } else {
                             tv_lhzt.setText("正常加速中");
                         }
+                        setLevel();
                     } else {
                         Toast.makeText(getContext(), "登录状态失效，请退出重新登录", Toast.LENGTH_SHORT).show();
                     }
-                    /***
-                     * VIP等级体系
 
-                     已使用   剩余
-                     0         30    VIP1    月卡              x  < 36
-
-                     30        90    VIP2    季卡         36 < x < 126
-
-                     120       180    VIP3    半年卡      126 < x < 306
-
-                     300       360   VIP4    年卡         306 < x < 720
-
-                     660       MAX   VIP5                 720 < x
-
-                     公式：已用天数 * 1.2 + 剩余代挂天数 * 1 = x
-                     *
-                     */
                     bt_xufei.setText("续费[剩余" + dgtime + "天]");
 
-                    tv_viplevel.setText("此功能整修中...");
-                    tv_viplevel.setTextColor(Color.GRAY);
-//                    if (double_finis < 36 && double_finis > 0) {
-//                        tv_viplevel.setText("VIP 1");
-//                    } else if (double_finis >= 36 && double_finis < 126) {
-//                        tv_viplevel.setText("VIP 2");
-//                    } else if (double_finis >= 126 && double_finis < 306) {
-//                        tv_viplevel.setText("VIP 3");
-//                    } else if (double_finis >= 306 && double_finis < 720) {
-//                        tv_viplevel.setText("VIP 4");
-//                    } else if (double_finis >= 720) {
-//                        tv_viplevel.setText("VIP 5");
-//                    } else if (double_finis <= 0) {
-//                        tv_viplevel.setTextColor(Color.BLACK);
-//                        tv_viplevel.setText("VIP 0");
-//                    }
+//                    tv_viplevel.setText("此功能整修中...");
+//                    tv_viplevel.setTextColor(Color.GRAY);
 
-                    pgdialog_cancel();
                 } catch (JSONException e) {
                     Toast.makeText(getContext(), "信息获取失败，请尝试重新登录", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
@@ -347,6 +337,86 @@ public class YH_Fragment extends Fragment {
                     e.printStackTrace();
                 }
                 waitDialog.cancel();
+            } else if (msg.what == 13) {
+                try {
+                    if (msg.obj.toString().length() < 10) {
+                        tv_viplevel.setText("此功能整修中...");
+                        tv_viplevel.setTextColor(Color.GRAY);
+                        pgdialog_cancel();
+                    } else {
+                        JSONObject json = new JSONObject((String) msg.obj);
+                        String code = json.getString("code");
+                        String adddate_str = json.getString("adddate");
+                        String dgtime = preferences.getString("dgtime", "");
+                        if (code.equals("1")) {
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                            Date adddate = sdf.parse(adddate_str);
+                            Date enddate = sdf.parse(sdf.format(new Date()));
+                            int serverday = getGapCount(adddate, enddate);
+                            editor = preferences.edit();
+                            editor.putString("serverday", serverday + "");
+                            editor.apply();
+                            System.out.println("在线天数" + serverday + "剩余天数" + dgtime);
+                            Double double_1 = Double.parseDouble(String.valueOf(serverday));
+                            Double double_2 = Double.parseDouble(dgtime);
+                            Long double_finis = Math.round(Double.parseDouble(String.valueOf
+                                    (double_2 +
+                                            double_1 * 1.2)));
+                            System.out.println("积分：" + double_finis);
+                            editor = preferences.edit();
+                            editor.putString("score", double_finis + "");
+                            editor.apply();
+                            /***
+                             * VIP等级体系
+
+                             已使用   剩余
+                             0         30    VIP1    月卡              x  < 36
+
+                             30        90    VIP2    季卡         36 < x < 126
+
+                             120       180    VIP3    半年卡      126 < x < 306
+
+                             300       360   VIP4    年卡         306 < x < 720
+
+                             660       MAX   VIP5                 720 < x
+
+                             公式：已用天数 * 1.2 + 剩余代挂天数 * 1 = x
+                             *
+                             */
+
+                            if (double_finis < 36 && double_finis > 0) {
+                                tv_viplevel.setText("VIP 1");
+                            } else if (double_finis >= 36 && double_finis < 126) {
+                                tv_viplevel.setText("VIP 2");
+                            } else if (double_finis >= 126 && double_finis < 306) {
+                                tv_viplevel.setText("VIP 3");
+                            } else if (double_finis >= 306 && double_finis < 720) {
+                                tv_viplevel.setText("VIP 4");
+                            } else if (double_finis >= 720) {
+                                tv_viplevel.setText("VIP 5");
+                            } else if (double_finis <= 0) {
+                                tv_viplevel.setTextColor(Color.BLACK);
+                                tv_viplevel.setText("VIP 0");
+                            }
+                        } else {
+                            if (getActivity() != null) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getContext(), "等级中心获取失败，请尝试重新登录", Toast
+                                                .LENGTH_LONG)
+                                                .show();
+                                    }
+                                });
+                            }
+                        }
+                        pgdialog_cancel();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             } else if (msg.what == 11) {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
@@ -891,5 +961,9 @@ public class YH_Fragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !useStatusBarColor) {//android6.0以后可以对状态栏文字颜色和图标进行修改
             getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+    }
+
+    public static int getGapCount(Date startDate, Date endDate) {
+        return (int) ((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
     }
 }
