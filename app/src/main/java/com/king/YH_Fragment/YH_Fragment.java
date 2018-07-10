@@ -41,6 +41,8 @@ import com.king.util.HttpRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -133,13 +135,18 @@ public class YH_Fragment extends Fragment {
     private void setLevel() {
         user = preferences.getString("account", "");
         pwd = preferences.getString("pwd", "");
-        String post_url = MainActivity
-                .web_jiekou + "api/submit.php?act=query&qq=" + user + "&pwd=" + pwd + "";
+        String post_url = null;
+        try {
+            post_url = MainActivity
+                    .web_jiekou + "api/submit.php?act=query&qq=" + user + "&pwd=" + URLEncoder.encode(pwd, "UTF-8") + "";
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "level");
-            jsonObject.put("qq", user);
-            jsonObject.put("pwd", pwd);
+//            jsonObject.put("qq", user);
+//            jsonObject.put("pwd", pwd);
             HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
             http.start();
         } catch (JSONException e) {

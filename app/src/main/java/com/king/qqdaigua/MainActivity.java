@@ -28,7 +28,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     //版本号控制更新提示
-    public static String app_ver = "3.78";
+    public static String app_ver = "3.79";
 
     public static String admin_pwd = "123456";
     public static String app_qq = "1776885812";
