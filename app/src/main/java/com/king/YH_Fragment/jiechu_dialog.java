@@ -95,8 +95,8 @@ public class jiechu_dialog extends DialogFragment {
                     jiechuDialog.cancel();
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
-                    String error = json.getString("error");
-                    if (error.equals("解除黑名单成功，21点后操作请第二天提交补挂！")) {
+                    //String error = json.getString("error");
+                    if (code.equals("1")) {
                         Toast.makeText(getContext(), "解除成功，当天21点后解除的，请于明天提交补挂参加补挂场", Toast
                                 .LENGTH_LONG)
                                 .show();

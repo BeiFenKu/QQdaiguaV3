@@ -156,6 +156,9 @@ public class HttpRequest extends Thread {
             } else if (type.equals("level")) {
                 //等级中心
                 body = new FormBody.Builder().build();
+            } else if (type.equals("lgcx")) {
+                //lgcx判断
+                body = new FormBody.Builder().build();
             }
             Log.e("请求URL：", url);
             Request request = new Request.Builder().url(url).post(body).build();
@@ -293,6 +296,9 @@ public class HttpRequest extends Thread {
                 } else if (type.equals("level")) {
                     //等级中心
                     message.what = 13;
+                } else if (type.equals("lgcx")) {
+                    //lgcx查询
+                    message.what = 14;
                 }
                 Log.e("服务器相应内容：", str);
                 message.obj = str;

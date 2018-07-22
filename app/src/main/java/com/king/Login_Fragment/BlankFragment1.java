@@ -557,13 +557,29 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
 //                        });
 //                        dialog_login.cancel();
                     } else {
-                        dialog_login.cancel();
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getContext(), "登录失败：密码错误或者未开通代挂", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        //登录错误处
+                        String qq = preferences.getString("account", "");
+                        JSONObject jsonobject = new JSONObject();
+                        String post_url = null;
+                        post_url = "http://api.52dg.gg/lgcx?qq=" + qq;
+                        try {
+                            jsonobject.put("type", "lgcx");
+                            HttpRequest http = new HttpRequest(post_url, jsonobject.toString(), handler);
+                            http.start();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        //   dialog_login.cancel();
+                        //   handler.post(new Runnable() {
+                        //      @Override
+                        //      public void run() {
+                        //          Toast.makeText(getContext(), "登录失败：密码错误或者未开通代挂", Toast.LENGTH_SHORT).show();
+                        //     }
+                        //   });
+
+
                     }
                 } catch (JSONException e) {
                     handler.post(new Runnable() {
@@ -644,7 +660,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                     String code = json.getString("code");
                     if (Double.parseDouble(code) > Double.parseDouble(MainActivity.app_ver)) {
                         update_sign = "1";
-                       // new update_dialog().show(getFragmentManager(), "");
+                        // new update_dialog().show(getFragmentManager(), "");
                         update_dialog update_dialog = new update_dialog();
                         update_dialog.show(getFragmentManager(), "");
                     } else {
@@ -653,6 +669,28 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            } else if (msg.what == 14) {
+                String text = (String) msg.obj;
+                if (text.length() < 11) {
+                    dialog_login.cancel();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "此账号未注册代挂", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    dialog_login.cancel();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "账号或密码错误，请尝试找回密码", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                //JSONObject json = new JSONObject((String) msg.obj);
+                //String code = json.getString("code");
+
             } else {
                 dialog_login.cancel();
                 Toast.makeText(getContext(), "请求失败，请稍等登录", Toast.LENGTH_LONG).show();
