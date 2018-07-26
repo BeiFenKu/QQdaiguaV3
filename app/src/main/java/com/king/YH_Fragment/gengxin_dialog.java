@@ -126,7 +126,7 @@ public class gengxin_dialog extends DialogFragment {
                         handler1.post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getContext(), "更新失败，原因如下：\n1.21点-10点禁止改密\n", Toast
+                                Toast.makeText(getContext(), "更新失败，原因如下：\n21点-10点禁止改密\n", Toast
                                         .LENGTH_LONG)
                                         .show();
                             }

@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.baidu.mobstat.SendStrategyEnum;
+import com.baidu.mobstat.StatService;
 import com.king.Caculer_Fragment.caculer_Fragment;
 import com.king.Login_Fragment.BlankFragment1;
 import com.king.YH_Fragment.update_dialog;
@@ -49,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        updateCheck();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StatService.setSendLogStrategy(this, SendStrategyEnum.APP_START, 1, false);
+        updateCheck();
         initv();
         new Handler().postDelayed(new LoadMainTabTask(), 0);
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new BlankFragment1())

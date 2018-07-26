@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,9 @@ import com.king.util.HttpRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 
 /**
  * Created by KingLee on 2018/4/17.
@@ -67,7 +72,7 @@ public class update_dialog extends DialogFragment {
                     lock = json.getString("lock");
                     final String url = json.getString("url");
                     String error = json.getString("error");
-                    tv_update.setText(""+error);
+                    tv_update.setText("" + error);
                     bt_submit.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -90,9 +95,9 @@ public class update_dialog extends DialogFragment {
         bt_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (lock.equals("0")){
+                if (lock.equals("0")) {
                     getDialog().cancel();
-                } else  {
+                } else {
                     System.exit(0);
                 }
             }
@@ -105,5 +110,26 @@ public class update_dialog extends DialogFragment {
         Uri content_url = Uri.parse(s);
         intent.setData(content_url);
         startActivity(intent);
+    }
+
+    @Override
+    public void show(FragmentManager manager, String tag) {
+//        super.show(manager, tag);
+        try {
+            Class c = Class.forName("android.support.v4.app.DialogFragment");
+            Constructor con = c.getConstructor();
+            Object obj = con.newInstance();
+            Field dismissed = c.getDeclaredField(" mDismissed");
+            dismissed.setAccessible(true);
+            dismissed.set(obj, false);
+            Field shownByMe = c.getDeclaredField("mShownByMe");
+            shownByMe.setAccessible(true);
+            shownByMe.set(obj, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.add(this, tag);
+        ft.commitAllowingStateLoss();
     }
 }
