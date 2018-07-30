@@ -1,5 +1,6 @@
 package com.king.Login_Fragment;
 
+import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,7 @@ public class zhaohui_dialog extends DialogFragment{
     private TextView tv_update;
     private Button bt_submit;
     private Button bt_submit1;
+    private Button bt_submit2;
     private Button bt_cancel;
     private TextView tv_update_title;
     private String lock;
@@ -56,6 +58,23 @@ public class zhaohui_dialog extends DialogFragment{
             @Override
             public void onClick(View view) {
                 openURL("http://kkkking.daigua.org/qrlogin/");
+            }
+        });
+        bt_submit2 = (Button) view.findViewById(R.id.bt_submit2);
+        bt_submit2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                // 创建普通字符型ClipData
+                ClipData mClipData = ClipData.newPlainText("Label", "3539699522");
+                // 将ClipData内容放到系统剪贴板里。
+                cm.setPrimaryClip(mClipData);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getContext(),"机器人的QQ已复制到粘贴板",Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
         bt_cancel = (Button) view.findViewById(R.id.bt_cancel);

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/board"
+            android:icon="@drawable/board"
+            android:title="通知提醒" />
+        <item
+            android:id="@+id/dengjizhongxin"
+            android:icon="@drawable/dengjizhongxin"
+            android:title="等级中心" />
+        <item
+            android:id="@+id/qq_sport"
+            android:icon="@drawable/qq_sport"
+            android:title="运动一键加速" />
+        <item
+            android:id="@+id/qq_carculer"
+            android:icon="@drawable/qq_carculer"
+            android:title="等级计算器" />
+        <item
+            android:id="@+id/update"
+            android:icon="@drawable/update"
+            android:title="检查更新" />
+        <item
+            android:id="@+id/back"
+            android:icon="@drawable/back"
+            android:title="返回首页" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/about"
+            android:title="关于" />
+    </group>
+
+
+</menu>

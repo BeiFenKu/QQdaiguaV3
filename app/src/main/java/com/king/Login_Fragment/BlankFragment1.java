@@ -146,8 +146,8 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         view = inflater.inflate(R.layout.blank_fragment1, container, false);
         View view1 = inflater.inflate(R.layout.activity_main, container, false);
 
-        fab = (FloatingActionButton) view1.findViewById(R.id.fab);
-        fab.setVisibility(View.INVISIBLE);
+//        fab = (FloatingActionButton) view1.findViewById(R.id.fab);
+//        fab.setVisibility(View.INVISIBLE);
         checkInternet();
         init();
         setTitle();
@@ -387,7 +387,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 openURL(MainActivity.app_buy);
             }
         });
-        title_img = (ImageView) view.findViewById(R.id.title_img);
+//        title_img = (ImageView) view.findViewById(R.id.title_img);
 
         tv_fail = (TextView) view.findViewById(R.id.textView);
         tv_fail.setOnClickListener(new View.OnClickListener() {
