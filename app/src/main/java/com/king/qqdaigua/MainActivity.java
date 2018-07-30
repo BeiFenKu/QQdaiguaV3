@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //版本号控制更新提示
     public static String app_ver = "3.81";
 
+
     public static String admin_pwd = "123456";
     public static String app_qq = "1776885812";
     public static String app_name = "帝王代挂";
