@@ -268,6 +268,7 @@ public class YH_Fragment extends Fragment {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
                     String code = json.getString("code");
+                    String cookie = json.getString("cookie");
                     String error = json.getString("error");
                     switchDialog.cancel();
                     if (error.equals("修改代挂成功，21点后操作请第二天提交补挂")) {
@@ -306,8 +307,16 @@ public class YH_Fragment extends Fragment {
                         }
                         Toast.makeText(getContext(), "修改成功，立即生效", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), "修改失败，检查是否过期，或者尝试重新登录", Toast.LENGTH_SHORT)
-                                .show();
+                        if (switch_sign == 6) {
+                            Toast.makeText(getContext(), "修改失败，请右上角进入网页版将空间访问功能开启", Toast.LENGTH_LONG)
+                                    .show();
+                            Log.e("cookie:", cookie);
+                            MainActivity.cookie_1 = cookie;
+//                            new qrlogin_dialog().show(getFragmentManager(), "");
+                        } else {
+                            Toast.makeText(getContext(), "修改失败，检查是否过期，或者尝试重新登录", Toast.LENGTH_SHORT)
+                                    .show();
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

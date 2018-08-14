@@ -213,6 +213,7 @@ public class HttpRequest extends Thread {
                     String error_decode = new JSONObject(str).getString("error");
                     JSONObject jsonObject = new JSONObject(str);
                     jsonObject.put("error", error_decode);
+                    jsonObject.put("cookie", cookie);
                     str = jsonObject.toString();
                     message.what = 5;
                 } else if (type.equals("xufei")) {

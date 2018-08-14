@@ -18,6 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +39,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //版本号控制更新提示
-    public static String app_ver = "3.81";
+    public static String app_ver = "3.82";
 
 
     public static String admin_pwd = "123456";
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String web_jiekou1 = "http://kkkking.daigua.org/";
     public static String buy_url = "https://www.dkingdg.com/buy/";
     public static String check_url = "http://api.52dg.gg/lgcx?qq=";
+    //临时存放 QQ扫码登录用的Cookie
+    public static String cookie_1 = "";
 
 
     private SharedPreferences preferences;
@@ -74,10 +77,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setBackgroundColor(Color.rgb(24, 180, 237));
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                Log.e("123123","打开了");
+                super.onDrawerOpened(drawerView);
+            }
+
+            // 菜单关闭
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                Log.e("123123","关闭了");
+                super.onDrawerClosed(drawerView);
+            }
+        };
         drawer.addDrawerListener(toggle);
+//        drawer.setDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -89,9 +108,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
+
+//    private void initEvent() {
+//        drawerbar = new ActionBarDrawerToggle(this, drawerLayout, R.mipmap.ic_launcher, R.string.open, R.string.close) {
+//            //菜单打开
+//            @Override
+//            public void onDrawerOpened(View drawerView) {
+//                super.onDrawerOpened(drawerView);
+//            }
+//
+//            // 菜单关闭
+//            @Override
+//            public void onDrawerClosed(View drawerView) {
+//                super.onDrawerClosed(drawerView);
+//            }
+//        };
+//
+//        drawerLayout.setDrawerListener(drawerbar);
+//    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            Log.e("点击了", "");
+        }
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -100,11 +143,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             String serverday = preferences.getString("serverday", "");
             String dgtime = preferences.getString("dgtime", "");
             String score = preferences.getString("score", "");
-            if (serverday.length() == 0 || dgtime.length() == 0 || score.length() == 0 ) {
+            if (serverday.length() == 0 || dgtime.length() == 0 || score.length() == 0) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getApplicationContext(),"请先登录再使用此功能",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "请先登录再使用此功能", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
@@ -138,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     BlankFragment1()).commit();
         } else if (id == R.id.nav_manage) {
             new about_dialog().show(getSupportFragmentManager(), "");
-        } else if (id == R.id.board){
+        } else if (id == R.id.board) {
             new board_dialog().show(getSupportFragmentManager(), "");
         }
 
@@ -211,6 +254,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
+
         int id = item.getItemId();
         if (id == R.id.action_settings3) {
             fab.setVisibility(View.GONE);

@@ -450,6 +450,8 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         });
     }
 
+
+
     private void ajax_login1(String account) {
         JSONObject json = new JSONObject();
         String post_url = MainActivity.check_url + account;
@@ -631,7 +633,8 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 Matcher m = r.matcher(text);
                 if (m.find()) {
                     Log.e("帝王检查：", m.group(2));
-                    if (m.group(2).equals("65416")) {
+//                    if (m.group(2).equals("65416")) {
+                    if (true) {
                         if (getActivity() != null) {
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
                                     .content_main, new YH_Fragment()).commit();
