@@ -20,7 +20,7 @@
         android:layout_height="80dp"
         android:textColor="#000000"
         android:gravity="center"
-        android:text="群号：675105203
+        android:text="群号：597047236
 
         如果调起QQ失败，可以复制QQ号手动加群"
         android:textSize="18dp"/>

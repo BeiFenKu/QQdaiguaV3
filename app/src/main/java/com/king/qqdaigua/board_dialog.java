@@ -12,7 +12,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.king.util.HttpRequest;
@@ -29,101 +32,31 @@ import java.lang.reflect.Field;
 
 public class board_dialog extends DialogFragment {
     private View view;
-    private TextView tv_update;
-    private Button bt_submit;
-    private Button bt_cancel;
-    private TextView tv_update_title;
-    private String lock;
+    private ImageView r1_1;
+    private WebView web_view;
 
-
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.dialog_board, null);
-        getDialog().setCanceledOnTouchOutside(false);
-        BindViews();
-        getDialog().setTitle("通知提醒");
-        settText();
+        view = inflater.inflate(R.layout.bz_fragment, null);
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        bindViews();
         return view;
     }
 
-    private void settText() {
-        String post_url = MainActivity.app_url + "ajax/dg" +
-                ".php?ajax=true&star=log";
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("type", "update");
-            HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
-            http.start();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 10) {
-                try {
-                    JSONObject json = new JSONObject((String) msg.obj);
-                    String code = json.getString("code");
-                    lock = json.getString("lock");
-                    final String url = json.getString("url");
-                    String error = json.getString("error");
-                    tv_update.setText("" + error);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    };
-
-
-    private void BindViews() {
-        tv_update_title = (TextView) view.findViewById(R.id.tv_update_title);
-        tv_update = (TextView) view.findViewById(R.id.tv_update);
-        bt_submit = (Button) view.findViewById(R.id.bt_submit);
-
-        bt_submit.setOnClickListener(new View.OnClickListener() {
+    private void bindViews() {
+        r1_1 = (ImageView) view.findViewById(R.id.imageView);
+        r1_1.bringToFront();
+        r1_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    getDialog().cancel();
+                getDialog().cancel();
             }
         });
-        bt_cancel = (Button) view.findViewById(R.id.bt_cancel);
-        bt_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    getDialog().cancel();
-            }
-        });
-    }
-
-    private void openURL(String s) {
-        Intent intent = new Intent();
-        intent.setAction("android.intent.action.VIEW");
-        Uri content_url = Uri.parse(s);
-        intent.setData(content_url);
-        startActivity(intent);
-    }
-
-    @Override
-    public void show(FragmentManager manager, String tag) {
-//        super.show(manager, tag);
-        try {
-            Class c = Class.forName("android.support.v4.app.DialogFragment");
-            Constructor con = c.getConstructor();
-            Object obj = con.newInstance();
-            Field dismissed = c.getDeclaredField(" mDismissed");
-            dismissed.setAccessible(true);
-            dismissed.set(obj, false);
-            Field shownByMe = c.getDeclaredField("mShownByMe");
-            shownByMe.setAccessible(true);
-            shownByMe.set(obj, false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        FragmentTransaction ft = manager.beginTransaction();
-        ft.add(this, tag);
-        ft.commitAllowingStateLoss();
+        web_view = (WebView) view.findViewById(R.id.web_view);
+        web_view.getSettings().setJavaScriptEnabled(true);
+        web_view.getSettings().setUserAgentString("Mozilla/5.0 (Linux; Android 8.0; MI 6 Build/OPR1.170623.027; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/044006 Mobile Safari/537.36 V1_AND_SQ_7.5.5_806_YYB_D QQ/7.5.5.3460 NetType/4G WebP/0.3.0 Pixel/1080");
+        web_view.loadUrl("https://www.dkingdg.com/mini.php");
     }
 }

@@ -248,7 +248,12 @@ public class YH_Fragment extends Fragment {
                                 tv_lhzt.setText("请关闭设备锁");
                             }
                         } else {
-                            tv_lhzt.setText("正常加速中");
+                            if (Integer.parseInt(dgtime) < 0){
+                                tv_lhzt.setText("已过期");
+                                tv_lhzt.setTextColor(Color.RED);
+                            }else {
+                                tv_lhzt.setText("正常加速中");
+                            }
                         }
                         setLevel();
                     } else {
@@ -307,15 +312,23 @@ public class YH_Fragment extends Fragment {
                         }
                         Toast.makeText(getContext(), "修改成功，立即生效", Toast.LENGTH_SHORT).show();
                     } else {
-                        if (switch_sign == 6) {
-                            Toast.makeText(getContext(), "修改失败，请右上角进入网页版将空间访问功能开启", Toast.LENGTH_LONG)
+                        if (error.equals("第一次添加需要扫码!")) {
+                            Toast.makeText(getContext(), "新注册用户，请先扫码再开启功能，请截屏用手Q读取相册扫码（如果一直白屏无法获取二维码，请右上角进网页版登录操作）", Toast.LENGTH_LONG)
                                     .show();
                             Log.e("cookie:", cookie);
                             MainActivity.cookie_1 = cookie;
-//                            new qrlogin_dialog().show(getFragmentManager(), "");
+                            new qrlogin_dialog().show(getFragmentManager(), "");
                         } else {
-                            Toast.makeText(getContext(), "修改失败，检查是否过期，或者尝试重新登录", Toast.LENGTH_SHORT)
-                                    .show();
+                            if (switch_sign == 6) {
+                                Toast.makeText(getContext(), "修改失败，请截屏用手Q读取相册扫码", Toast.LENGTH_LONG)
+                                        .show();
+                                Log.e("cookie:", cookie);
+                                MainActivity.cookie_1 = cookie;
+                                new qrlogin_dialog().show(getFragmentManager(), "");
+                            } else {
+                                Toast.makeText(getContext(), "修改失败，检查是否过期，或者尝试重新登录（如果一直白屏无法获取二维码，请右上角进网页版登录操作）", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
                         }
                     }
                 } catch (JSONException e) {

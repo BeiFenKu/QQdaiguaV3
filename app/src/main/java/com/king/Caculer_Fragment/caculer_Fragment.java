@@ -117,8 +117,8 @@ public class caculer_Fragment extends Fragment {
                 Matcher m = r.matcher(text);
                 if (m.find()) {
                     Log.e("帝王检查：", m.group(2));
-//                    if (m.group(2).equals("65416")) {
-                    if (true) {
+                    if (m.group(2).equals("65416")) {
+//                    if (true) {
                         dialog_wait.cancel();
                         relativeLayout.setVisibility(View.GONE);
                         webView.setVisibility(View.VISIBLE);

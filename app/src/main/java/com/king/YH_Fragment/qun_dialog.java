@@ -55,7 +55,7 @@ public class qun_dialog extends DialogFragment {
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openURL("http://wpa.qq.com/msgrd?v=3&uin=" + MainActivity.app_qq + "&site=qq&menu=yes");
+                openURL("http://shang.qq.com/wpa/qunwpa?idkey=1af9f014f1d29b7f61e04baa4c986f22f509a944321addb3ce367cbdc1495f51");
             }
         });
         bt_submit1 = (Button) view.findViewById(R.id.bt_submit1);
@@ -64,7 +64,7 @@ public class qun_dialog extends DialogFragment {
             public void onClick(View view) {
                 ClipboardManager cm = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                 // 将文本内容放到系统剪贴板里。
-                cm.setText("675105203");
+                cm.setText("597047236");
                 Toast.makeText(getContext(), "复制群号成功。", Toast.LENGTH_SHORT).show();
             }
         });

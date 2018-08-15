@@ -451,7 +451,6 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
     }
 
 
-
     private void ajax_login1(String account) {
         JSONObject json = new JSONObject();
         String post_url = MainActivity.check_url + account;
@@ -608,6 +607,10 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "此激活码已被使用！", Toast.LENGTH_LONG)
                                         .show();
+                            } else if (error.equals("密码不符合规范")) {
+                                dialog_login.cancel();
+                                Toast.makeText(getContext(), "密码不符合规范！", Toast.LENGTH_LONG)
+                                        .show();
                             } else {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "此激活码不能被此QQ使用，请联系站长处理", Toast.LENGTH_LONG)
@@ -633,8 +636,8 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 Matcher m = r.matcher(text);
                 if (m.find()) {
                     Log.e("帝王检查：", m.group(2));
-//                    if (m.group(2).equals("65416")) {
-                    if (true) {
+                    if (m.group(2).equals("65416")) {
+//                    if (true) {
                         if (getActivity() != null) {
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
                                     .content_main, new YH_Fragment()).commit();
