@@ -70,7 +70,8 @@
         android:layout_alignParentTop="true"
         android:background="@mipmap/caculer_2"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:visibility="visible">
 
         <RelativeLayout
             android:id="@+id/rl10"

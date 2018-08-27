@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_update_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/mestitle_gray"
+        android:gravity="center"
+        android:text="找回密码方式："
+        android:textColor="#000000"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_below="@id/tv_update_title"
+        android:id="@+id/tv_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:text="找回密码提供三种方式：\n\n1.平台密码邮件找回\n\n2.直接QQ扫码登录代挂平台，再到平台内修改密码\n\n3.QQ机器人找回，向该QQ机器人发送“重置”两字即可重置密码为123456\n【推荐第三种方式，第一种邮件有时会延迟，扫码目前在修复】"
+        android:textSize="13dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tv_update"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/bt_submit"
+                android:layout_width="match_parent"
+                android:text="邮件找回"
+                android:layout_height="match_parent"/>
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/bt_submit2"
+                android:layout_width="match_parent"
+                android:text="QQ机器人"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/bt_submit1"
+                android:layout_width="match_parent"
+                android:text="扫码找回"
+                android:layout_height="match_parent"/>
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/bt_cancel"
+                android:layout_width="match_parent"
+                android:text="取消"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -39,22 +39,22 @@
     <RelativeLayout
         android:id="@+id/rl2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/rl1"
-        android:orientation="horizontal"
-        android:layout_alignParentLeft="true">
+        android:orientation="horizontal">
 
 
         <LinearLayout
             android:id="@+id/ll5"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="115dp"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/mestitle_gray"
-            android:orientation="horizontal"
-            android:layout_alignParentLeft="true">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/ll6"
@@ -75,7 +75,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button"
                         android:text="续费[剩余XX天]"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
 
@@ -90,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button1"
-                        android:text="漏挂补挂"/>
+                        android:text="漏挂补挂" />
 
                 </LinearLayout>
 
@@ -114,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button1"
-                        android:text="@string/app_level"/>
+                        android:text="@string/app_level" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -129,7 +129,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button"
                         android:text="新手必看"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -152,8 +152,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button"
-                        android:textColor="@color/white"
-                        android:text="@string/app_kefuqq"/>
+                        android:text="@string/app_kefuqq"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -167,7 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button1"
-                        android:text="更新密码"/>
+                        android:text="更新密码" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -176,10 +176,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="135dp"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:orientation="horizontal"
-            android:layout_alignParentLeft="true">
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -190,44 +190,45 @@
                     android:id="@+id/tv_dqqq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="当前QQ：XXX"
+                    android:layout_marginTop="18dp"
+                    android:text="当前QQ：576777915"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="normal|bold"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="10dp" />
+                    android:textStyle="normal|bold" />
 
                 <RelativeLayout
                     android:id="@+id/rl4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="83dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_alignParentLeft="true">
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="95dp">
+
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:text="代挂等级："
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:layout_alignParentLeft="true" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tv_viplevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/textView8"
+                        android:layout_marginLeft="78dp"
                         android:text="VIP 5"
                         android:textColor="@color/red"
-                        android:textSize="15sp"
-                        android:layout_alignLeft="@+id/textView8"
-                        android:layout_marginLeft="78dp"/>
+                        android:textSize="15sp" />
                 </RelativeLayout>
 
 
@@ -238,31 +239,31 @@
                     android:layout_alignBaseline="@+id/textView6"
                     android:layout_alignBottom="@+id/textView6"
                     android:layout_toEndOf="@+id/textView6"
+                    android:layout_toRightOf="@+id/textView6"
                     android:text="拉黑状态"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:layout_toRightOf="@+id/textView6" />
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:visibility="invisible"
                     android:id="@+id/tv_bt_jiechu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lhzt"
                     android:layout_marginLeft="118dp"
                     android:text="解除拉黑"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/tv_dqqq"
+                    android:layout_alignStart="@+id/tv_dqqq"
+                    android:layout_centerVertical="true"
                     android:text="当前状态："
                     android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignStart="@+id/tv_dqqq"
-                    android:layout_alignLeft="@+id/tv_dqqq" />
+                    android:textSize="15sp" />
 
 
             </RelativeLayout>
@@ -278,12 +279,12 @@
                     android:id="@+id/tv_board"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="start"
                     android:scrollbars="vertical"
                     android:text=""
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:gravity="start" />
+                    android:textSize="15sp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -295,7 +296,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="240dp">
+        android:layout_marginTop="280dp">
 
 
         <LinearLayout

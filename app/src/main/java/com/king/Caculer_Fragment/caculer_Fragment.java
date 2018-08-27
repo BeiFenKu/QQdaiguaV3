@@ -33,6 +33,7 @@ import com.king.util.SetImageViewUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -463,7 +464,7 @@ public class caculer_Fragment extends Fragment {
         next_level_uday = String.valueOf(Math.round((Double.parseDouble(next_level_day) - Double
                 .parseDouble
                         (now_onlineDay)) / Double.parseDouble(dg_speed)));
-        tv_qname.setText(regular(text, "sNickName"));
+        tv_qname.setText(unicodeToCn(regular(text, "sNickName")));
         tv_qq.setText(qq);
         tv_level.setText(now_level);
         if (getActivity() != null) {
@@ -528,5 +529,16 @@ public class caculer_Fragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !useStatusBarColor) {//android6.0以后可以对状态栏文字颜色和图标进行修改
             getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+    }
+
+    private static String unicodeToCn(String unicode) {
+        /** 以 \ u 分割，因为java注释也能识别unicode，因此中间加了一个空格*/
+        String[] strs = unicode.split("\\\\u");
+        String returnStr = "";
+        // 由于unicode字符串以 \ u 开头，因此分割出的第一个字符是""。
+        for (int i = 1; i < strs.length; i++) {
+            returnStr += (char) Integer.valueOf(strs[i], 16).intValue();
+        }
+        return returnStr;
     }
 }
