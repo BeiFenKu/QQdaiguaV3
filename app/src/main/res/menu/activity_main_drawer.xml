@@ -21,6 +21,10 @@
             android:icon="@drawable/qq_carculer"
             android:title="等级计算器" />
         <item
+            android:id="@+id/skin"
+            android:icon="@drawable/ic_icon_skin"
+            android:title="主题更换" />
+        <item
             android:id="@+id/update"
             android:icon="@drawable/update"
             android:title="检查更新" />

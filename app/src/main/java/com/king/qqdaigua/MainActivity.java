@@ -203,6 +203,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .show();
                 }
             });
+        } else if (id == R.id.skin) {
+            getSupportFragmentManager().beginTransaction().replace(R.id
+                    .content_main, new skin_change()).commit();
         } else if (id == R.id.qq_carculer) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new
                     caculer_Fragment()).commit();

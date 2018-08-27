@@ -1,10 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@mipmap/king_bj"
-                tools:context="com.king.Login_Fragment.BlankFragment1">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/blank1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/king_bj"
+    tools:context="com.king.Login_Fragment.BlankFragment1">
 
 
     <TextView
@@ -18,7 +19,7 @@
         android:text="@string/app_kefuqq"
         android:textColor="@color/kefuColor"
         android:textSize="16sp"
-        android:textStyle="normal|bold"/>
+        android:textStyle="normal|bold" />
 
     <RelativeLayout
         android:id="@+id/rl1"
@@ -35,7 +36,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@drawable/left_icon_shape_corners"
-            app:srcCompat="@mipmap/account"/>
+            app:srcCompat="@mipmap/account" />
 
         <EditText
             android:id="@+id/et_account"
@@ -51,7 +52,7 @@
             android:inputType="text"
             android:padding="5dp"
             android:paddingRight="10dp"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
 
         <EditText
             android:id="@+id/et_reg_account"
@@ -66,17 +67,17 @@
             android:hint="请输入要开通的QQ帐号..."
             android:inputType="text"
             android:padding="5dp"
-            android:visibility="invisible"
             android:paddingRight="10dp"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/multi"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@mipmap/down_account"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
+            android:src="@mipmap/down_account" />
 
     </RelativeLayout>
 
@@ -96,7 +97,7 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@drawable/left_icon_shape_corners"
-            app:srcCompat="@mipmap/pwd"/>
+            app:srcCompat="@mipmap/pwd" />
 
         <EditText
             android:id="@+id/et_pwd"
@@ -112,7 +113,7 @@
             android:inputType="textPassword"
             android:padding="5dp"
             android:paddingRight="10dp"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
 
 
         <EditText
@@ -127,9 +128,9 @@
             android:fontFamily="sans-serif"
             android:hint="请输入要开通的QQ密码..."
             android:padding="5dp"
-            android:visibility="invisible"
             android:paddingRight="10dp"
-            android:textSize="15dp">
+            android:textSize="15dp"
+            android:visibility="invisible">
 
 
         </EditText>
@@ -138,9 +139,9 @@
             android:id="@+id/eye"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@mipmap/eye_close"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
+            android:src="@mipmap/eye_close" />
 
     </RelativeLayout>
 
@@ -152,15 +153,15 @@
         android:layout_below="@+id/relativeLayout"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:visibility="invisible"
-        android:layout_marginTop="17dp">
+        android:layout_marginTop="17dp"
+        android:visibility="invisible">
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@drawable/left_icon_shape_corners"
-            app:srcCompat="@mipmap/kami"/>
+            app:srcCompat="@mipmap/kami" />
 
         <EditText
             android:id="@+id/et_km"
@@ -175,7 +176,7 @@
             android:hint="请输入卡密..."
             android:padding="5dp"
             android:paddingRight="10dp"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
 
 
     </RelativeLayout>
@@ -189,8 +190,7 @@
         android:layout_marginTop="18dp"
         android:text="记住密码"
         android:textColor="@color/white"
-        android:textSize="14sp"
-        />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/textView"
@@ -201,7 +201,7 @@
         android:layout_alignEnd="@+id/relativeLayout"
         android:text="登录失败？"
         android:textColor="@color/white"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -223,7 +223,7 @@
             android:background="@drawable/king_button"
             android:text="马上登录"
             android:textColor="@color/white"
-            android:textSize="19sp"/>
+            android:textSize="19sp" />
 
         <Button
             android:id="@+id/bt_reg"
@@ -234,7 +234,7 @@
             android:background="@drawable/king_button1"
             android:text="注册代挂"
             android:textColor="@color/black"
-            android:textSize="19sp"/>
+            android:textSize="19sp" />
 
     </LinearLayout>
 
@@ -248,8 +248,8 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="17dp"
-        android:visibility="invisible"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/bt_loginback"
@@ -260,7 +260,7 @@
             android:background="@drawable/king_button1"
             android:text="返回登录"
             android:textColor="@color/black"
-            android:textSize="19sp"/>
+            android:textSize="19sp" />
 
         <Button
             android:id="@+id/bt_regkm"
@@ -271,7 +271,7 @@
             android:background="@drawable/king_button"
             android:text="提交注册"
             android:textColor="@color/white"
-            android:textSize="19sp"/>
+            android:textSize="19sp" />
 
     </LinearLayout>
 
@@ -281,15 +281,15 @@
         android:layout_height="135dp"
         android:layout_below="@+id/tv_kf"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@mipmap/ic_launcher"/>
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <LinearLayout
         android:id="@+id/ll3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@+id/ll1"
         android:layout_marginLeft="110dp"
         android:layout_marginRight="110dp"
-        android:layout_below="@+id/ll1"
         android:layout_marginTop="17dp">
 
         <Button
@@ -300,18 +300,18 @@
             android:background="@drawable/king_button1"
             android:text="找回密码"
             android:textColor="@color/black"
-            android:textSize="19sp"/>
+            android:textSize="19sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll4"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@+id/ll1"
         android:layout_marginLeft="110dp"
         android:layout_marginRight="110dp"
-        android:layout_below="@+id/ll1"
-        android:visibility="invisible"
-        android:layout_marginTop="17dp">
+        android:layout_marginTop="17dp"
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/bt_buy"
@@ -321,7 +321,7 @@
             android:background="@drawable/king_button1"
             android:text="购买卡密"
             android:textColor="@color/black"
-            android:textSize="19sp"/>
+            android:textSize="19sp" />
     </LinearLayout>
 
 </RelativeLayout>

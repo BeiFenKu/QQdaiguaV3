@@ -4,8 +4,10 @@ package com.king.Login_Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -135,6 +137,8 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
     private FloatingActionButton fab;
     private String account;
     private TextView tv_kf;
+    private RelativeLayout blank1;
+    private String skin_value;
 
     public BlankFragment1() {
     }
@@ -270,6 +274,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
     }
 
     private void init() {
+
         tv_kf = (TextView) view.findViewById(R.id.tv_kf);
         tv_kf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -448,6 +453,40 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 }
             }
         });
+
+        blank1 = (RelativeLayout) view.findViewById(R.id.blank1);
+
+        skin_value = preferences.getString("skin_value", "1");
+
+        Resources resources = getActivity().getApplicationContext().getResources();
+        switch (skin_value) {
+            //1 = 默认 2 = 绿 3 = 橙 4 = 紫 5 = 彩色
+            case "1":
+                Drawable btnDrawable = resources.getDrawable(R.drawable.king_bj);
+//                blank1.setBackgroundDrawable(btnDrawable);
+                blank1.setBackgroundResource(R.drawable.king_bj);
+                break;
+            case "2":
+                Drawable btnDrawable1 = resources.getDrawable(R.drawable.king_bj_green);
+//                blank1.setBackgroundDrawable(btnDrawable1);
+                blank1.setBackgroundResource(R.drawable.king_bj_green);
+                break;
+            case "3":
+                Drawable btnDrawable2 = resources.getDrawable(R.drawable.king_bj_orange);
+//                blank1.setBackgroundDrawable(btnDrawable2);
+                blank1.setBackgroundResource(R.drawable.king_bj_orange);
+                break;
+            case "4":
+                Drawable btnDrawable3 = resources.getDrawable(R.drawable.king_bj_purple);
+//                blank1.setBackgroundDrawable(btnDrawable3);
+                blank1.setBackgroundResource(R.drawable.king_bj_purple);
+                break;
+            case "5":
+                Drawable btnDrawable4 = resources.getDrawable(R.drawable.king_bj_coloful);
+//                blank1.setBackgroundDrawable(btnDrawable4);
+                blank1.setBackgroundResource(R.drawable.king_bj_coloful);
+                break;
+        }
     }
 
 

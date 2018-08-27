@@ -6,7 +6,10 @@
     <color name="kefuColor">#0F3BD3</color>
     <color name="gray">#808080</color>
     <color name="white">#FFFFFF</color>
+    <color name="GhostWhite">#F8F8FF</color>
+    <color name="GhostWhite1">#e2e2ea</color>
     <color name="blue_title">#18B4ED</color>
+    <color name="purple_title">#7c339a</color>
     <color name="bt1_hold">#1497c7</color>
     <color name="bt2_hold">#d9d9d9</color>
     <color name="black">#000000</color>
@@ -18,4 +21,13 @@
     <color name="level_font_brown">#5e4227</color>
     <color name="level_font1_red">#bb463e</color>
     <color name="zise">#4e2269</color>
+    <color name="skin_green">#18b4ed</color>
+    <color name="skin_green_hold">#1598c8</color>
+    <color name="skin_orange">#931d03</color>
+    <color name="skin_orange_hold">#6c1704</color>
+    <color name="skin_pou">#7c339a</color>
+    <color name="skin_pou_hold">#612a77</color>
+    <color name="skin_colorful">#0085fb</color>
+    <color name="skin_colorful_hold">#006dce</color>
+
 </resources>
