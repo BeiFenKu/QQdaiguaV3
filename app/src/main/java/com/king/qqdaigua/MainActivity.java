@@ -41,7 +41,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //版本号控制更新提示
-    public static String app_ver = "3.84";
+    public static String app_ver = "3.85";
     //过期否检测值
     public static String guoqi_button = "0";
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         decorView.setSystemUiVisibility(option);
                         //根据上面设置是否对状态栏单独设置颜色
                         if (useThemestatusBarColor) {
-                            getWindow().setStatusBarColor(getResources().getColor(R.color.zongse));
+                            getWindow().setStatusBarColor(getResources().getColor(R.color.huangse));
                         } else {
                             getWindow().setStatusBarColor(Color.TRANSPARENT);
                         }

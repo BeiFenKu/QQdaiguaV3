@@ -465,8 +465,6 @@ public class caculer_Fragment extends Fragment {
                         (now_onlineDay)) / Double.parseDouble(dg_speed)));
 
 
-
-
         if (getActivity() != null) {
             final String finalNext_level_uday = next_level_uday;
             final String finalNext_hg_level_sday = next_hg_level_sday2;
@@ -477,7 +475,7 @@ public class caculer_Fragment extends Fragment {
                 @Override
                 public void run() {
 
-                    tv_qname.setText(unicodeToCn(regular(text, "sNickName")));
+                    tv_qname.setText(unicodeToString(regular(text, "sNickName")));
                     tv_qq.setText(qq);
                     tv_level.setText(now_level);
                     SetImageViewUtil.setImageToImageView(image_touxiang, "http://q2.qlogo" +
@@ -549,5 +547,24 @@ public class caculer_Fragment extends Fragment {
             returnStr += (char) Integer.valueOf(strs[i], 16).intValue();
         }
         return returnStr;
+    }
+
+
+    public static String unicodeToString(String str) {
+
+        Pattern pattern = Pattern.compile("(\\\\u(\\p{XDigit}{4}))");
+        Matcher matcher = pattern.matcher(str);
+        char ch;
+        while (matcher.find()) {
+            //group 6728
+            String group = matcher.group(2);
+            //ch:'木' 26408
+            ch = (char) Integer.parseInt(group, 16);
+            //group1 \u6728
+            String group1 = matcher.group(1);
+            str = str.replace(group1, ch + "");
+        }
+        return str;
+
     }
 }
