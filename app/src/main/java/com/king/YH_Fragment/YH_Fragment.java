@@ -112,6 +112,8 @@ public class YH_Fragment extends Fragment {
     private ImageView img_load;
     private RelativeLayout rl4;
     private Button bt_viplevel;
+    private String skin_value;
+    private Button bt_newuser;
 
 
     public YH_Fragment() {
@@ -125,6 +127,7 @@ public class YH_Fragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_yh, container, false);
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        skin_value = preferences.getString("skin_value", "1");
         bindviews();
         setTitle();
         setBoard();
@@ -248,10 +251,12 @@ public class YH_Fragment extends Fragment {
                                 tv_lhzt.setText("请关闭设备锁");
                             }
                         } else {
-                            if (Integer.parseInt(dgtime) < 0){
+                            if (Integer.parseInt(dgtime) < 0) {
+                                MainActivity.guoqi_button = "1";
                                 tv_lhzt.setText("已过期");
                                 tv_lhzt.setTextColor(Color.RED);
-                            }else {
+                            } else {
+                                MainActivity.guoqi_button = "0";
                                 tv_lhzt.setText("正常加速中");
                             }
                         }
@@ -313,7 +318,7 @@ public class YH_Fragment extends Fragment {
                         Toast.makeText(getContext(), "修改成功，立即生效", Toast.LENGTH_SHORT).show();
                     } else {
                         if (error.equals("第一次添加需要扫码!")) {
-                            Toast.makeText(getContext(), "新注册用户，请先扫码再开启功能，请截屏用手Q读取相册扫码（如果一直白屏无法获取二维码，请右上角进网页版登录操作）", Toast.LENGTH_LONG)
+                            Toast.makeText(getContext(), "新注册用户，请先扫码再开启功能。请截屏保存相册然后用手Q读取相册扫码（如果一直白屏无法获取二维码，请右上角进网页版登录操作）", Toast.LENGTH_LONG)
                                     .show();
                             Log.e("cookie:", cookie);
                             MainActivity.cookie_1 = cookie;
@@ -524,7 +529,7 @@ public class YH_Fragment extends Fragment {
                 new qun_dialog().show(getFragmentManager(), "");
             }
         });
-        Button bt_newuser = (Button) view.findViewById(R.id.bt_newuser);
+        bt_newuser = (Button) view.findViewById(R.id.bt_newuser);
         bt_newuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -737,6 +742,7 @@ public class YH_Fragment extends Fragment {
             }
         });
         img_load = (ImageView) view.findViewById(R.id.img_load);
+        ImgHui(img_load);
         imageViews[0] = img_guanjia;
         imageViews[1] = img_pcqq;
         imageViews[2] = img_mqq;
@@ -779,6 +785,42 @@ public class YH_Fragment extends Fragment {
         tv_board = (TextView) view.findViewById(R.id.tv_board);
         tv_board.setMovementMethod(ScrollingMovementMethod.getInstance());
 
+        switch (skin_value) {
+            //1 = 默认 2 = 绿 3 = 橙 4 = 紫 5 = 彩色
+            case "1":
+                bt_xufei.setBackgroundResource(R.drawable.king_button);
+                bt_newuser.setBackgroundResource(R.drawable.king_button);
+                bt_kf.setBackgroundResource(R.drawable.king_button);
+                bt_lou_submit.setBackgroundResource(R.drawable.king_button);
+
+                break;
+            case "2":
+
+                bt_xufei.setBackgroundResource(R.drawable.king_button_green);
+                bt_newuser.setBackgroundResource(R.drawable.king_button_green);
+                bt_kf.setBackgroundResource(R.drawable.king_button_green);
+                bt_lou_submit.setBackgroundResource(R.drawable.king_button_green);
+                break;
+            case "3":
+
+                bt_xufei.setBackgroundResource(R.drawable.king_button_orange);
+                bt_newuser.setBackgroundResource(R.drawable.king_button_orange);
+                bt_kf.setBackgroundResource(R.drawable.king_button_orange);
+                bt_lou_submit.setBackgroundResource(R.drawable.king_button_orange);
+                break;
+            case "4":
+                bt_xufei.setBackgroundResource(R.drawable.king_button_pou);
+                bt_newuser.setBackgroundResource(R.drawable.king_button_pou);
+                bt_kf.setBackgroundResource(R.drawable.king_button_pou);
+                bt_lou_submit.setBackgroundResource(R.drawable.king_button_pou);
+                break;
+            case "5":
+                bt_xufei.setBackgroundResource(R.drawable.king_button_colorful);
+                bt_newuser.setBackgroundResource(R.drawable.king_button_colorful);
+                bt_kf.setBackgroundResource(R.drawable.king_button_colorful);
+                bt_lou_submit.setBackgroundResource(R.drawable.king_button_colorful);
+                break;
+        }
     }
 
     private void setMqqStatus() {
@@ -979,7 +1021,17 @@ public class YH_Fragment extends Fragment {
             decorView.setSystemUiVisibility(option);
             //根据上面设置是否对状态栏单独设置颜色
             if (useThemestatusBarColor) {
-                getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.blue_title));
+                if (skin_value.equals("1")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.blue_title));
+                } else if (skin_value.equals("2")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_green));
+                } else if (skin_value.equals("3")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_orange));
+                } else if (skin_value.equals("4")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_pou));
+                } else if (skin_value.equals("5")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_colorful));
+                }
             } else {
                 getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);
             }

@@ -25,18 +25,27 @@
             android:icon="@drawable/ic_icon_skin"
             android:title="主题更换" />
         <item
-            android:id="@+id/update"
-            android:icon="@drawable/update"
-            android:title="检查更新" />
-        <item
             android:id="@+id/back"
             android:icon="@drawable/back"
             android:title="返回首页" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/about"
-            android:title="关于" />
     </group>
+
+    <item android:title="TIP">
+        <menu>
+            <item
+                android:id="@+id/update"
+                android:icon="@drawable/update"
+                android:title="检查更新" />
+            <item
+                android:id="@+id/fankui"
+                android:icon="@drawable/ic_fankui"
+                android:title="意见反馈" />
+            <item
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/about"
+                android:title="关于" />
+        </menu>
+    </item>
 
 
 </menu>

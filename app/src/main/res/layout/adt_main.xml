@@ -7,14 +7,14 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY"
-        android:src="@mipmap/qdt_main" />
+        android:src="@mipmap/qdt_main_9yue" />
 
     <com.king.ewrite.CustomTextView
         android:id="@+id/enter"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:gravity="center"
-        android:textColor="#ffffff"
+        android:textColor="#07acb2"
         android:text="进入"
         android:textSize="13dp"
         android:layout_marginEnd="10dp"

@@ -33,7 +33,6 @@ import com.king.util.SetImageViewUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -308,13 +307,13 @@ public class caculer_Fragment extends Fragment {
         webView.loadUrl("https://qzone.qq.com/");
     }
 
-    public void coreSuanfa(String text) {
+    public void coreSuanfa(final String text) {
         double fw_speed1 = 2.2; // 第一个圈代挂可达到的最高上限
         double fw_speed2 = 1.6; // 第二个圈代挂可达到的最高上限
         double fw_speed = 1.0; //第一个圈速度
         String dg_speed = ""; //代挂速度
 
-        String now_level = regular(text, "iQQLevel"); //现在等级
+        final String now_level = regular(text, "iQQLevel"); //现在等级
         String now_onlineDay = regular(text, "iTotalActiveDay");  //总在线日
         String next_level_day = "";                       //下个等级总日数
         String next_level_uday = "";                      //下个等级所需日数
@@ -464,25 +463,35 @@ public class caculer_Fragment extends Fragment {
         next_level_uday = String.valueOf(Math.round((Double.parseDouble(next_level_day) - Double
                 .parseDouble
                         (now_onlineDay)) / Double.parseDouble(dg_speed)));
-        tv_qname.setText(unicodeToCn(regular(text, "sNickName")));
-        tv_qq.setText(qq);
-        tv_level.setText(now_level);
+
+
+
+
         if (getActivity() != null) {
+            final String finalNext_level_uday = next_level_uday;
+            final String finalNext_hg_level_sday = next_hg_level_sday2;
+            final String finalDg_speed = dg_speed;
+            final double finalFw_speed = fw_speed;
+            final String finalNext_hg_level_sday1 = next_hg_level_sday1;
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+
+                    tv_qname.setText(unicodeToCn(regular(text, "sNickName")));
+                    tv_qq.setText(qq);
+                    tv_level.setText(now_level);
                     SetImageViewUtil.setImageToImageView(image_touxiang, "http://q2.qlogo" +
                             ".cn/headimg_dl?dst_uin=" + qq + "&spec=100");
+                    day_3.setText(finalNext_level_uday);
+                    day_2.setText(finalNext_hg_level_sday);
+                    speed_2.setText(finalDg_speed);
+                    speed_1.setText(String.valueOf(finalFw_speed));
+                    day_1.setText(finalNext_hg_level_sday1);
+                    tv_caculer_1.setText(String.valueOf(finalFw_speed) + "倍以上");
+                    tv_caculer_2.setText(finalDg_speed + "倍以上");
                 }
             });
         }
-        day_3.setText(next_level_uday);
-        day_2.setText(next_hg_level_sday2);
-        speed_2.setText(dg_speed);
-        speed_1.setText(String.valueOf(fw_speed));
-        day_1.setText(next_hg_level_sday1);
-        tv_caculer_1.setText(String.valueOf(fw_speed) + "倍以上");
-        tv_caculer_2.setText(dg_speed + "倍以上");
     }
 
     public String regular(String text, String target) {

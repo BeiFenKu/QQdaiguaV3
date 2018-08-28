@@ -11,8 +11,7 @@
         android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/mestitle_gray"
-        android:visibility="invisible">
+        android:background="@color/mestitle_gray">
 
         <TextView
             android:layout_width="match_parent"
@@ -40,8 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="80dp"
-        android:background="@color/mestitle_gray"
-        android:visibility="invisible">
+        android:background="@color/mestitle_gray">
 
         <EditText
             android:id="@+id/editText"
@@ -70,7 +68,8 @@
         android:layout_alignParentTop="true"
         android:background="@mipmap/caculer_2"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:visibility="invisible">
 
         <RelativeLayout
             android:id="@+id/rl10"

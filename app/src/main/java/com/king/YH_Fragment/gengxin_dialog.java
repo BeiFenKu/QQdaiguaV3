@@ -126,9 +126,15 @@ public class gengxin_dialog extends DialogFragment {
                         handler1.post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getContext(), "更新失败，原因如下：\n21点-10点禁止改密\n", Toast
-                                        .LENGTH_LONG)
-                                        .show();
+                                if (MainActivity.guoqi_button.equals("1")) {
+                                    Toast.makeText(getContext(), "更新失败：\n您已过期，请续费后再操作\n", Toast
+                                            .LENGTH_LONG)
+                                            .show();
+                                } else {
+                                    Toast.makeText(getContext(), "更新失败：\n21点-10点禁止改密\n", Toast
+                                            .LENGTH_LONG)
+                                            .show();
+                                }
                             }
                         });
                         getDialog().cancel();

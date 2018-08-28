@@ -1,10 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@mipmap/king_bj"
-                tools:context="com.king.Login_Fragment.BlankFragment1">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/blank1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/king_bj"
+    tools:context="com.king.Login_Fragment.BlankFragment1">
 
 
     <TextView
@@ -210,7 +211,7 @@
         android:layout_below="@+id/cb_remaber"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
         <Button
@@ -246,7 +247,7 @@
         android:layout_below="@+id/cb_remaber"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal"
         android:visibility="invisible">
 

@@ -41,7 +41,9 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //版本号控制更新提示
-    public static String app_ver = "3.83";
+    public static String app_ver = "3.84";
+    //过期否检测值
+    public static String guoqi_button = "0";
 
     protected boolean useThemestatusBarColor = true;//是否使用特殊的标题栏背景颜色，android5
     // .0以上可以设置状态栏背景色，如果不使用则使用透明色值
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String update_sign = "0";
 
     private MenuItem menuItem;
+    private String skin_value;
 
 
     @Override
@@ -79,8 +82,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         StatService.setSendLogStrategy(this, SendStrategyEnum.APP_START, 1, false);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        skin_value = preferences.getString("skin_value", "1");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(Color.rgb(24, 180, 237));
+        if (skin_value.equals("1")) {
+            toolbar.setBackgroundColor(Color.rgb(24, 180, 237));
+        } else if (skin_value.equals("2")) {
+            toolbar.setBackgroundColor(Color.rgb(72, 243, 251));
+        } else if (skin_value.equals("3")) {
+            toolbar.setBackgroundColor(Color.rgb(147, 29, 3));
+        } else if (skin_value.equals("4")) {
+            toolbar.setBackgroundColor(Color.rgb(124, 51, 154));
+        } else if (skin_value.equals("5")) {
+            toolbar.setBackgroundColor(Color.rgb(0, 133, 251));
+        }
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -100,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         decorView.setSystemUiVisibility(option);
                         //根据上面设置是否对状态栏单独设置颜色
                         if (useThemestatusBarColor) {
-                            getWindow().setStatusBarColor(getResources().getColor(R.color.zise));
+                            getWindow().setStatusBarColor(getResources().getColor(R.color.zongse));
                         } else {
                             getWindow().setStatusBarColor(Color.TRANSPARENT);
                         }
@@ -120,7 +136,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         decorView.setSystemUiVisibility(option);
                         //根据上面设置是否对状态栏单独设置颜色
                         if (useThemestatusBarColor) {
-                            getWindow().setStatusBarColor(getResources().getColor(R.color.blue_title));
+                            if (skin_value.equals("1")) {
+                                getWindow().setStatusBarColor(getResources().getColor(R.color.blue_title));
+                            } else if (skin_value.equals("2")) {
+                                getWindow().setStatusBarColor(getResources().getColor(R.color.skin_green));
+                            } else if (skin_value.equals("3")) {
+                                getWindow().setStatusBarColor(getResources().getColor(R.color.skin_orange));
+                            } else if (skin_value.equals("4")) {
+                                getWindow().setStatusBarColor(getResources().getColor(R.color.skin_pou));
+                            } else if (skin_value.equals("5")) {
+                                getWindow().setStatusBarColor(getResources().getColor(R.color.skin_colorful));
+                            }
                         } else {
                             getWindow().setStatusBarColor(Color.TRANSPARENT);
                         }
@@ -223,6 +249,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.back) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new
                     BlankFragment1()).commit();
+        } else if (id == R.id.fankui) {
+            openURL("https://wj.qq.com/s/2588190/1bb8/");
         } else if (id == R.id.nav_manage) {
             new about_dialog().show(getSupportFragmentManager(), "");
         } else if (id == R.id.board) {
@@ -262,7 +290,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initv() {
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         editor = preferences.edit();
         editor.putString("score", "");

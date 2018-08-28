@@ -17,6 +17,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -139,6 +140,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
     private TextView tv_kf;
     private RelativeLayout blank1;
     private String skin_value;
+    private View view1;
 
     public BlankFragment1() {
     }
@@ -148,8 +150,10 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.blank_fragment1, container, false);
-        View view1 = inflater.inflate(R.layout.activity_main, container, false);
+        view1 = inflater.inflate(R.layout.activity_main, container, false);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        skin_value = preferences.getString("skin_value", "1");
 //        fab = (FloatingActionButton) view1.findViewById(R.id.fab);
 //        fab.setVisibility(View.INVISIBLE);
         checkInternet();
@@ -275,6 +279,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
 
     private void init() {
 
+        blank1 = (RelativeLayout) view.findViewById(R.id.blank1);
         tv_kf = (TextView) view.findViewById(R.id.tv_kf);
         tv_kf.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -454,7 +459,6 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
             }
         });
 
-        blank1 = (RelativeLayout) view.findViewById(R.id.blank1);
 
         skin_value = preferences.getString("skin_value", "1");
 
@@ -465,26 +469,41 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 Drawable btnDrawable = resources.getDrawable(R.drawable.king_bj);
 //                blank1.setBackgroundDrawable(btnDrawable);
                 blank1.setBackgroundResource(R.drawable.king_bj);
+                bt_login.setBackgroundResource(R.drawable.king_button);
+                bt_login.setBackgroundResource(R.drawable.king_button);
+
                 break;
             case "2":
                 Drawable btnDrawable1 = resources.getDrawable(R.drawable.king_bj_green);
 //                blank1.setBackgroundDrawable(btnDrawable1);
                 blank1.setBackgroundResource(R.drawable.king_bj_green);
+                bt_login.setBackgroundResource(R.drawable.king_button_green);
+                bt_regkm.setBackgroundResource(R.drawable.king_button_green);
                 break;
             case "3":
                 Drawable btnDrawable2 = resources.getDrawable(R.drawable.king_bj_orange);
 //                blank1.setBackgroundDrawable(btnDrawable2);
                 blank1.setBackgroundResource(R.drawable.king_bj_orange);
+                bt_login.setBackgroundResource(R.drawable.king_button_orange);
+                bt_regkm.setBackgroundResource(R.drawable.king_button_orange);
                 break;
             case "4":
                 Drawable btnDrawable3 = resources.getDrawable(R.drawable.king_bj_purple);
 //                blank1.setBackgroundDrawable(btnDrawable3);
                 blank1.setBackgroundResource(R.drawable.king_bj_purple);
+                bt_login.setBackgroundResource(R.drawable.king_button_pou);
+                bt_regkm.setBackgroundResource(R.drawable.king_button_pou);
+
+                Toolbar toolbar = (Toolbar) view1.findViewById(R.id.toolbar);
+                toolbar.setBackgroundColor(Color.rgb(124, 51, 154));
+                toolbar.setTitle("");
                 break;
             case "5":
                 Drawable btnDrawable4 = resources.getDrawable(R.drawable.king_bj_coloful);
 //                blank1.setBackgroundDrawable(btnDrawable4);
                 blank1.setBackgroundResource(R.drawable.king_bj_coloful);
+                bt_login.setBackgroundResource(R.drawable.king_button_colorful);
+                bt_regkm.setBackgroundResource(R.drawable.king_button_colorful);
                 break;
         }
     }
@@ -970,7 +989,17 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
             decorView.setSystemUiVisibility(option);
             //根据上面设置是否对状态栏单独设置颜色
             if (useThemestatusBarColor) {
-                getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.blue_title));
+                if (skin_value.equals("1")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.blue_title));
+                } else if (skin_value.equals("2")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_green));
+                } else if (skin_value.equals("3")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_orange));
+                } else if (skin_value.equals("4")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_pou));
+                } else if (skin_value.equals("5")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_colorful));
+                }
             } else {
                 getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);
             }

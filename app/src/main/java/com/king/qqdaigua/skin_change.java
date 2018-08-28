@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,8 +75,7 @@ public class skin_change extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
-                        .content_main, new BlankFragment1()).commit();
+                System.exit(0);
             }
         });
         rl1 = (RelativeLayout) view.findViewById(R.id.rl1);
@@ -139,6 +139,13 @@ public class skin_change extends Fragment {
         editor.putString("skin_value", num);
         editor.apply();
 
+//        int screenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();//真实分辨率 宽
+//        int screenHeight = getActivity().getWindowManager().getDefaultDisplay().getHeight();//真实分辨率 高
+//
+//        DisplayMetrics dm = new DisplayMetrics();
+//        dm = getResources().getDisplayMetrics();
+//        int densityDPI = dm.densityDpi;     // 屏幕密度（每寸像素：120(ldpi)/160(mdpi)/213(tvdpi)/240(hdpi)/320(xhdpi)）
+//        Toast.makeText(getContext(), "真实分辨率：" + screenWidth + "*" + screenHeight + "  每英寸:" + densityDPI, Toast.LENGTH_LONG).show();
 
         switch (num) {
             case "1":
@@ -171,7 +178,7 @@ public class skin_change extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(getContext(), "主题设置成功！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "主题设置成功！重启APP完全生效", Toast.LENGTH_SHORT).show();
                 }
             });
         }

@@ -225,7 +225,7 @@
                 android:id="@+id/back"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="返回主页"
+                android:text="重启生效"
                 android:background="@drawable/king_button1"
                 android:layout_height="match_parent" />
             <Button
