@@ -339,6 +339,23 @@ public class YH_Fragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            } else if (msg.what == 7) {
+                try {
+                    JSONObject json = new JSONObject((String) msg.obj);
+                    String code = json.getString("code");
+//                    String cookie = json.getString("cookie");
+//                    String error = json.getString("error");
+                    if (code.equals("1")) {
+                        Toast.makeText(getContext(), "解除成功", Toast.LENGTH_SHORT).show();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id
+                                .content_main, new YH_Fragment()).commit();
+                    } else {
+                        Toast.makeText(getContext(), "解除失败，请检查是否过期，尝试续费", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             } else if (msg.what == 9) {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
