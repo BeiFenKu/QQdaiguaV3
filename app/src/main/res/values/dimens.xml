@@ -7,4 +7,31 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
+
+    <dimen name="ll_ll_margin">5dp</dimen>
+
+    <dimen name="nav_header_margin_top">40dp</dimen>
+    <dimen name="img_img1_layout_margin">8dp</dimen>
+    <dimen name="text_1_size">14sp</dimen>
+    <dimen name="rel_rl2_height">200dp</dimen>
+    <dimen name="ll_ll5_height">90dp</dimen>
+    <dimen name="ll__height">110dp</dimen>
+    <dimen name="text_tv_dqqq">10dp</dimen>
+    <dimen name="text_tv_size">16sp</dimen>
+    <dimen name="ll_rl4_marginTop">83dp</dimen>
+    <dimen name="ll_rl4_marginLeft">10dp</dimen>
+    <dimen name="text_tv_textView8">15sp</dimen>
+    <dimen name="tv_tv_viplevel_marginLeft">78dp</dimen>
+    <dimen name="tv_tv_bt_jiechu_marginLeft">118dp</dimen>
+    <dimen name="rl_rl3_marginTop">240dp</dimen>
+    <dimen name="rl_ll8_layout_height">20dp</dimen>
+    <dimen name="rl_ll_bgbg_margTop">20dp</dimen>
+    <dimen name="ll_ll10_layout_height">45dp</dimen>
+    <dimen name="ll___margin">5dp</dimen>
+    <dimen name="tv_tv_xz_size">12dp</dimen>
+    <dimen name="img_imageView5_width">50dp</dimen>
+    <dimen name="img_imageView5_hright">35dp</dimen>
+    <dimen name="img_imageView5_left">230dp</dimen>
+    <dimen name="img_imageView5_start">75dp</dimen>
+
 </resources>

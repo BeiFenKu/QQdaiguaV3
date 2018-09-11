@@ -243,9 +243,9 @@ public class HttpRequest extends Thread {
                             .build();
                     response = client.newCall(request).execute();
                     str = response.body().string().toString();
-                    String error_decode = new JSONObject(str).getString("error");
+//                    String error_decode = new JSONObject(str).getString("error");
                     JSONObject jsonObject = new JSONObject(str);
-                    jsonObject.put("error", error_decode);
+//                    jsonObject.put("error", error_decode);
                     str = jsonObject.toString();
                     message.what = 7;
                 } else if (type.equals("gengx")) {

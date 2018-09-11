@@ -200,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == android.R.id.home) {
             Log.e("点击了", "");
+            "<div>12312</div>".matches("(.*?)<div>(.+?)</div>(.*?)");
         }
 
         // Handle navigation view item clicks here.
