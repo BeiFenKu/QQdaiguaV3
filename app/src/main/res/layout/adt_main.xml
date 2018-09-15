@@ -7,7 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY"
-        android:src="@mipmap/qdt_main_9yue" />
+        android:src="@mipmap/qdt_main" />
 
     <com.king.ewrite.CustomTextView
         android:id="@+id/enter"

@@ -41,7 +41,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //版本号控制更新提示
-    public static String app_ver = "3.85";
+    public static String app_ver = "3.86";
     //过期否检测值
     public static String guoqi_button = "0";
 

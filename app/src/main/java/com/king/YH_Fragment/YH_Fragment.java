@@ -32,7 +32,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.king.Caculer_Fragment.caculer_Fragment;
 import com.king.level_Fragment.level_Fragment;
 import com.king.qqdaigua.MainActivity;
 import com.king.qqdaigua.R;
@@ -63,8 +62,8 @@ public class YH_Fragment extends Fragment {
 
     //第一个Fragment 登录成功传过来的 帐号密码 SID值
     private String user, pwd, sid;
-    //0电脑管家-1电脑QQ-2手机QQ-3勋章墙-4QQ音乐-5QQ手游-6空间访客-7微视
-    private String[] status = new String[8];
+    //0电脑管家-1电脑QQ-2手机QQ-3勋章墙-4QQ音乐-5QQ手游-6空间访客-7微视-8微视_浏览
+    private String[] status = new String[9];
     //    记录最近一次点击 开关项目ID
     private int switch_sign;
 
@@ -92,8 +91,9 @@ public class YH_Fragment extends Fragment {
     private ImageView img_game;
     private ImageView img_kjfk;
     private ImageView img_weishi;
-    private ImageView[] imageViews = new ImageView[8];
-    TextView[] textViews = new TextView[8];
+    private ImageView img_weishi_1;
+    private ImageView[] imageViews = new ImageView[9];
+    TextView[] textViews = new TextView[9];
     private TextView tv_guanjia;
     private TextView tv_xz;
     private TextView tv_mqq;
@@ -102,6 +102,7 @@ public class YH_Fragment extends Fragment {
     private TextView tv_game;
     private TextView tv_kjfk;
     private TextView tv_weishi;
+    private TextView tv_weishi_1;
     private Button bt_gengxin;
     private Button bt_lougua;
     private RelativeLayout ll_bgbg;
@@ -109,7 +110,6 @@ public class YH_Fragment extends Fragment {
     private Button bt_lou_cancel, bt_lou_submit, bt_kf;
     private RadioGroup group_1;
     private RadioButton group_rb;
-    private ImageView img_load;
     private RelativeLayout rl4;
     private Button bt_viplevel;
     private String skin_value;
@@ -235,8 +235,15 @@ public class YH_Fragment extends Fragment {
                     String code = json.getString("code");
                     String black = json.getString("black");
                     String data = json.getString("data");
+                    String vurl = json.getString("vurl");
                     for (int i = 0, j = 0; i < 15; i += 2) {
                         status[j++] = data.charAt(i) + "";
+                    }
+                    if (vurl.length() < 5) {
+                        //微视_1 是否填入URL检测
+                        status[8] = "0";
+                    } else {
+                        status[8] = "1";
                     }
                     CheckSwithImg(imageViews, status, textViews);
                     int dgtime_int = Integer.parseInt(dgtime);
@@ -595,6 +602,7 @@ public class YH_Fragment extends Fragment {
         tv_xz = (TextView) view.findViewById(R.id.tv_xz);
         tv_kjfk = (TextView) view.findViewById(R.id.tv_kjfk);
         tv_weishi = (TextView) view.findViewById(R.id.tv_weishi);
+        tv_weishi_1 = (TextView) view.findViewById(R.id.tv_load);
         tv_guanjia = (TextView) view.findViewById(R.id.tv_guanjia);
         textViews[0] = tv_guanjia;
         textViews[1] = tv_pcqq;
@@ -604,6 +612,7 @@ public class YH_Fragment extends Fragment {
         textViews[5] = tv_game;
         textViews[6] = tv_kjfk;
         textViews[7] = tv_weishi;
+        textViews[8] = tv_weishi_1;
         group_1 = (RadioGroup) view.findViewById(R.id.group_1);
         group_1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -758,8 +767,14 @@ public class YH_Fragment extends Fragment {
                 Switchswitch(7);
             }
         });
-        img_load = (ImageView) view.findViewById(R.id.img_load);
-        ImgHui(img_load);
+        img_weishi_1 = (ImageView) view.findViewById(R.id.img_load);
+        img_weishi_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch_sign = 8;
+                Switchswitch(8);
+            }
+        });
         imageViews[0] = img_guanjia;
         imageViews[1] = img_pcqq;
         imageViews[2] = img_mqq;
@@ -768,6 +783,7 @@ public class YH_Fragment extends Fragment {
         imageViews[5] = img_game;
         imageViews[6] = img_kjfk;
         imageViews[7] = img_weishi;
+        imageViews[8] = img_weishi_1;
         tv_viplevel = (TextView) view.findViewById(R.id.tv_viplevel);
         bt_gengxin = (Button) view.findViewById(R.id.bt_gengxin);
         bt_gengxin.setOnClickListener(new View.OnClickListener() {
@@ -914,33 +930,35 @@ public class YH_Fragment extends Fragment {
     }
 
     private void Switchswitch(int sign) {
-        String switch_name = switchName(sign);
-        user = preferences.getString("account", "");
-        user = preferences.getString("user_qq", "");
-        if (status[sign].equals("0")) {
-            status[sign] = "1";
-        } else if (status[sign].equals("1") || status[sign].equals("2")) {
-            status[sign] = "0";
-        }
-        String post_url = MainActivity
-                .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("type", "switch");
-            jsonObject.put("qq", user);
-            jsonObject.put("pwd", pwd);
-            jsonObject.put("id", switch_name);
-            jsonObject.put("star", status[sign]);
-            HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
-            http.start();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (sign == 8) {
+            new vurl_dialog().show(getFragmentManager(), "");
+        } else {
+            String switch_name = switchName(sign);
+            user = preferences.getString("account", "");
+            user = preferences.getString("user_qq", "");
+            if (status[sign].equals("0")) {
+                status[sign] = "1";
+            } else if (status[sign].equals("1") || status[sign].equals("2")) {
+                status[sign] = "0";
+            }
+            String post_url = MainActivity
+                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("type", "switch");
+                jsonObject.put("qq", user);
+                jsonObject.put("pwd", pwd);
+                jsonObject.put("id", switch_name);
+                jsonObject.put("star", status[sign]);
+                HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler);
+                http.start();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     private void CheckSwithImg(ImageView[] imageViews, String[] status, TextView[] textView) {
-        img_weishi.startAnimation(animation);
-        img_load.startAnimation(animation);
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i].startAnimation(animation);
             switch (status[i]) {

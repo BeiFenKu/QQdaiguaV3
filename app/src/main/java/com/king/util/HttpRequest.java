@@ -15,10 +15,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-/**
- * Created by 刘样大帅B on 2018/3/28.
- */
-
 
 /***
  * 网络请求类
@@ -159,6 +155,13 @@ public class HttpRequest extends Thread {
             } else if (type.equals("lgcx")) {
                 //lgcx判断
                 body = new FormBody.Builder().build();
+            } else if (type.equals("vurl")) {
+                //vurl上传
+                String qq = jsonObject1.getString("qq");
+                String pwd = jsonObject1.getString("pwd");
+                String vurl = jsonObject1.getString("vurl");
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
+                body1 = new FormBody.Builder().add("wsvurl", vurl).build();
             }
             Log.e("请求URL：", url);
             Request request = new Request.Builder().url(url).post(body).build();
@@ -300,6 +303,19 @@ public class HttpRequest extends Thread {
                 } else if (type.equals("lgcx")) {
                     //lgcx查询
                     message.what = 14;
+                } else if (type.equals("vurl")) {
+                    //微视链接上传
+                    String cookie = response.headers().get("Set-cookie").toString();
+                    request = request.newBuilder().url
+                            (MainActivity
+                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=wsvurl")
+                            .header
+                                    ("Cookie", cookie).post(body1)
+                            .build();
+                    response = client.newCall(request).execute();
+                    str = response.body().string().toString();
+                    Log.e("第二次返回：", "" + str);
+                    message.what = 15;
                 }
                 Log.e("服务器相应内容：", str);
                 message.obj = str;

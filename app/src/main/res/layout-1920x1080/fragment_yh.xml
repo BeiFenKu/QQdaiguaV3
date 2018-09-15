@@ -712,12 +712,13 @@
                         android:src="@mipmap/htt_weishi"/>
 
                     <TextView
+                        android:id="@+id/tv_load"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
-                        android:text="微视浏览[研发中]"
+                        android:text="微视浏览[已关闭]"
                         android:textColor="@color/black"
                         android:textSize="12dp"
                         android:layout_alignParentLeft="true" />
