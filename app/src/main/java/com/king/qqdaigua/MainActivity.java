@@ -40,8 +40,11 @@ import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //网页端登录状态Cookie
+    public static String user_cookie = "";
+
     //版本号控制更新提示
-    public static String app_ver = "3.86";
+    public static String app_ver = "3.87";
     //过期否检测值
     public static String guoqi_button = "0";
 

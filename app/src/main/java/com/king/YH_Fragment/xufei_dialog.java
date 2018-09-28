@@ -80,7 +80,7 @@ public class xufei_dialog extends DialogFragment {
                     xufeiDialog.cancel();
                 } else {
                     String post_url = MainActivity
-                            .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+                            .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=renew";
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("type", "xufei");

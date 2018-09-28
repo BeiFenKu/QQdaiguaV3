@@ -29,7 +29,6 @@ import org.json.JSONObject;
 public class jiechu_dialog extends DialogFragment {
 
     private View view;
-    private Button bt_jiechu;
     private Button bt_cancel;
     private ProgressDialog jiechuDialog;
     private SharedPreferences preferences;
@@ -53,31 +52,6 @@ public class jiechu_dialog extends DialogFragment {
         pwd = preferences.getString("pwd", "");
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         sid = preferences.getString("sid", "");
-        bt_jiechu = (Button) view.findViewById(R.id.bt_jiechu);
-        bt_jiechu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                jiechuDialog = new ProgressDialog(getContext());
-                jiechuDialog.setTitle("解除拉黑中");
-                jiechuDialog.setMessage("解除拉黑中，请稍等...");
-                jiechuDialog.setCancelable(false);
-                jiechuDialog.show();
-
-                String post_url = MainActivity
-                        .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("type", "rblack");
-                    jsonObject.put("qq", user);
-                    jsonObject.put("pwd", pwd);
-                    HttpRequest http = new HttpRequest(post_url, jsonObject.toString(), handler1);
-                    http.start();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
         bt_cancel = (Button) view.findViewById(R.id.bt_cancel);
         bt_cancel.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,7 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +82,7 @@ public class gengxin_dialog extends DialogFragment {
                     gengxDialog.cancel();
                 } else {
                     String post_url = MainActivity
-                            .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+                            .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=upqqpwd";
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("type", "gengx");
@@ -131,9 +132,18 @@ public class gengxin_dialog extends DialogFragment {
                                             .LENGTH_LONG)
                                             .show();
                                 } else {
-                                    Toast.makeText(getContext(), "更新失败：\n21点-10点禁止改密\n", Toast
-                                            .LENGTH_LONG)
-                                            .show();
+                                    Time t = new Time();
+                                    t.setToNow();
+                                    int hour = t.hour;
+                                    if ((hour > 21 && hour <= 23) || (hour >= 0 && hour < 10)){
+                                        Toast.makeText(getContext(), "更新失败：\n21点-10点禁止改密\n", Toast
+                                                .LENGTH_LONG)
+                                                .show();
+                                    } else {
+                                        Toast.makeText(getContext(), "更新失败，原因有：\n1.密码重复。\n2.当前不是修改时间段", Toast
+                                                .LENGTH_LONG)
+                                                .show();
+                                    }
                                 }
                             }
                         });

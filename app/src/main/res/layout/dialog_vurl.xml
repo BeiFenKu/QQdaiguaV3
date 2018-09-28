@@ -11,7 +11,8 @@
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/et_kami"/>
+        android:id="@+id/et_kami"
+        android:layout_alignParentLeft="true" />
 
     <TextView
         android:id="@+id/tv_buy"
@@ -52,5 +53,23 @@
             android:text="取消"
             style="@style/Widget.AppCompat.Button.Borderless"/>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/textView28"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/red"
+            android:layout_centerVertical="true"
+            android:text="还是不会？点我看详细教程！" />
+    </RelativeLayout>
 
 </RelativeLayout>

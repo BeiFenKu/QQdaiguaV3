@@ -1,7 +1,9 @@
 package com.king.YH_Fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.king.qqdaigua.MainActivity;
@@ -35,6 +38,7 @@ public class vurl_dialog extends DialogFragment {
     private SharedPreferences preferences;
     private ProgressDialog xufeiDialog;
     private String user, pwd;
+    private TextView textView28;
 
     @Nullable
     @Override
@@ -49,6 +53,13 @@ public class vurl_dialog extends DialogFragment {
     private void bindViews() {
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
+        textView28 = (TextView) view.findViewById(R.id.textView28);
+        textView28.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openURL("http://url.cn/58E6zbF/");
+            }
+        });
         user = preferences.getString("account", "");
         pwd = preferences.getString("pwd", "");
         et_kami = (EditText) view.findViewById(R.id.et_kami);
@@ -123,4 +134,12 @@ public class vurl_dialog extends DialogFragment {
             }
         }
     };
+
+    private void openURL(String s) {
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.VIEW");
+        Uri content_url = Uri.parse(s);
+        intent.setData(content_url);
+        startActivity(intent);
+    }
 }

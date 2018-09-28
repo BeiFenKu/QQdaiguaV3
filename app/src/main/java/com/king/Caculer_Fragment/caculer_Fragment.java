@@ -308,7 +308,7 @@ public class caculer_Fragment extends Fragment {
     }
 
     public void coreSuanfa(final String text) {
-        double fw_speed1 = 2.2; // 第一个圈代挂可达到的最高上限
+        double fw_speed1 = 2.7; // 第一个圈代挂可达到的最高上限
         double fw_speed2 = 1.6; // 第二个圈代挂可达到的最高上限
         double fw_speed = 1.0; //第一个圈速度
         String dg_speed = ""; //代挂速度

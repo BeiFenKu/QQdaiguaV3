@@ -60,6 +60,9 @@ public class YH_Fragment extends Fragment {
     public static int sign_dialog_cancel = 2;
     private int sign_dialog = 0;
 
+    //记录请求错误此时
+    private int error_sign = 0;
+
     //第一个Fragment 登录成功传过来的 帐号密码 SID值
     private String user, pwd, sid;
     //0电脑管家-1电脑QQ-2手机QQ-3勋章墙-4QQ音乐-5QQ手游-6空间访客-7微视-8微视_浏览
@@ -141,7 +144,7 @@ public class YH_Fragment extends Fragment {
         String post_url = null;
         try {
             post_url = MainActivity
-                    .web_jiekou + "api/submit.php?act=query&qq=" + user + "&pwd=" + URLEncoder.encode(pwd, "UTF-8") + "";
+                    .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=dginfo1&qq=" + user + "&pwd=" + URLEncoder.encode(pwd, "UTF-8") + "";
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -164,11 +167,11 @@ public class YH_Fragment extends Fragment {
         pwd = preferences.getString("pwd", "");
         Log.e("用户中心进入，QQ为", user);
         String post_url = MainActivity
-                .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+                .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=dginfo";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "black");
-            Log.e("SetBlack这", "user:" + user + "--pwd:" + pwd);
+            Log.e("SetBlack", "user:" + user + "--pwd:" + pwd);
             int i = 0;
             while (user.length() == 0) {
                 user = preferences.getString("account", "");
@@ -514,7 +517,12 @@ public class YH_Fragment extends Fragment {
                 }
                 switchDialog.cancel();
             } else {
-                Toast.makeText(getContext(), "网络请求错误", Toast.LENGTH_SHORT).show();
+                error_sign++;
+                if (error_sign > 2){
+                    Toast.makeText(getContext(), "网络请求错误", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "网络请求错误，如果多次出现，请尝试右上角进网页版进行此操作。", Toast.LENGTH_LONG).show();
+                }
             }
         }
     };
@@ -658,7 +666,7 @@ public class YH_Fragment extends Fragment {
                         break;
                 }
                 String post_url = MainActivity
-                        .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+                        .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=bg";
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("type", "bg");
@@ -942,7 +950,7 @@ public class YH_Fragment extends Fragment {
                 status[sign] = "0";
             }
             String post_url = MainActivity
-                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+                    .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=sw";
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("type", "switch");
