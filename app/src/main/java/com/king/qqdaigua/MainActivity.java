@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String app_url_qq = "&qq=";
     public static String app_buy = "https://www.dkingdg.com/buy/";
     public static String web_jiekou = "http://api.52dg.gg/";
-    public static String web_jiekou1 = "http://kking";
+    public static String web_jiekou1 = "http://kking1";
     public static String buy_url = "https://www.dkingdg.com/buy/";
     public static String check_url = "http://api.52dg.gg/lgcx?qq=";
     //临时存放 QQ扫码登录用的Cookie
