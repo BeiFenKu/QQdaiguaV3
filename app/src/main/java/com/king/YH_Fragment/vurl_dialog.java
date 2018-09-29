@@ -79,7 +79,7 @@ public class vurl_dialog extends DialogFragment {
                     xufeiDialog.cancel();
                 } else {
                     String post_url = MainActivity
-                            .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+                            .app_url + MainActivity.app_url_1+"&info=wsvurl";
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("type", "vurl");

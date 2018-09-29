@@ -536,7 +536,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         dialog_login.show();
         JSONObject json = new JSONObject();
         String post_url = MainActivity
-                .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=paydg";
+                .app_url + MainActivity.app_url_1 + "&info=paydg";
 
         try {
             json.put("type", "pay");
@@ -574,7 +574,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         JSONObject jsonobject = new JSONObject();
         String post_url = null;
         post_url = MainActivity
-                .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=login";
+                .app_url + MainActivity.app_url_1 + "&info=login";
         try {
             jsonobject.put("type", "login");
             jsonobject.put("qq", qq);
@@ -669,9 +669,9 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "密码不符合规范！", Toast.LENGTH_LONG)
                                         .show();
-                            } else if (error.equals("此激活码不能被此QQ使用")){
+                            } else if (error.equals("此激活码不能被此QQ使用")) {
                                 dialog_login.cancel();
-                                Toast.makeText(getContext(), "此激活码不能被此QQ使用，原因为之前在其他站开过代挂，请联系站长清除再开通", Integer.parseInt("5"))
+                                Toast.makeText(getContext(), "此激活码不能被此QQ使用，原因为之前在其他站开过代挂，请联系站长清除再开通", Toast.LENGTH_LONG)
                                         .show();
                             }
                         } else {

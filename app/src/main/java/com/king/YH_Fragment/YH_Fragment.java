@@ -144,7 +144,7 @@ public class YH_Fragment extends Fragment {
         String post_url = null;
         try {
             post_url = MainActivity
-                    .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=dginfo1&qq=" + user + "&pwd=" + URLEncoder.encode(pwd, "UTF-8") + "";
+                    .app_url + MainActivity.app_url_1 + "&info=dginfo1" + MainActivity.app_url_qq + user + "&pwd=" + URLEncoder.encode(pwd, "UTF-8") + "";
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -167,7 +167,7 @@ public class YH_Fragment extends Fragment {
         pwd = preferences.getString("pwd", "");
         Log.e("用户中心进入，QQ为", user);
         String post_url = MainActivity
-                .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=dginfo";
+                .app_url + MainActivity.app_url_1 + "&info=dginfo";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "black");
@@ -429,18 +429,12 @@ public class YH_Fragment extends Fragment {
                             editor.apply();
                             /***
                              * VIP等级体系
-
                              已使用   剩余
                              0         30    VIP1    月卡              x  < 36
-
                              30        90    VIP2    季卡         36 < x < 126
-
                              120       180    VIP3    半年卡      126 < x < 306
-
                              300       360   VIP4    年卡         306 < x < 720
-
                              660       MAX   VIP5                 720 < x
-
                              公式：已用天数 * 1.2 + 剩余代挂天数 * 1 = x
                              *
                              */
@@ -518,7 +512,7 @@ public class YH_Fragment extends Fragment {
                 switchDialog.cancel();
             } else {
                 error_sign++;
-                if (error_sign > 2){
+                if (error_sign > 2) {
                     Toast.makeText(getContext(), "网络请求错误", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "网络请求错误，如果多次出现，请尝试右上角进网页版进行此操作。", Toast.LENGTH_LONG).show();
@@ -666,7 +660,7 @@ public class YH_Fragment extends Fragment {
                         break;
                 }
                 String post_url = MainActivity
-                        .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=bg";
+                        .app_url + MainActivity.app_url_1+"&info=bg";
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("type", "bg");
@@ -871,7 +865,7 @@ public class YH_Fragment extends Fragment {
         }
         switchDialog.show();
         String post_url = MainActivity
-                .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=login";
+                .app_url + MainActivity.app_url_1+"&info=phonetype";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "gengx_phonetype");
@@ -950,7 +944,7 @@ public class YH_Fragment extends Fragment {
                 status[sign] = "0";
             }
             String post_url = MainActivity
-                    .app_url + "api/dg.php?ajax=true&star=post&do=yewu&info=sw";
+                    .app_url + MainActivity.app_url_1+"&info=sw";
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("type", "switch");

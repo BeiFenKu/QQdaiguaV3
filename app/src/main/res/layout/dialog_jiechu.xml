@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
 
@@ -27,8 +27,8 @@
     <TextView
         android:padding="20dp"
         android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="无法直接解除，请点击【更新密码】，进行密码更新自动解除拉黑状态，（请随时保持密码与QQ密码一致）"
         android:textSize="15dp"
         android:textColor="@color/red"

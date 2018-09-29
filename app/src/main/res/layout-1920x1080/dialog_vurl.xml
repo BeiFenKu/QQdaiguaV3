@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:padding="15dp"
+        android:hint="请输入你的微视视频短链接..."
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/et_kami"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/tv_buy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/et_kami"
+        android:gravity="center"
+        android:text="【怎么获取？】1.进入手机QQ   2.点击动态，选择好友微视   3.点击拍摄，上传任意一个视频   4.进入自己拍摄的视频右下角点击分享   5.点击复制链接"
+        android:textAlignment="center"
+        android:textColor="@color/blue_title" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/tv_buy"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/bt_submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:text="提交"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/bt_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="20dp"
+            android:text="取消"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/textView28"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/red"
+            android:layout_centerVertical="true"
+            android:text="还是不会？点我看详细教程！" />
+    </RelativeLayout>
+
+</RelativeLayout>

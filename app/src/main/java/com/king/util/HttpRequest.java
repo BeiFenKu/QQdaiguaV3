@@ -142,8 +142,7 @@ public class HttpRequest extends Thread {
                 } else {
                     status = "1";
                 }
-                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
-                body1 = new FormBody.Builder().add("type", status).build();
+                body = new FormBody.Builder().add("type", status).build();
             } else if (type.equals("logincheck")) {
                 //是否旗下判断
                 body = new FormBody.Builder().build();
@@ -158,10 +157,9 @@ public class HttpRequest extends Thread {
                 String qq = jsonObject1.getString("qq");
                 String pwd = jsonObject1.getString("pwd");
                 String vurl = jsonObject1.getString("vurl");
-                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
-                body1 = new FormBody.Builder().add("wsvurl", vurl).build();
+                body = new FormBody.Builder().add("wsvurl", vurl).build();
             }
-            Log.e("请求URL：", url + "    BODY为：" + body.toString());
+            Log.e("请求URL：", url);
             cookie = MainActivity.user_cookie;
             Request request = new Request.Builder().url(url).post(body).build();
             request = request.newBuilder().url(url).header("Cookie", cookie).post(body).build();
@@ -213,14 +211,6 @@ public class HttpRequest extends Thread {
                     message.what = 6;
                 } else if (type.equals("rblack")) {
                     //代挂解除拉黑
-                    request = request.newBuilder().url
-                            (MainActivity
-                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=rblack")
-                            .header
-                                    ("Cookie", cookie).post(body1)
-                            .build();
-                    response = client.newCall(request).execute();
-                    str = response.body().string().toString();
 //                    String error_decode = new JSONObject(str).getString("error");
                     JSONObject jsonObject = new JSONObject(str);
 //                    jsonObject.put("error", error_decode);
@@ -241,14 +231,6 @@ public class HttpRequest extends Thread {
                     message.what = 10;
                 } else if (type.equals("gengx_phonetype")) {
                     //切换安卓/苹果在线状态
-                    request = request.newBuilder().url
-                            (MainActivity
-                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=phonetype")
-                            .header
-                                    ("Cookie", cookie).post(body1)
-                            .build();
-                    response = client.newCall(request).execute();
-                    str = response.body().string().toString();
                     message.what = 11;
                 } else if (type.equals("logincheck")) {
                     //是否旗下判断
@@ -261,14 +243,6 @@ public class HttpRequest extends Thread {
                     message.what = 14;
                 } else if (type.equals("vurl")) {
                     //微视链接上传
-                    request = request.newBuilder().url
-                            (MainActivity
-                                    .web_jiekou1 + "ajax/dg?ajax=true&star=post&do=yewu&info=wsvurl")
-                            .header
-                                    ("Cookie", cookie).post(body1)
-                            .build();
-                    response = client.newCall(request).execute();
-                    str = response.body().string().toString();
                     Log.e("第二次返回：", "" + str);
                     message.what = 15;
                 }
