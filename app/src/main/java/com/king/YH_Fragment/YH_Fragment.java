@@ -512,7 +512,7 @@ public class YH_Fragment extends Fragment {
                 switchDialog.cancel();
             } else {
                 error_sign++;
-                if (error_sign > 2) {
+                if (error_sign > 1) {
                     Toast.makeText(getContext(), "网络请求错误", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "网络请求错误，如果多次出现，请尝试右上角进网页版进行此操作。", Toast.LENGTH_LONG).show();

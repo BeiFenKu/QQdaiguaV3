@@ -82,7 +82,7 @@ public class gengxin_dialog extends DialogFragment {
                     gengxDialog.cancel();
                 } else {
                     String post_url = MainActivity
-                            .app_url + MainActivity.app_url_1+"&info=upqqpwd";
+                            .app_url + MainActivity.app_url_1 + "&info=upqqpwd";
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("type", "gengx");
@@ -132,9 +132,18 @@ public class gengxin_dialog extends DialogFragment {
                                             .LENGTH_LONG)
                                             .show();
                                 } else {
-                                        Toast.makeText(getContext(), "更新失败，原因可能有：\n21点-10点禁止改密\n与上次密码重复", Toast
+                                    Time t = new Time();
+                                    t.setToNow();
+                                    int hour = t.hour;
+                                    if ((hour > 21 && hour <= 23) || (hour >= 0 && hour < 10)) {
+                                        Toast.makeText(getContext(), "更新失败：\n21点-10点禁止改密\n", Toast
                                                 .LENGTH_LONG)
                                                 .show();
+                                    } else {
+                                        Toast.makeText(getContext(), "更新失败，原因有：\n1.密码与上次提交的重复。（提示：可以先改成123456再改回来）", Toast
+                                                .LENGTH_LONG)
+                                                .show();
+                                    }
                                 }
                             }
                         });

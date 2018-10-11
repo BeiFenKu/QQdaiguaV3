@@ -38,13 +38,19 @@ import com.king.util.OperatingSharedPreferences;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //网页端登录状态Cookie
     public static String user_cookie = "";
 
     //版本号控制更新提示
-    public static String app_ver = "3.87";
+    public static String app_ver = "3.89";
     //过期否检测值
     public static String guoqi_button = "0";
 
@@ -64,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String web_jiekou = "http://api.52dg.gg/";
     public static String web_jiekou1 = "http://kking1";
     public static String buy_url = "https://www.dkingdg.com/buy/";
-    public static String check_url = "http://api.52dg.gg/lgcx?qq=";
+    public static String check_url = "http://dgapp.dkfirst.cn/lgcx.php?qq=";
     //临时存放 QQ扫码登录用的Cookie
     public static String cookie_1 = "";
 
@@ -78,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private MenuItem menuItem;
     private String skin_value;
+
+    private List<Badge> badges;
 
 
     @Override
@@ -106,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
 
@@ -167,6 +175,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         };
+        badges = new ArrayList<>();
+        badges.add(new QBadgeView(this).bindTarget(toolbar.getChildAt(1)).setBadgeText(" "));
+//        toggle.setDrawerIndicatorEnabled(false);
+//        toolbar.setNavigationIcon(R.drawable.ic_icon_skin);
+//        Log.e("子控件输出",""+toolbar.getChildCount());
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                drawer.openDrawer(GravityCompat.START);
+//            }
+//        });
         drawer.addDrawerListener(toggle);
 //        drawer.setDrawerListener(toggle);
         toggle.syncState();
