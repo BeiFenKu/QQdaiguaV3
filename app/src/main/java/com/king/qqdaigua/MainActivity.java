@@ -20,6 +20,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String web_jiekou = "http://api.52dg.gg/";
     public static String web_jiekou1 = "http://kking1";
     public static String buy_url = "https://www.dkingdg.com/buy/";
-    public static String check_url = "http://dgapp.dkfirst.cn/lgcx.php?qq=";
+    public static String check_url = "http://www.dkingds.com/lgcx.php?qq=";
     //临时存放 QQ扫码登录用的Cookie
     public static String cookie_1 = "";
 
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         };
         badges = new ArrayList<>();
-        badges.add(new QBadgeView(this).bindTarget(toolbar.getChildAt(1)).setBadgeText(" "));
+        badges.add(new QBadgeView(this).bindTarget(toolbar).setBadgeGravity(Gravity.START | Gravity.TOP).setGravityOffset(10,10,true).setBadgeText(""));
 //        toggle.setDrawerIndicatorEnabled(false);
 //        toolbar.setNavigationIcon(R.drawable.ic_icon_skin);
 //        Log.e("子控件输出",""+toolbar.getChildCount());

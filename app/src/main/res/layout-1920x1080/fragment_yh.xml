@@ -233,6 +233,7 @@
 
 
                 <TextView
+                    android:padding="5dp"
                     android:id="@+id/lhzt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -242,7 +243,7 @@
                     android:layout_toRightOf="@+id/textView6"
                     android:text="拉黑状态"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/text_tv_textView8"/>
 
                 <TextView
                     android:id="@+id/tv_bt_jiechu"

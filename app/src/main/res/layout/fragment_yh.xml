@@ -238,10 +238,11 @@
                     android:layout_alignBaseline="@+id/textView6"
                     android:layout_alignBottom="@+id/textView6"
                     android:layout_toEndOf="@+id/textView6"
+                    android:layout_toRightOf="@+id/textView6"
+                    android:padding="5dp"
                     android:text="拉黑状态"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_tv_textView8"
-                    android:layout_toRightOf="@+id/textView6" />
+                    android:textSize="@dimen/text_tv_textView8" />
 
                 <TextView
                     android:visibility="invisible"

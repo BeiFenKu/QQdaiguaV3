@@ -16,6 +16,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -118,6 +124,7 @@ public class YH_Fragment extends Fragment {
     private String skin_value;
     private Button bt_newuser;
 
+    private List<Badge> badges;
 
     public YH_Fragment() {
         // Required empty public constructor
@@ -660,7 +667,7 @@ public class YH_Fragment extends Fragment {
                         break;
                 }
                 String post_url = MainActivity
-                        .app_url + MainActivity.app_url_1+"&info=bg";
+                        .app_url + MainActivity.app_url_1 + "&info=bg";
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.put("type", "bg");
@@ -809,6 +816,12 @@ public class YH_Fragment extends Fragment {
             }
         });
         tv_lhzt = (TextView) view.findViewById(R.id.lhzt);
+        tv_lhzt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new time_dialog().show(getFragmentManager(), "");
+            }
+        });
         String sid = preferences.getString("sid", "");
         Log.e("SID1为", sid);
         user = preferences.getString("account", "");
@@ -856,6 +869,8 @@ public class YH_Fragment extends Fragment {
                 bt_lou_submit.setBackgroundResource(R.drawable.king_button_colorful);
                 break;
         }
+
+
     }
 
     private void setMqqStatus() {
@@ -865,7 +880,7 @@ public class YH_Fragment extends Fragment {
         }
         switchDialog.show();
         String post_url = MainActivity
-                .app_url + MainActivity.app_url_1+"&info=phonetype";
+                .app_url + MainActivity.app_url_1 + "&info=phonetype";
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("type", "gengx_phonetype");
@@ -944,7 +959,7 @@ public class YH_Fragment extends Fragment {
                 status[sign] = "0";
             }
             String post_url = MainActivity
-                    .app_url + MainActivity.app_url_1+"&info=sw";
+                    .app_url + MainActivity.app_url_1 + "&info=sw";
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("type", "switch");

@@ -21,6 +21,7 @@
     <dimen name="ll_rl4_marginTop">83dp</dimen>
     <dimen name="ll_rl4_marginLeft">10dp</dimen>
     <dimen name="text_tv_textView8">15sp</dimen>
+    <dimen name="text_tv_textView9">10sp</dimen>
     <dimen name="tv_tv_viplevel_marginLeft">78dp</dimen>
     <dimen name="tv_tv_bt_jiechu_marginLeft">118dp</dimen>
     <dimen name="rl_rl3_marginTop">240dp</dimen>
