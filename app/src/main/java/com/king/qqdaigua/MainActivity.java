@@ -42,6 +42,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
 
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         };
         badges = new ArrayList<>();
-        badges.add(new QBadgeView(this).bindTarget(toolbar).setBadgeGravity(Gravity.START | Gravity.TOP).setGravityOffset(10,10,true).setBadgeText(""));
+        badges.add(new QBadgeView(this).bindTarget(toolbar).setBadgeGravity(Gravity.START | Gravity.TOP).setBadgePadding(5, true).setGravityOffset(5, 5, true).setBadgeText("新"));
 //        toggle.setDrawerIndicatorEnabled(false);
 //        toolbar.setNavigationIcon(R.drawable.ic_icon_skin);
 //        Log.e("子控件输出",""+toolbar.getChildCount());
@@ -280,7 +281,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_manage) {
             new about_dialog().show(getSupportFragmentManager(), "");
         } else if (id == R.id.board) {
-            new board_dialog().show(getSupportFragmentManager(), "");
+//            new board_dialog().show(getSupportFragmentManager(), "");
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("温馨提示")
+                    .setContentText(" V3.88新版本更新（09/30）：\n" +
+                            "    \n" +
+                            "    1.彻底修复部分用户提示“请求失败”的问题\n" +
+                            "    \n" +
+                            "    2.计算器新的计算规则\n" +
+                            "    \n" +
+                            "    3.IPhone XS MAX在线预热\n" +
+                            "    \n" +
+                            "    4.优化底层网络框架，使用更快更稳")
+                    .setCancelText("取消")
+                    .setConfirmText("确定")
+                    .showCancelButton(true)
+                    .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            // reuse previous dialog instance, keep widget user state, reset them if you need
+                            sDialog.setTitleText("Cancelled!")
+                                    .setContentText("Your imaginary file is safe :)")
+                                    .setConfirmText("OK")
+                                    .showCancelButton(false)
+                                    .setCancelClickListener(null)
+                                    .setConfirmClickListener(null)
+                                    .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+
+                            // or you can new a SweetAlertDialog to show
+                               /* sDialog.dismiss();
+                                new SweetAlertDialog(SampleActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                        .setTitleText("Cancelled!")
+                                        .setContentText("Your imaginary file is safe :)")
+                                        .setConfirmText("OK")
+                                        .show();*/
+                        }
+                    })
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.setTitleText("Deleted!")
+                                    .setContentText("Your imaginary file has been deleted!")
+                                    .setConfirmText("OK")
+                                    .showCancelButton(false)
+                                    .setCancelClickListener(null)
+                                    .setConfirmClickListener(null)
+                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        }
+                    })
+                    .show();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
