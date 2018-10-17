@@ -73,12 +73,28 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:padding="5dp"
                 android:background="@drawable/board_quan"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/king_bj_red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Nike"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -144,11 +160,27 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:padding="5dp"
                 android:background="@drawable/board_quan"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/king_bj_pink" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Adidas"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -189,20 +221,53 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:padding="5dp"
                 android:background="@drawable/board_quan"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/king_bj_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="帝王世家"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:padding="5dp"
                 android:background="@drawable/board_quan"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/king_bj_white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Supreme"
+                    android:textColor="@color/gray_btn_bg_pressed_color"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 

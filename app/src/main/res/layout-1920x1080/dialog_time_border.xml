@@ -63,9 +63,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="3dp"
-                    android:text="正式代挂"
+                    android:text="代挂进行"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
 
             </RelativeLayout>
 
@@ -82,9 +82,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="3dp"
-                    android:text="提交补挂"
+                    android:text="补挂提交"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -100,9 +100,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="3dp"
-                    android:text="开始补挂"
+                    android:text="补挂进行"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -150,7 +150,7 @@
                     android:text="每日代挂正式运作期间，请不要在此期间挤号。"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
             </RelativeLayout>
 
@@ -159,7 +159,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/board_quan_jiacu">
-
                 <TextView
                     android:id="@+id/textView54"
                     android:layout_width="wrap_content"
@@ -170,7 +169,7 @@
                     android:text="此期间不进行代挂，只接受补挂提交"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -190,7 +189,7 @@
                     android:text="期间进行补挂，下午提交了什么项目的补挂就补挂什么"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -217,7 +216,7 @@
                     android:layout_margin="3dp"
                     android:text="时间段"
                     android:textColor="@color/black"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
@@ -237,7 +236,7 @@
                     android:layout_margin="3dp"
                     android:text="0点-10点"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
 
             </RelativeLayout>
 
@@ -256,7 +255,7 @@
                     android:layout_margin="3dp"
                     android:text="10-16点"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -274,7 +273,7 @@
                     android:layout_margin="3dp"
                     android:text="16-24点"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -286,7 +285,7 @@
             android:background="@drawable/board_quan_jiacu"
             android:orientation="vertical">
 
-              <RelativeLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

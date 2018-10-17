@@ -63,7 +63,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="3dp"
-                    android:text="正式代挂"
+                    android:text="代挂进行"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
 
@@ -82,7 +82,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="3dp"
-                    android:text="提交补挂"
+                    android:text="补挂提交"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
             </RelativeLayout>
@@ -100,7 +100,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="3dp"
-                    android:text="开始补挂"
+                    android:text="补挂进行"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
 

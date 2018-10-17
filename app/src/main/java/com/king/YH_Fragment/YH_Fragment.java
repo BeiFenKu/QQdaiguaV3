@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.text.format.Time;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -49,6 +50,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
 
@@ -274,7 +276,19 @@ public class YH_Fragment extends Fragment {
                                 tv_lhzt.setTextColor(Color.RED);
                             } else {
                                 MainActivity.guoqi_button = "0";
-                                tv_lhzt.setText("正常加速中");
+                                Time t = new Time();
+                                t.setToNow();
+                                int hour = t.hour;
+                                if (hour >= 0 && hour < 10) {
+                                    tv_lhzt.setText("代挂进行中");
+                                    tv_lhzt.setTextColor(Color.RED);
+                                } else if (hour >= 10 && hour < 16) {
+                                    tv_lhzt.setText("补挂提交中");
+                                    tv_lhzt.setTextColor(Color.GRAY);
+                                } else if (hour >= 16 && hour <= 23) {
+                                    tv_lhzt.setText("补挂进行中");
+                                    tv_lhzt.setTextColor(Color.RED);
+                                }
                             }
                         }
                         setLevel();
@@ -812,7 +826,11 @@ public class YH_Fragment extends Fragment {
         tv_bt_jiechu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new jiechu_dialog().show(getFragmentManager(), "");
+//                new jiechu_dialog().show(getFragmentManager(), "");
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText("注意！")
+                        .setContentText("无法直接解除，请点击【更新密码】按钮，进行密码更新自动解除拉黑状态，（请随时保持密码与QQ密码一致）").show();
+
             }
         });
         tv_lhzt = (TextView) view.findViewById(R.id.lhzt);
