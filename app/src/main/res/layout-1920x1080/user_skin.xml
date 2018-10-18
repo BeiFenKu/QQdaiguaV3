@@ -73,6 +73,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl7"
                 android:padding="5dp"
                 android:background="@drawable/board_quan"
                 android:layout_weight="1"
@@ -206,6 +207,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl6"
                 android:padding="5dp"
                 android:background="@drawable/board_quan"
                 android:layout_weight="1"

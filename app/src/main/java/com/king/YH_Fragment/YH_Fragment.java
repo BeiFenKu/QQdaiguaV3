@@ -851,6 +851,7 @@ public class YH_Fragment extends Fragment {
         tv_board = (TextView) view.findViewById(R.id.tv_board);
         tv_board.setMovementMethod(ScrollingMovementMethod.getInstance());
 
+
         switch (skin_value) {
             //1 = 默认 2 = 绿 3 = 橙 4 = 紫 5 = 彩色
             case "1":
@@ -868,7 +869,6 @@ public class YH_Fragment extends Fragment {
                 bt_lou_submit.setBackgroundResource(R.drawable.king_button_green);
                 break;
             case "3":
-
                 bt_xufei.setBackgroundResource(R.drawable.king_button_orange);
                 bt_newuser.setBackgroundResource(R.drawable.king_button_orange);
                 bt_kf.setBackgroundResource(R.drawable.king_button_orange);
@@ -885,6 +885,18 @@ public class YH_Fragment extends Fragment {
                 bt_newuser.setBackgroundResource(R.drawable.king_button_colorful);
                 bt_kf.setBackgroundResource(R.drawable.king_button_colorful);
                 bt_lou_submit.setBackgroundResource(R.drawable.king_button_colorful);
+                break;
+            case "6":
+                bt_xufei.setBackgroundResource(R.drawable.king_button_black);
+                bt_newuser.setBackgroundResource(R.drawable.king_button_black);
+                bt_kf.setBackgroundResource(R.drawable.king_button_black);
+                bt_lou_submit.setBackgroundResource(R.drawable.king_button_black);
+                break;
+            case "7":
+                bt_xufei.setBackgroundResource(R.drawable.king_button_red);
+                bt_newuser.setBackgroundResource(R.drawable.king_button_red);
+                bt_kf.setBackgroundResource(R.drawable.king_button_red);
+                bt_lou_submit.setBackgroundResource(R.drawable.king_button_red);
                 break;
         }
 
@@ -1101,6 +1113,10 @@ public class YH_Fragment extends Fragment {
                     getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_pou));
                 } else if (skin_value.equals("5")) {
                     getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_colorful));
+                } else if (skin_value.equals("6")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_black));
+                } else if (skin_value.equals("7")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_red));
                 }
             } else {
                 getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);

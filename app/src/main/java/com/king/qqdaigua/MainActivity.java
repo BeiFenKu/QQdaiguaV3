@@ -113,6 +113,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             toolbar.setBackgroundColor(Color.rgb(124, 51, 154));
         } else if (skin_value.equals("5")) {
             toolbar.setBackgroundColor(Color.rgb(0, 133, 251));
+        } else if (skin_value.equals("6")) {
+            toolbar.setBackgroundColor(Color.rgb(21, 21, 21));
+        } else if (skin_value.equals("7")) {
+            toolbar.setBackgroundColor(Color.rgb(200, 51, 51));
         }
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -163,6 +167,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 getWindow().setStatusBarColor(getResources().getColor(R.color.skin_pou));
                             } else if (skin_value.equals("5")) {
                                 getWindow().setStatusBarColor(getResources().getColor(R.color.skin_colorful));
+                            } else if (skin_value.equals("6")) {
+                                getWindow().setStatusBarColor(getResources().getColor(R.color.skin_black));
+                            } else if (skin_value.equals("7")) {
+                                getWindow().setStatusBarColor(getResources().getColor(R.color.skin_red));
                             }
                         } else {
                             getWindow().setStatusBarColor(Color.TRANSPARENT);

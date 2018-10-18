@@ -30,5 +30,9 @@
     <color name="skin_pou_hold">#612a77</color>
     <color name="skin_colorful">#0085fb</color>
     <color name="skin_colorful_hold">#006dce</color>
+    <color name="skin_black">#151515</color>
+    <color name="skin_black_hold">#000000</color>
+    <color name="skin_red">#c83333</color>
+    <color name="skin_red_hold">#a12222</color>
 
 </resources>

@@ -505,6 +505,20 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 bt_login.setBackgroundResource(R.drawable.king_button_colorful);
                 bt_regkm.setBackgroundResource(R.drawable.king_button_colorful);
                 break;
+            case "6":
+                Drawable btnDrawable5 = resources.getDrawable(R.mipmap.king_bj_black);
+//                blank1.setBackgroundDrawable(btnDrawable4);
+                blank1.setBackgroundResource(R.mipmap.king_bj_black);
+                bt_login.setBackgroundResource(R.drawable.king_button_black);
+                bt_regkm.setBackgroundResource(R.drawable.king_button_black);
+                break;
+            case "7":
+//                Drawable btnDrawable5 = resources.getDrawable(R.mipmap.king_bj_black);
+//                blank1.setBackgroundDrawable(btnDrawable4);
+                blank1.setBackgroundResource(R.mipmap.king_bj_red);
+                bt_login.setBackgroundResource(R.drawable.king_button_red);
+                bt_regkm.setBackgroundResource(R.drawable.king_button_red);
+                break;
         }
     }
 
@@ -803,18 +817,18 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
 
     private void saveUserData(List<UserAccount> UserData, String qq, String pwd, boolean rember) {
         if (UserData.size() == 0) {
-            Log.e("库记录为0","自动计入");
+            Log.e("库记录为0", "自动计入");
         } else {
             int length = UserData.size();
             for (int i = 0; i < length; i++) {
                 if (UserData.get(i).getQq().equals(qq)) {
-                    Log.e("库中已有",""+qq+"的级记录，跳过");
+                    Log.e("库中已有", "" + qq + "的级记录，跳过");
                     return;
                 }
             }
         }
 
-        Log.e("库中无",""+qq+"的级记录，录入");
+        Log.e("库中无", "" + qq + "的级记录，录入");
         multi_count = String.valueOf(Integer.valueOf(multi_count) + 1);
         editor = preferences.edit();
         editor.putString("mu_qq_" + multi_count, qq);
@@ -1001,6 +1015,10 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                     getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_pou));
                 } else if (skin_value.equals("5")) {
                     getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_colorful));
+                } else if (skin_value.equals("6")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_black));
+                } else if (skin_value.equals("7")) {
+                    getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.skin_red));
                 }
             } else {
                 getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);
