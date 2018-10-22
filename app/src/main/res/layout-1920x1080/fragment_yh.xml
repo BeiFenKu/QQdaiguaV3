@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/rl1"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/nav_header_margin_top"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@color/mestitle_gray"
@@ -21,7 +21,7 @@
             android:id="@+id/img1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/img_img1_layout_margin"
             android:src="@mipmap/futitle_icon"/>
 
         <TextView
@@ -32,29 +32,29 @@
             android:text="@string/welcome"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_1_size"
             android:gravity="start" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl2"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_alignParentLeft="true"
+        android:layout_height="@dimen/rel_rl2_height"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/rl1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true">
 
 
         <LinearLayout
             android:id="@+id/ll5"
             android:layout_width="match_parent"
-            android:layout_height="115dp"
+            android:layout_height="@dimen/ll_ll5_height"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/mestitle_gray"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
 
             <LinearLayout
                 android:id="@+id/ll6"
@@ -66,7 +66,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll_ll_margin"
                     android:layout_weight="1">
 
                     <Button
@@ -75,14 +75,14 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button"
                         android:text="续费[剩余XX天]"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll_ll_margin"
                     android:layout_weight="1">
 
                     <Button
@@ -90,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button1"
-                        android:text="漏挂补挂" />
+                        android:text="漏挂补挂"/>
 
                 </LinearLayout>
 
@@ -106,7 +106,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll_ll_margin"
                     android:layout_weight="1">
 
                     <Button
@@ -114,13 +114,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button1"
-                        android:text="@string/app_level" />
+                        android:text="@string/app_level"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll_ll_margin"
                     android:layout_weight="1">
 
                     <Button
@@ -129,7 +129,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button"
                         android:text="新手必看"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -144,7 +144,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll_ll_margin"
                     android:layout_weight="1">
 
                     <Button
@@ -152,14 +152,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button"
-                        android:text="@string/app_kefuqq"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:text="@string/app_kefuqq"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll_ll_margin"
                     android:layout_weight="1">
 
                     <Button
@@ -167,7 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/king_button1"
-                        android:text="更新密码" />
+                        android:text="更新密码"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -176,10 +176,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:layout_alignParentLeft="true"
+            android:layout_height="@dimen/ll__height"
             android:layout_alignParentStart="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -190,50 +190,48 @@
                     android:id="@+id/tv_dqqq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="18dp"
-                    android:text="当前QQ：576777915"
+                    android:layout_marginStart="@dimen/text_tv_dqqq"
+                    android:layout_marginTop="@dimen/text_tv_dqqq"
+                    android:text="当前QQ：XXX"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="normal|bold" />
+                    android:textSize="@dimen/text_tv_size"
+                    android:textStyle="normal|bold"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/text_tv_dqqq" />
 
                 <RelativeLayout
                     android:id="@+id/rl4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="@dimen/text_tv_dqqq"
                     android:layout_alignParentStart="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="95dp">
-
+                    android:layout_marginTop="@dimen/ll_rl4_marginTop"
+                    android:layout_marginLeft="@dimen/ll_rl4_marginLeft"
+                    android:layout_alignParentLeft="true">
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:text="代挂等级："
                         android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/text_tv_textView8"
+                        android:layout_alignParentLeft="true" />
 
                     <TextView
                         android:id="@+id/tv_viplevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/textView8"
-                        android:layout_marginLeft="78dp"
                         android:text="VIP 5"
                         android:textColor="@color/red"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/text_tv_textView8"
+                        android:layout_alignLeft="@+id/textView8"
+                        android:layout_marginLeft="@dimen/tv_tv_viplevel_marginLeft"/>
                 </RelativeLayout>
 
 
                 <TextView
-                    android:padding="5dp"
                     android:id="@+id/lhzt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -241,30 +239,31 @@
                     android:layout_alignBottom="@+id/textView6"
                     android:layout_toEndOf="@+id/textView6"
                     android:layout_toRightOf="@+id/textView6"
+                    android:padding="5dp"
                     android:text="拉黑状态"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_tv_textView8"/>
+                    android:textSize="@dimen/text_tv_textView8" />
 
                 <TextView
+                    android:visibility="invisible"
                     android:id="@+id/tv_bt_jiechu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lhzt"
-                    android:layout_marginLeft="118dp"
+                    android:layout_marginLeft="@dimen/tv_tv_bt_jiechu_marginLeft"
                     android:text="解除拉黑"
-                    android:textColor="@color/red"
-                    android:visibility="invisible" />
+                    android:textColor="@color/red"/>
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/tv_dqqq"
-                    android:layout_alignStart="@+id/tv_dqqq"
-                    android:layout_centerVertical="true"
                     android:text="当前状态："
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/text_tv_textView8"
+                    android:layout_centerVertical="true"
+                    android:layout_alignStart="@+id/tv_dqqq"
+                    android:layout_alignLeft="@+id/tv_dqqq" />
 
 
             </RelativeLayout>
@@ -274,18 +273,18 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:padding="15dp">
+                android:padding="@dimen/text_tv_textView8">
 
                 <TextView
                     android:id="@+id/tv_board"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="start"
                     android:scrollbars="vertical"
                     android:text=""
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/text_tv_textView8"
+                    android:gravity="start" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -297,13 +296,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="280dp">
+        android:layout_marginTop="@dimen/rl_rl3_marginTop">
 
 
         <LinearLayout
             android:id="@+id/ll8"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/rl_ll8_layout_height"
             android:layout_alignParentStart="true"
             android:orientation="vertical"
             android:layout_alignParentLeft="true">
@@ -320,7 +319,7 @@
         <LinearLayout
             android:id="@+id/ll9"
             android:layout_width="match_parent"
-            android:layout_height="15dp"
+            android:layout_height="@dimen/text_tv_textView8"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
             >
@@ -330,7 +329,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/act_bottom"
                 android:textAlignment="center"
-                android:textSize="10dp"/>
+                android:textSize="@dimen/ll_rl4_marginLeft"/>
 
         </LinearLayout>
 
@@ -342,7 +341,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/ll9"
             android:layout_alignTop="@+id/ll8"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="@dimen/rl_ll_bgbg_margTop">
             <ScrollView
                 android:layout_above="@+id/ll10"
                 android:layout_width="match_parent"
@@ -351,49 +350,49 @@
                     android:id="@+id/group_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="@dimen/ll_rl4_marginLeft"
                     android:gravity="center">
 
                     <RadioButton
                         android:id="@+id/rd_1"
                         android:text="电脑管家"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
                     <RadioButton
                         android:id="@+id/rd_2"
                         android:text="电脑QQ"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
                     <RadioButton
                         android:id="@+id/rd_3"
                         android:text="手机QQ"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
                     <RadioButton
                         android:id="@+id/rd_4"
                         android:text="勋章墙"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
                     <RadioButton
                         android:id="@+id/rd_5"
                         android:text="QQ音乐"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
                     <RadioButton
                         android:id="@+id/rd_6"
                         android:text="QQ手游"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
                     <RadioButton
                         android:id="@+id/rd_7"
                         android:text="空间访客（易冻结）"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
                     <RadioButton
                         android:id="@+id/rd_8"
                         android:text="QQ微视"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"/>
+                        android:layout_height="@dimen/nav_header_margin_top"/>
 
                 </RadioGroup>
             </ScrollView>
@@ -401,14 +400,14 @@
                 android:background="@color/mestitle_gray"
                 android:id="@+id/ll10"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="@dimen/ll_ll10_layout_height"
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll___margin"
                     android:layout_weight="1">
 
                     <Button
@@ -424,7 +423,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
+                    android:layout_margin="@dimen/ll___margin"
                     android:layout_weight="1">
 
                     <Button
@@ -446,9 +445,9 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/ll9"
             android:layout_alignTop="@+id/ll8"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/rl_ll_bgbg_margTop"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="@dimen/ll___margin">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -466,19 +465,19 @@
                         android:id="@+id/img_xz"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_xz"/>
 
                     <TextView
                         android:id="@+id/tv_xz"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="QQ勋章墙[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -493,30 +492,30 @@
                         android:id="@+id/img_mqq"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_sjqq"/>
 
                     <TextView
                         android:id="@+id/tv_mqq"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="手机在线[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
+                        android:layout_width="@dimen/img_imageView5_width"
+                        android:layout_height="@dimen/img_imageView5_hright"
                         app:srcCompat="@mipmap/longpress_tip"
-                        android:layout_marginLeft="230dp"
+                        android:layout_marginLeft="@dimen/img_imageView5_left"
                         android:id="@+id/imageView5"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="75dp"
+                        android:layout_marginStart="@dimen/img_imageView5_start"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -531,19 +530,19 @@
                         android:id="@+id/img_pcqq"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_pcqq"/>
 
                     <TextView
                         android:id="@+id/tv_pcqq"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="电脑在线[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -566,19 +565,19 @@
                         android:id="@+id/img_music"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_yy"/>
 
                     <TextView
                         android:id="@+id/tv_music"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="QQ音乐[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -593,19 +592,19 @@
                         android:id="@+id/img_guanjia"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_gj"/>
 
                     <TextView
                         android:id="@+id/tv_guanjia"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="电脑管家[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -620,19 +619,19 @@
                         android:id="@+id/img_game"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_yx"/>
 
                     <TextView
                         android:id="@+id/tv_game"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="QQ手游[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -655,19 +654,19 @@
                         android:id="@+id/img_kjfk"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_kjfk"/>
 
                     <TextView
                         android:id="@+id/tv_kjfk"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="空间访客[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -682,19 +681,19 @@
                         android:id="@+id/img_weishi"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_weishi2"/>
 
                     <TextView
                         android:id="@+id/tv_weishi"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="微视代看[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
@@ -709,25 +708,113 @@
                         android:id="@+id/img_load"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
                         android:src="@mipmap/htt_weishi"/>
 
                     <TextView
                         android:id="@+id/tv_load"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentStart="true"
                         android:gravity="center"
                         android:text="微视浏览[已关闭]"
                         android:textColor="@color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/tv_tv_xz_size"
                         android:layout_alignParentLeft="true" />
 
                 </RelativeLayout>
 
+
+
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        android:id="@+id/img_yd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
+                        android:src="@mipmap/htt_yundong"/>
+
+                    <TextView
+                        android:id="@+id/tv_yd"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:text="QQ运动[已开启]"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_tv_xz_size"
+                        android:layout_alignParentLeft="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
+                        android:src="@mipmap/htt_load"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:text="敬请期待"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_tv_xz_size"
+                        android:layout_alignParentLeft="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
+                        android:src="@mipmap/htt_load"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:text="敬请期待"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_tv_xz_size"
+                        android:layout_alignParentLeft="true" />
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String user_cookie = "";
 
     //版本号控制更新提示
-    public static String app_ver = "3.8";
+    public static String app_ver = "3.9";
     //过期否检测值
     public static String guoqi_button = "0";
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String web_jiekou = "http://api.52dg.gg/";
     public static String web_jiekou1 = "http://kking1";
     public static String buy_url = "https://www.dkingdg.com/buy/";
-    public static String check_url = "http://www.dkingds.com/lgcx.php?qq=";
+    public static String check_url = "https://www.dkingdg.com/pay/lgcx.php?qq=";
     //临时存放 QQ扫码登录用的Cookie
     public static String cookie_1 = "";
 
@@ -262,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(getApplicationContext(), "QQ运动一键加速功能即将上线！软件端一个按钮本地完成运动加速任务，敬请期待！", Toast.LENGTH_LONG)
+                    Toast.makeText(getApplicationContext(), "QQ运动加速已经在帝王代挂上线，请登录后在界面里开启此功能", Toast.LENGTH_LONG)
                             .show();
                 }
             });

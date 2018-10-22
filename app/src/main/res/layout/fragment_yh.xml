@@ -725,8 +725,96 @@
 
                 </RelativeLayout>
 
+
+
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        android:id="@+id/img_yd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
+                        android:src="@mipmap/htt_yundong"/>
+
+                    <TextView
+                        android:id="@+id/tv_yd"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:text="QQ运动[已开启]"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_tv_xz_size"
+                        android:layout_alignParentLeft="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
+                        android:src="@mipmap/htt_load"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:text="敬请期待"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_tv_xz_size"
+                        android:layout_alignParentLeft="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/rl_ll_bgbg_margTop"
+                        android:src="@mipmap/htt_load"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/rl_ll_bgbg_margTop"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:gravity="center"
+                        android:text="敬请期待"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_tv_xz_size"
+                        android:layout_alignParentLeft="true" />
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

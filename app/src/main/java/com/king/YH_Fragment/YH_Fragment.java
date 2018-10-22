@@ -103,6 +103,7 @@ public class YH_Fragment extends Fragment {
     private ImageView img_kjfk;
     private ImageView img_weishi;
     private ImageView img_weishi_1;
+    private ImageView img_yd;
     private ImageView[] imageViews = new ImageView[9];
     TextView[] textViews = new TextView[9];
     private TextView tv_guanjia;
@@ -114,6 +115,7 @@ public class YH_Fragment extends Fragment {
     private TextView tv_kjfk;
     private TextView tv_weishi;
     private TextView tv_weishi_1;
+    private TextView tv_yd;
     private Button bt_gengxin;
     private Button bt_lougua;
     private RelativeLayout ll_bgbg;
@@ -319,19 +321,37 @@ public class YH_Fragment extends Fragment {
                             word += word1.charAt(j);
                         }
                         if (status[switch_sign].equals("0")) {
+                            //正规关闭
                             word += "关闭]";
                             textViews[switch_sign].setText(word);
                             ImgHui(imageViews[switch_sign]);
                             imageViews[switch_sign].startAnimation(animation1);
-                        } else if (status[switch_sign].equals("1")) {
+
+                            //运动跟随手机
                             if (switch_sign == 2) {
+                                tv_yd.setText("QQ运动[已关闭]");
+                                ImgHui(img_yd);
+                                img_yd.startAnimation(animation1);
+                            }
+                        } else if (status[switch_sign].equals("1")) {
+                            //正规开启
+                            if (switch_sign == 2) {
+                                //苹果手机开启
                                 word += "开启]";
                                 textViews[switch_sign].setText(word);
                                 imageViews[switch_sign].setImageDrawable(getResources().getDrawable(R
                                         .mipmap.htt_sjqq));
                                 ImgLiang(imageViews[switch_sign]);
                                 imageViews[switch_sign].startAnimation(animation);
+
+                                //运动跟随手机
+                                if (switch_sign == 2) {
+                                    tv_yd.setText("QQ运动[已关闭]");
+                                    ImgHui(img_yd);
+                                    img_yd.startAnimation(animation1);
+                                }
                             } else {
+                                //其他项目开启
                                 word += "开启]";
                                 textViews[switch_sign].setText(word);
                                 ImgLiang(imageViews[switch_sign]);
@@ -339,12 +359,23 @@ public class YH_Fragment extends Fragment {
                             }
                         } else if (status[switch_sign].equals
                                 ("2")) {
+                            //安卓手机开启
+
                             word += "开启]";
                             textViews[switch_sign].setText(word);
                             imageViews[switch_sign].setImageDrawable(getResources().getDrawable(R
                                     .mipmap.htt_sjqq_android));
                             ImgLiang(imageViews[switch_sign]);
                             imageViews[switch_sign].startAnimation(animation);
+
+                            //运动跟随手机
+                            if (switch_sign == 2) {
+                                tv_yd.setText("QQ运动[已开启]");
+                                img_yd.setImageDrawable(getResources().getDrawable(R
+                                        .mipmap.htt_yundong));
+                                ImgLiang(img_yd);
+                                img_yd.startAnimation(animation);
+                            }
                         }
                         Toast.makeText(getContext(), "修改成功，立即生效", Toast.LENGTH_SHORT).show();
                     } else {
@@ -627,6 +658,7 @@ public class YH_Fragment extends Fragment {
         tv_weishi = (TextView) view.findViewById(R.id.tv_weishi);
         tv_weishi_1 = (TextView) view.findViewById(R.id.tv_load);
         tv_guanjia = (TextView) view.findViewById(R.id.tv_guanjia);
+        tv_yd = (TextView) view.findViewById(R.id.tv_yd);
         textViews[0] = tv_guanjia;
         textViews[1] = tv_pcqq;
         textViews[2] = tv_mqq;
@@ -796,6 +828,16 @@ public class YH_Fragment extends Fragment {
             public void onClick(View view) {
                 switch_sign = 8;
                 Switchswitch(8);
+            }
+        });
+        img_yd = (ImageView) view.findViewById(R.id.img_yd);
+        img_yd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText("注意！")
+                        .setContentText("QQ运动无法直接开关，请将手机在线功能调成安卓将自动开启，设置其他状态自动关闭。").show();
+
             }
         });
         imageViews[0] = img_guanjia;
@@ -1006,6 +1048,9 @@ public class YH_Fragment extends Fragment {
     }
 
     private void CheckSwithImg(ImageView[] imageViews, String[] status, TextView[] textView) {
+        img_yd.startAnimation(animation);
+        //运动图标 单独旋转
+
         for (int i = 0; i < imageViews.length; i++) {
             imageViews[i].startAnimation(animation);
             switch (status[i]) {
@@ -1018,6 +1063,12 @@ public class YH_Fragment extends Fragment {
                     }
                     word += "关闭]";
                     textView[i].setText(word);
+
+                    //运动单独设置
+                    if (i == 2) {
+                        tv_yd.setText("QQ运动[已关闭]");
+                        ImgHui(img_yd);
+                    }
                     break;
                 case "1":
 //                    ImgLiang(imageViews[i]);
@@ -1026,8 +1077,15 @@ public class YH_Fragment extends Fragment {
                     for (int j = 0; j < word1.length() - 3; j++) {
                         word += word1.charAt(j);
                     }
+                    String word2 = word + "关闭]";
                     word += "开启]";
                     textView[i].setText(word);
+
+                    //运动单独设置
+                    if (i == 2) {
+                        ImgHui(img_yd);
+                        tv_yd.setText("QQ运动[已关闭]");
+                    }
                     break;
                 case "2":
                     imageViews[i].setImageDrawable(getResources().getDrawable(R.mipmap
@@ -1040,6 +1098,11 @@ public class YH_Fragment extends Fragment {
                     }
                     word += "开启]";
                     textView[i].setText(word);
+
+                    //运动单独设置
+                    if (i == 2) {
+                        tv_yd.setText("QQ运动[已开启]");
+                    }
                     break;
             }
         }
@@ -1081,13 +1144,30 @@ public class YH_Fragment extends Fragment {
              * @Override
              */
             @Override
-            public void onAnimationEnd(Animation animation) {
+            public void onAnimationEnd(Animation ani) {
                 if (status.equals("1")) {
                     imageViews[2].setImageDrawable(getResources().getDrawable(R.mipmap
                             .htt_sjqq_android));
+                    Log.e("手Q", "安卓");
+
+//                    运动跟随变化
+                    img_yd.setImageDrawable(getResources().getDrawable(R.mipmap
+                            .htt_yundong));
+                    ImgLiang(img_yd);
+                    String word = "QQ运动[已开启]";
+                    tv_yd.setText(word);
+                    img_yd.startAnimation(animation);
+
                 } else {
                     imageViews[2].setImageDrawable(getResources().getDrawable(R.mipmap
                             .htt_sjqq));
+                    Log.e("手Q", "苹果");
+
+//                    //运动跟随变化
+                    ImgHui(img_yd);
+                    String word = "QQ运动[已关闭]";
+                    tv_yd.setText(word);
+                    img_yd.startAnimation(animation1);
                 }
                 imageViews[2].startAnimation(sa2);
             }
