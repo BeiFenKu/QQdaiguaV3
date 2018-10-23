@@ -8,6 +8,15 @@ import com.king.qqdaigua.MainActivity;
 
 import org.json.JSONObject;
 
+import java.security.SecureRandom;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -24,6 +33,7 @@ public class HttpRequest extends Thread {
     String url;
     String json;
     OkHttpClient client = new OkHttpClient();
+
     Handler handler;
     int handlerId = 1;
     MediaType mediaType = MediaType.parse("application/json,charset=utf-8");
@@ -37,6 +47,20 @@ public class HttpRequest extends Thread {
         this.url = url;
         this.json = json;
         this.handler = handler;
+    }
+
+    private static SSLSocketFactory createSSLSocketFactory() {
+        SSLSocketFactory ssfFactory = null;
+
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, new TrustManager[]{new TrustAllCerts()}, new SecureRandom());
+
+            ssfFactory = sc.getSocketFactory();
+        } catch (Exception e) {
+        }
+
+        return ssfFactory;
     }
 
     public Handler getHandler() {
@@ -75,6 +99,16 @@ public class HttpRequest extends Thread {
     public void run() {
         try {
             String cookie = "";
+
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.connectTimeout(2000, TimeUnit.SECONDS);
+            builder.sslSocketFactory(createSSLSocketFactory());
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
 
             JSONObject jsonObject1 = new JSONObject(json);
             String type = jsonObject1.getString("type");

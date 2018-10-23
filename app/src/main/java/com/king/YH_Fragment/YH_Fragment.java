@@ -21,6 +21,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -77,6 +78,8 @@ public class YH_Fragment extends Fragment {
     private String[] status = new String[9];
     //    记录最近一次点击 开关项目ID
     private int switch_sign;
+    //  是否连续打开手Q并设置安卓 0=不 1=是
+    private int isDoubleSwtich = 0;
 
 
     private ScaleAnimation sa1 = new ScaleAnimation(1, 0, 1, 1,
@@ -344,12 +347,15 @@ public class YH_Fragment extends Fragment {
                                 ImgLiang(imageViews[switch_sign]);
                                 imageViews[switch_sign].startAnimation(animation);
 
-                                //运动跟随手机
-                                if (switch_sign == 2) {
-                                    tv_yd.setText("QQ运动[已关闭]");
-                                    ImgHui(img_yd);
-                                    img_yd.startAnimation(animation1);
+                                if (isDoubleSwtich == 1) {
+                                    setMqqStatus();
                                 }
+                                //运动跟随手机
+//                                if (switch_sign == 2) {
+//                                    tv_yd.setText("QQ运动[已关闭]");
+//                                    ImgHui(img_yd);
+//                                    img_yd.startAnimation(animation1);
+//                                }
                             } else {
                                 //其他项目开启
                                 word += "开启]";
@@ -546,6 +552,7 @@ public class YH_Fragment extends Fragment {
                                 }
                             });
                         }
+                        isDoubleSwtich = 0;
                     } else {
                         if (getActivity() != null) {
                             getActivity().runOnUiThread(new Runnable() {
@@ -834,10 +841,66 @@ public class YH_Fragment extends Fragment {
         img_yd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE)
-                        .setTitleText("注意！")
-                        .setContentText("QQ运动无法直接开关，请将手机在线功能调成安卓将自动开启，设置其他状态自动关闭。").show();
+//                new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE)
+//                        .setTitleText("注意！")
+//                        .setContentText("QQ运动无法直接开关，请将手机在线功能调成安卓将自动开启，设置其他状态自动关闭。").show();
 
+                if (status[2].equals("0") || status[2].equals("1")) {
+                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                    sweetAlertDialog.setCanceledOnTouchOutside(false);
+                    sweetAlertDialog
+                            .setTitleText("温馨提示")
+                            .setContentText("开启运动代挂，将强行开启安卓手Q在线，确认开启吗？")
+                            .setCancelText("取消")
+                            .setConfirmText("确定")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.dismiss();
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    if (status[2].equals("1")) {
+                                        setMqqStatus();
+                                        sDialog.dismiss();
+                                    } else if (status[2].equals("0")) {
+                                        switchDialog.show();
+                                        switch_sign = 2;
+                                        isDoubleSwtich = 1;
+                                        Switchswitch(2);
+                                        sDialog.dismiss();
+                                    }
+                                }
+                            })
+                            .show();
+                } else {
+                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                    sweetAlertDialog.setCanceledOnTouchOutside(false);
+                    sweetAlertDialog
+                            .setTitleText("温馨提示")
+                            .setContentText("关闭运动代挂，将强行关闭手Q代挂，确认关闭吗？")
+                            .setCancelText("取消")
+                            .setConfirmText("确定")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    switchDialog.show();
+                                    switch_sign = 2;
+                                    Switchswitch(2);
+                                    sDialog.dismiss();
+                                }
+                            })
+                            .show();
+                }
             }
         });
         imageViews[0] = img_guanjia;

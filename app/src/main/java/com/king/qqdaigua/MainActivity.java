@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String user_cookie = "";
 
     //版本号控制更新提示
-    public static String app_ver = "3.9";
+    public static String app_ver = "3.91";
     //过期否检测值
     public static String guoqi_button = "0";
 
@@ -67,14 +67,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String app_qq = "1776885812";
     public static String app_name = "帝王代挂";
     public static String app_subName = " For Android";
-    public static String app_url = "https://www.dkingdg.com/";
+    public static String app_url = "http://lgcx.dkingdg.com/";
     public static String app_url_1 = "api/dg.php?ajax=true&star=post&do=yewu";
     public static String app_url_qq = "&qq=";
     public static String app_buy = "https://www.dkingdg.com/buy/";
-    public static String web_jiekou = "http://api.52dg.gg/";
-    public static String web_jiekou1 = "http://kking1";
     public static String buy_url = "https://www.dkingdg.com/buy/";
-    public static String check_url = "https://www.dkingdg.com/pay/lgcx.php?qq=";
+    public static String check_url = "http://lgcx.dkingdg.com/pay/lgcx.php?qq=";
     //临时存放 QQ扫码登录用的Cookie
     public static String cookie_1 = "";
 
