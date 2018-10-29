@@ -687,10 +687,14 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "此激活码不能被此QQ使用，原因为之前在其他站开过代挂，请联系站长清除再开通", Toast.LENGTH_LONG)
                                         .show();
+                            }else if (error.equals("此激活码不存在")) {
+                                dialog_login.cancel();
+                                Toast.makeText(getContext(), "开通失败，卡密错误，卡密购买请点击下方按钮", Toast.LENGTH_LONG)
+                                        .show();
                             }
                         } else {
                             dialog_login.cancel();
-                            Toast.makeText(getContext(), "开通失败，卡密错误，卡密购买请点击下方按钮", Toast.LENGTH_LONG)
+                            Toast.makeText(getContext(), "卡密错误，卡密购买请点击下方按钮", Toast.LENGTH_LONG)
                                     .show();
                         }
                     } else {
