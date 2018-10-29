@@ -588,7 +588,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         JSONObject jsonobject = new JSONObject();
         String post_url = null;
         post_url = MainActivity
-                .app_url + MainActivity.app_url_1 + "&info=login";
+                .app_url + MainActivity.app_url_1 + "&info=login1";
         try {
             jsonobject.put("type", "login");
             jsonobject.put("qq", qq);

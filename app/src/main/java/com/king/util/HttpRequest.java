@@ -116,7 +116,7 @@ public class HttpRequest extends Thread {
                 //登录判断
                 String qq = jsonObject1.getString("qq");
                 String pwd = jsonObject1.getString("pwd");
-                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
+                body = new FormBody.Builder().add("qq", qq).add("pwd", fun(pwd)).build();
             } else if (type.equals("pay")) {
                 //开通判断
                 String qq = jsonObject1.getString("qq");
@@ -310,5 +310,16 @@ public class HttpRequest extends Thread {
         return "";
     }
 
+    public static String fun(String word) {
+        String ret = "";
+        for(int i = 0 ; i < word.length(); i ++) {
+            char wor = word.charAt(i);
+            int value=Integer.valueOf(wor);//49
+//        	System.out.print(value+" ");
+            ret = ret + value+ "_";
+        }
+
+        return ret.substring(0,ret.length()-1);
+    }
 
 }
