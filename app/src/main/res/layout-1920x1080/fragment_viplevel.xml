@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/level_main"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/level_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rl1"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="230dp"
         android:layout_marginTop="-30dp"
         android:background="@mipmap/level_bg">
 
@@ -22,7 +22,7 @@
             android:layout_centerVertical="true"
             android:text="100"
             android:textColor="@color/level_font1_red"
-            android:textSize="45dp" />
+            android:textSize="45dp"/>
 
         <TextView
             android:id="@+id/textView14"
@@ -30,20 +30,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView13"
             android:layout_centerHorizontal="true"
-            android:text="总积分" />
+            android:text="总积分"/>
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
             android:padding="8dp"
             android:text="@string/fanhui_cancel"
             android:textColor="@color/white"
-            android:textSize="21dp" />
+            android:textSize="21dp"
+            android:layout_alignParentLeft="true" />
 
         <LinearLayout
             android:id="@+id/ll11"
@@ -64,14 +64,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="17dp"
-                    android:layout_marginLeft="28dp"
                     android:layout_marginStart="28dp"
                     android:text="已代挂： "
                     android:textColor="@color/black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="28dp" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -80,10 +80,10 @@
                     android:layout_alignBaseline="@+id/textView2"
                     android:layout_alignBottom="@+id/textView2"
                     android:layout_toEndOf="@+id/textView2"
-                    android:layout_toRightOf="@+id/textView2"
                     android:text="XX"
                     android:textColor="@color/level_font_brown"
-                    android:textSize="30dp" />
+                    android:textSize="30dp"
+                    android:layout_toRightOf="@+id/textView2" />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -93,10 +93,10 @@
                     android:layout_alignBottom="@+id/textView10"
                     android:layout_marginLeft="5dp"
                     android:layout_toEndOf="@+id/textView10"
-                    android:layout_toRightOf="@+id/textView10"
                     android:text="天"
                     android:textColor="@color/black"
-                    android:textSize="10dp" />
+                    android:textSize="10dp"
+                    android:layout_toRightOf="@+id/textView10" />
 
             </RelativeLayout>
 
@@ -111,14 +111,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="17dp"
-                    android:layout_marginLeft="28dp"
                     android:layout_marginStart="28dp"
                     android:text="代挂剩余： "
                     android:textColor="@color/black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="28dp" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -127,23 +127,23 @@
                     android:layout_alignBaseline="@+id/textView11"
                     android:layout_alignBottom="@+id/textView11"
                     android:layout_toEndOf="@+id/textView11"
-                    android:layout_toRightOf="@+id/textView11"
                     android:text="XX"
                     android:textColor="@color/level_font_brown"
-                    android:textSize="30dp" />
+                    android:textSize="30dp"
+                    android:layout_toRightOf="@+id/textView11" />
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/textView26"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/textView12"
                     android:layout_alignBottom="@+id/textView12"
                     android:layout_marginLeft="5dp"
                     android:layout_toEndOf="@+id/textView12"
-                    android:layout_toRightOf="@+id/textView12"
                     android:text="天"
                     android:textColor="@color/black"
-                    android:textSize="10dp" />
+                    android:textSize="10dp"
+                    android:layout_toRightOf="@+id/textView12" />
 
             </RelativeLayout>
 
@@ -151,15 +151,15 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView25"
+            android:text="VIP 5"
+            android:textSize="12dp"
+            android:textColor="@color/level_font1_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/textView25"
             android:layout_below="@+id/textView14"
             android:layout_centerHorizontal="true"
-            android:text="VIP 5"
-            android:textColor="@color/level_font1_red"
-            android:textSize="12dp"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"/>
 
     </RelativeLayout>
 
@@ -210,6 +210,39 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/iv6"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@mipmap/level_progress_on"/>
+
+                        <TextView
+                            android:id="@+id/textView24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/iv6"
+                            android:layout_centerHorizontal="true"
+                            android:padding="5dp"
+                            android:text="30"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
                             android:id="@+id/iv1"
                             android:layout_width="10dp"
                             android:layout_height="20dp"
@@ -225,9 +258,9 @@
                             android:layout_above="@+id/iv1"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="30"
+                            android:text="36"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -257,9 +290,9 @@
                             android:layout_above="@+id/iv2"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="36"
+                            android:text="126"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -289,9 +322,9 @@
                             android:layout_above="@+id/iv3"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="126"
+                            android:text="306"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -321,9 +354,9 @@
                             android:layout_above="@+id/iv4"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="306"
+                            android:text="720"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -353,9 +386,9 @@
                             android:layout_above="@+id/iv5"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="720"
+                            android:text="1200"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -384,13 +417,28 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_1"
+                        android:id="@+id/tv_7"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="VIP 1"
                         android:textColor="@color/black"
                         android:textSize="15dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="VIP 2"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -405,9 +453,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 2"
+                        android:text="VIP 3"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -422,9 +470,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 3"
+                        android:text="VIP 4"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
                 </LinearLayout>
 
 
@@ -438,9 +486,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 4"
+                        android:text="VIP 5"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -456,9 +504,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 5"
+                        android:text="VIP 6"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 

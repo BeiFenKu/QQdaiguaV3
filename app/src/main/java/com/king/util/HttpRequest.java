@@ -116,7 +116,7 @@ public class HttpRequest extends Thread {
                 //登录判断
                 String qq = jsonObject1.getString("qq");
                 String pwd = jsonObject1.getString("pwd");
-                body = new FormBody.Builder().add("qq", qq).add("pwd", fun(pwd)).build();
+                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
             } else if (type.equals("pay")) {
                 //开通判断
                 String qq = jsonObject1.getString("qq");

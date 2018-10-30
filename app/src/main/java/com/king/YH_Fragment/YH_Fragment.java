@@ -493,6 +493,8 @@ public class YH_Fragment extends Fragment {
                              120       180    VIP3    半年卡      126 < x < 306
                              300       360   VIP4    年卡         306 < x < 720
                              660       MAX   VIP5                 720 < x
+
+                                             VIP 6                 1200 < x <
                              公式：已用天数 * 1.2 + 剩余代挂天数 * 1 = x
                              *
                              */

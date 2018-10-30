@@ -588,7 +588,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         JSONObject jsonobject = new JSONObject();
         String post_url = null;
         post_url = MainActivity
-                .app_url + MainActivity.app_url_1 + "&info=login1";
+                .app_url + MainActivity.app_url_1 + "&info=login";
         try {
             jsonobject.put("type", "login");
             jsonobject.put("qq", qq);
@@ -683,11 +683,11 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "密码不符合规范！", Toast.LENGTH_LONG)
                                         .show();
-                            } else if (error.equals("此激活码不能被此QQ使用")) {
+                            } else if (error.equals("此激活码不能被此QQ使用") || error.equals("你的卡密类型与你的QQ代挂类型不符合！")) {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "此激活码不能被此QQ使用，原因为之前在其他站开过代挂，请联系站长清除再开通", Toast.LENGTH_LONG)
                                         .show();
-                            }else if (error.equals("此激活码不存在")) {
+                            } else if (error.equals("此激活码不存在")) {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "开通失败，卡密错误，卡密购买请点击下方按钮", Toast.LENGTH_LONG)
                                         .show();

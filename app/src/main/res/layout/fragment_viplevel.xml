@@ -133,7 +133,7 @@
                     android:layout_toRightOf="@+id/textView11" />
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/textView26"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/textView12"
@@ -210,6 +210,39 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/iv6"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@mipmap/level_progress_on"/>
+
+                        <TextView
+                            android:id="@+id/textView24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/iv6"
+                            android:layout_centerHorizontal="true"
+                            android:padding="5dp"
+                            android:text="30"
+                            android:textColor="@color/black"
+                            android:textSize="17dp"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
                             android:id="@+id/iv1"
                             android:layout_width="10dp"
                             android:layout_height="20dp"
@@ -225,9 +258,9 @@
                             android:layout_above="@+id/iv1"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="30"
+                            android:text="36"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -257,9 +290,9 @@
                             android:layout_above="@+id/iv2"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="36"
+                            android:text="126"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -289,9 +322,9 @@
                             android:layout_above="@+id/iv3"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="126"
+                            android:text="306"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -321,9 +354,9 @@
                             android:layout_above="@+id/iv4"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="306"
+                            android:text="720"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -353,9 +386,9 @@
                             android:layout_above="@+id/iv5"
                             android:layout_centerHorizontal="true"
                             android:padding="5dp"
-                            android:text="720"
+                            android:text="1200"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -384,13 +417,28 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_1"
+                        android:id="@+id/tv_7"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="VIP 1"
                         android:textColor="@color/black"
                         android:textSize="15dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="VIP 2"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -405,9 +453,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 2"
+                        android:text="VIP 3"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -422,9 +470,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 3"
+                        android:text="VIP 4"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
                 </LinearLayout>
 
 
@@ -438,9 +486,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 4"
+                        android:text="VIP 5"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -456,9 +504,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="VIP 5"
+                        android:text="VIP 6"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
