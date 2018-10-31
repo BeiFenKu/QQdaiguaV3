@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.baidu.mobstat.SendStrategyEnum;
 import com.baidu.mobstat.StatService;
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.king.Caculer_Fragment.caculer_Fragment;
 import com.king.Login_Fragment.BlankFragment1;
 import com.king.YH_Fragment.update_dialog;
@@ -95,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         updateCheck();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TypefaceProvider.registerDefaultIconSets();
+
         StatService.setSendLogStrategy(this, SendStrategyEnum.APP_START, 1, false);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

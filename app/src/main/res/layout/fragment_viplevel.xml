@@ -525,16 +525,23 @@
             android:textColor="@color/gray"
             android:layout_alignParentLeft="true" />
 
-
-        <TextView
-            android:id="@+id/tv_6"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:paddingBottom="3dp"
-            android:text="等级奖励即将上线，来这里提供您的【奖品建议】"
-            android:textColor="@color/gray"/>
+            android:layout_height="40dp"
+            android:layout_below="@+id/rl6">
+
+        </RelativeLayout>
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_6"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingBottom="3dp"-->
+            <!--android:text="等级奖励即将上线，来这里提供您的【奖品建议】"-->
+            <!--android:textColor="@color/gray"/>-->
         <!--<ImageView-->
         <!--android:layout_width="10dp"-->
         <!--android:layout_height="40dp"-->

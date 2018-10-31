@@ -51,6 +51,10 @@ public class level_Fragment extends Fragment {
     private TextView tv_5;
     private TextView tv_level;
     private TextView tv_6;
+    private ImageView iv_7;
+    private TextView tv_7;
+    private TextView tv_level_7;
+
 
     @Nullable
     @Override
@@ -121,6 +125,9 @@ public class level_Fragment extends Fragment {
         iv_5 = (ImageView) view.findViewById(R.id.iv5);
         tv_5 = (TextView) view.findViewById(R.id.tv_5);
         tv_level = (TextView) view.findViewById(R.id.textView25);
+        iv_7 = (ImageView) view.findViewById(R.id.iv6);
+        tv_7 = (TextView) view.findViewById(R.id.textView24);
+        tv_level_7 = (TextView) view.findViewById(R.id.tv_7);
         if (Integer.parseInt(score) < 30){
             tv_level.setText("VIP 0");
         } else if (Integer.parseInt(score) < 36 && Integer.parseInt(score) >= 30){
@@ -131,39 +138,49 @@ public class level_Fragment extends Fragment {
             tv_level.setText("VIP 3");
         }else if (Integer.parseInt(score) < 720 && Integer.parseInt(score) >= 306){
             tv_level.setText("VIP 4");
-        }else if ( Integer.parseInt(score) >= 720){
+        }else if ( Integer.parseInt(score) >= 720&&Integer.parseInt(score) <= 1200){
             tv_level.setText("VIP 5");
+        }else if ( Integer.parseInt(score) >= 1200){
+            tv_level.setText("VIP 6");
         }
         if (Integer.parseInt(score) < 30) {
+            tv_level_7.setTextColor(Color.GRAY);
+            iv_7.setImageDrawable(getResources().getDrawable(R.mipmap
+                    .level_progress_off));
+            tv_7.setTextColor(Color.GRAY);
+        }
+        if (Integer.parseInt(score) < 36) {
             tv_level_1.setTextColor(Color.GRAY);
             iv_1.setImageDrawable(getResources().getDrawable(R.mipmap
                     .level_progress_off));
             tv_1.setTextColor(Color.GRAY);
         }
-        if (Integer.parseInt(score) < 36) {
+        if (Integer.parseInt(score) < 126) {
             tv_level_2.setTextColor(Color.GRAY);
             iv_2.setImageDrawable(getResources().getDrawable(R.mipmap
                     .level_progress_off));
             tv_2.setTextColor(Color.GRAY);
         }
-        if (Integer.parseInt(score) < 126) {
+        if (Integer.parseInt(score) < 306) {
             tv_level_3.setTextColor(Color.GRAY);
             iv_3.setImageDrawable(getResources().getDrawable(R.mipmap
                     .level_progress_off));
             tv_3.setTextColor(Color.GRAY);
         }
-        if (Integer.parseInt(score) < 306) {
+        if (Integer.parseInt(score) < 720) {
             tv_level_4.setTextColor(Color.GRAY);
             iv_4.setImageDrawable(getResources().getDrawable(R.mipmap
                     .level_progress_off));
             tv_4.setTextColor(Color.GRAY);
         }
-        if (Integer.parseInt(score) < 720) {
+        if (Integer.parseInt(score) < 1200) {
             tv_level_5.setTextColor(Color.GRAY);
             iv_5.setImageDrawable(getResources().getDrawable(R.mipmap
                     .level_progress_off));
             tv_5.setTextColor(Color.GRAY);
         }
+
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -176,6 +193,7 @@ public class level_Fragment extends Fragment {
             }
         }).start();
     }
+
     private void openURL(String s) {
         Intent intent = new Intent();
         intent.setAction("android.intent.action.VIEW");
