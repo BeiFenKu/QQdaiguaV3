@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String user_cookie = "";
 
     //版本号控制更新提示
-    public static String app_ver = "3.91";
+    public static String app_ver = "3.93";
     //过期否检测值
     public static String guoqi_button = "0";
 

@@ -116,13 +116,14 @@ public class HttpRequest extends Thread {
                 //登录判断
                 String qq = jsonObject1.getString("qq");
                 String pwd = jsonObject1.getString("pwd");
-                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
+                Log.e("加密后", fun(pwd));
+                body = new FormBody.Builder().add("qq", qq).add("pwd", fun(pwd)).build();
             } else if (type.equals("pay")) {
                 //开通判断
                 String qq = jsonObject1.getString("qq");
                 String kami = jsonObject1.getString("cami");
                 String pwd = jsonObject1.getString("cpwd");
-                body = new FormBody.Builder().add("qq", qq).add("cami", kami).add("cpwd", pwd).build();
+                body = new FormBody.Builder().add("qq", qq).add("cami", kami).add("cpwd", fun(pwd)).build();
             } else if (type.equals("board")) {
                 //公告获取判断
                 body = new FormBody.Builder().build();
@@ -312,14 +313,14 @@ public class HttpRequest extends Thread {
 
     public static String fun(String word) {
         String ret = "";
-        for(int i = 0 ; i < word.length(); i ++) {
+        for (int i = 0; i < word.length(); i++) {
             char wor = word.charAt(i);
-            int value=Integer.valueOf(wor);//49
+            int value = Integer.valueOf(wor);//49
 //        	System.out.print(value+" ");
-            ret = ret + value+ "_";
+            ret = ret + value + "_";
         }
 
-        return ret.substring(0,ret.length()-1);
+        return ret.substring(0, ret.length() - 1);
     }
 
 }

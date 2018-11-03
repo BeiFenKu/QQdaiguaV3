@@ -53,10 +53,6 @@ import com.king.util.SetImageViewUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -588,7 +584,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         JSONObject jsonobject = new JSONObject();
         String post_url = null;
         post_url = MainActivity
-                .app_url + MainActivity.app_url_1 + "&info=login";
+                .app_url + MainActivity.app_url_1 + "&info=login1";
         try {
             jsonobject.put("type", "login");
             jsonobject.put("qq", qq);
@@ -690,6 +686,10 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                             } else if (error.equals("此激活码不存在")) {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "开通失败，卡密错误，卡密购买请点击下方按钮", Toast.LENGTH_LONG)
+                                        .show();
+                            } else {
+                                dialog_login.cancel();
+                                Toast.makeText(getContext(), "注册失败，请重新尝试。", Toast.LENGTH_LONG)
                                         .show();
                             }
                         } else {
