@@ -82,7 +82,7 @@ public class gengxin_dialog extends DialogFragment {
                     gengxDialog.cancel();
                 } else {
                     String post_url = MainActivity
-                            .app_url + MainActivity.app_url_1 + "&info=upqqpwd";
+                            .app_url + MainActivity.app_url_1 + "&info=upqqpwd1";
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("type", "gengx");

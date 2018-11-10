@@ -93,13 +93,13 @@ public class level_Fragment extends Fragment {
             }
         });
 
-        tv_6 = (TextView) view.findViewById(R.id.tv_6);
-        tv_6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openURL("https://wj.qq.com/s/2252850/c329/");
-            }
-        });
+//        tv_6 = (TextView) view.findViewById(R.id.tv_6);
+//        tv_6.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openURL("https://wj.qq.com/s/2252850/c329/");
+//            }
+//        });
         String serverday = preferences.getString("serverday", "");
         String dgtime = preferences.getString("dgtime", "");
         String score = preferences.getString("score", "");

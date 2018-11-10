@@ -100,15 +100,6 @@ public class HttpRequest extends Thread {
         try {
             String cookie = "";
 
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.connectTimeout(2000, TimeUnit.SECONDS);
-            builder.sslSocketFactory(createSSLSocketFactory());
-            builder.hostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    return true;
-                }
-            });
 
             JSONObject jsonObject1 = new JSONObject(json);
             String type = jsonObject1.getString("type");
@@ -116,14 +107,14 @@ public class HttpRequest extends Thread {
                 //登录判断
                 String qq = jsonObject1.getString("qq");
                 String pwd = jsonObject1.getString("pwd");
-                Log.e("加密后", fun(pwd));
-                body = new FormBody.Builder().add("qq", qq).add("pwd", fun(pwd)).build();
+                Log.e("加密后登录", "" + DESUtil.encry(pwd));
+                body = new FormBody.Builder().add("qq", qq).add("pwd", DESUtil.encry(pwd)).build();
             } else if (type.equals("pay")) {
                 //开通判断
                 String qq = jsonObject1.getString("qq");
                 String kami = jsonObject1.getString("cami");
                 String pwd = jsonObject1.getString("cpwd");
-                body = new FormBody.Builder().add("qq", qq).add("cami", kami).add("cpwd", fun(pwd)).build();
+                body = new FormBody.Builder().add("qq", qq).add("cami", kami).add("cpwd", DESUtil.encry(pwd)).build();
             } else if (type.equals("board")) {
                 //公告获取判断
                 body = new FormBody.Builder().build();
@@ -157,7 +148,8 @@ public class HttpRequest extends Thread {
                 String pwd = jsonObject1.getString("pwd");
                 String npwd = jsonObject1.getString("npwd");
 //                body = new FormBody.Builder().add("qq", qq).add("pwd", pwd).build();
-                body = new FormBody.Builder().add("qqpwd", npwd).build();
+//                Log.e("加密", "" + DESUtil.encry(npwd));
+                body = new FormBody.Builder().add("qqpwd", DESUtil.encry(npwd)).build();
             } else if (type.equals("bg")) {
                 //代挂补挂
                 String qq = jsonObject1.getString("qq");
@@ -193,6 +185,15 @@ public class HttpRequest extends Thread {
                 String pwd = jsonObject1.getString("pwd");
                 String vurl = jsonObject1.getString("vurl");
                 body = new FormBody.Builder().add("wsvurl", vurl).build();
+            }else if (type.equals("del_qq")) {
+                //删除其他站记录
+                body = new FormBody.Builder().build();
+            }else if (type.equals("del_qq_0")) {
+                //删除其他站记录_0
+                String qq = jsonObject1.getString("qq");
+                String kami = jsonObject1.getString("cami");
+                String pwd = jsonObject1.getString("cpwd");
+                body = new FormBody.Builder().add("qq", qq).add("cami", kami).add("cpwd", pwd).build();
             }
             Log.e("请求URL：", url);
             cookie = MainActivity.user_cookie;
@@ -202,6 +203,7 @@ public class HttpRequest extends Thread {
             message = new Message();
             if (true) {
                 String str = response.body().string().toString();
+                Log.e("服务器响应" + url.substring(url.length() - 10, url.length()) + "内容：", str);
                 if (type.equals("login")) {
                     // 登录判断
                     if (response.headers().get("Set-cookie") != null) {
@@ -280,8 +282,13 @@ public class HttpRequest extends Thread {
                     //微视链接上传
                     Log.e("第二次返回：", "" + str);
                     message.what = 15;
+                }else if (type.equals("del_qq")) {
+                    //删除其他站记录
+                    message.what = 16;
+                }else if (type.equals("del_qq_0")) {
+                    //删除其他站记录_0
+                    message.what = 17;
                 }
-                Log.e("服务器响应" + url.substring(url.length() - 10, url.length()) + "内容：", str);
                 message.obj = str;
                 handler.sendMessage(message);
             } else {

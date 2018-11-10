@@ -402,7 +402,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp">
 
@@ -525,16 +525,93 @@
             android:textColor="@color/gray"
             android:layout_alignParentLeft="true" />
 
-
-        <TextView
-            android:id="@+id/tv_6"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:paddingBottom="3dp"
-            android:text="等级奖励即将上线，来这里提供您的【奖品建议】"
-            android:textColor="@color/gray"/>
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:orientation="horizontal"
+            >
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/bs_bt_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="领取"
+                    app:bootstrapBrand="info"
+                    app:bootstrapSize="sm"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/bs_bt_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:text="领取"
+                    app:bootstrapBrand="info"
+                    app:bootstrapSize="sm"
+                    app:buttonMode="regular"
+                    app:showOutline="false"
+                    app:roundedCorners="true"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"></RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"></RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"></RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_6"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="3dp"-->
+        <!--android:text="等级奖励下版本上线发放，敬请期待"-->
+        <!--android:textColor="@color/gray"/>-->
         <!--<ImageView-->
         <!--android:layout_width="10dp"-->
         <!--android:layout_height="40dp"-->

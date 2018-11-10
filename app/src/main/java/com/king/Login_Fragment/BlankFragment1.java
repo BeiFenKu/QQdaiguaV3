@@ -53,6 +53,10 @@ import com.king.util.SetImageViewUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -546,7 +550,7 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         dialog_login.show();
         JSONObject json = new JSONObject();
         String post_url = MainActivity
-                .app_url + MainActivity.app_url_1 + "&info=paydg";
+                .app_url + MainActivity.app_url_1 + "&info=paydg1";
 
         try {
             json.put("type", "pay");
@@ -683,13 +687,16 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "此激活码不能被此QQ使用，原因为之前在其他站开过代挂，请联系站长清除再开通", Toast.LENGTH_LONG)
                                         .show();
+//                                del_get_skey_0();
+//                                Toast.makeText(getContext(), "需要扫码删除之前站的记录，才可以开通", Toast.LENGTH_LONG)
+//                                        .show();
                             } else if (error.equals("此激活码不存在")) {
                                 dialog_login.cancel();
                                 Toast.makeText(getContext(), "开通失败，卡密错误，卡密购买请点击下方按钮", Toast.LENGTH_LONG)
                                         .show();
                             } else {
                                 dialog_login.cancel();
-                                Toast.makeText(getContext(), "注册失败，请重新尝试。", Toast.LENGTH_LONG)
+                                Toast.makeText(getContext(), "系统繁忙，请重新尝试，或者点击右上角进入网页版操作", Toast.LENGTH_LONG)
                                         .show();
                             }
                         } else {
@@ -761,6 +768,14 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                             Toast.makeText(getContext(), "此账号未注册代挂", Toast.LENGTH_SHORT).show();
                         }
                     });
+                } else if (text.length() == 0 || text.equals("null")) {
+                    dialog_login.cancel();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "网络繁忙，稍等登录", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
                     dialog_login.cancel();
                     handler.post(new Runnable() {
@@ -773,7 +788,26 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
                 //JSONObject json = new JSONObject((String) msg.obj);
                 //String code = json.getString("code");
 
-            } else {
+            } else if (msg.what == 16) {
+                try {
+
+                    JSONObject json = new JSONObject((String) msg.obj);
+                    String url = json.getString("url");
+                    if (url.length() > 0) {
+                        MainActivity.del_skey = url;
+                        new delete_qq_dialog().show(getFragmentManager(), "");
+                        Toast.makeText(getContext(), "需要扫码删除之前站的记录，才可以开通", Toast.LENGTH_LONG)
+                                .show();
+                    } else {
+                        Toast.makeText(getContext(), "此激活码不能被此QQ使用，原因为之前在其他站开过代挂，请联系站长清除再开通", Toast.LENGTH_LONG)
+                                .show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else if (msg.what == 17) {
+                del_get_skey();
+            }else {
                 dialog_login.cancel();
                 Toast.makeText(getContext(), "请求失败，请稍等登录", Toast.LENGTH_LONG).show();
             }
@@ -810,6 +844,36 @@ public class BlankFragment1 extends Fragment implements Handler.Callback {
         }
     }
 
+    private void del_get_skey_0() {
+        String account = et_reg_account.getText().toString();
+        String kami = et_km.getText().toString();
+        String pwd = et_reg_pwd.getText().toString();
+        JSONObject json = new JSONObject();
+        String post_url = "http://kkkking.daigua.org/ajax/dg?ajax=true&star=post&do=yewu&info=paydg";
+        try {
+            json.put("type", "del_qq_0");
+            json.put("qq", account);
+            json.put("cami", kami);
+            json.put("cpwd", pwd);
+            HttpRequest http = new HttpRequest(post_url, json.toString(), handler);
+            http.start();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void del_get_skey() {
+        String account_qq = et_reg_account.getText().toString();
+        JSONObject json = new JSONObject();
+        String post_url = "http://lgcx.dkingdg.com/delete.php?qq=" + account_qq;
+        try {
+            json.put("type", "del_qq");
+            HttpRequest http = new HttpRequest(post_url, json.toString(), handler);
+            http.start();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void openURL(String s) {
         Intent intent = new Intent();

@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static String check_url = "http://lgcx.dkingdg.com/pay/lgcx.php?qq=";
     //临时存放 QQ扫码登录用的Cookie
     public static String cookie_1 = "";
+    //临时存放 删除之前站记录链接SKEY
+    public static String del_skey = "";
 
 
     private SharedPreferences preferences;

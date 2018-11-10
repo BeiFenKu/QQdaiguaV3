@@ -38,6 +38,7 @@ import android.widget.Toast;
 import com.king.level_Fragment.level_Fragment;
 import com.king.qqdaigua.MainActivity;
 import com.king.qqdaigua.R;
+import com.king.util.DESUtil;
 import com.king.util.HttpRequest;
 
 import org.json.JSONException;
@@ -148,7 +149,9 @@ public class YH_Fragment extends Fragment {
         bindviews();
         setTitle();
         setBoard();
-        setBlack();
+//        setBlack();
+
+        setLevel();
         return view;
     }
 
@@ -158,8 +161,10 @@ public class YH_Fragment extends Fragment {
         String post_url = null;
         try {
             post_url = MainActivity
-                    .app_url + MainActivity.app_url_1 + "&info=dginfo1" + MainActivity.app_url_qq + user + "&pwd=" + URLEncoder.encode(pwd, "UTF-8") + "";
+                    .app_url + MainActivity.app_url_1 + "&info=dginfo3" + MainActivity.app_url_qq + user + "&pwd=" + DESUtil.encry(pwd) + "";
         } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         JSONObject jsonObject = new JSONObject();
@@ -234,10 +239,7 @@ public class YH_Fragment extends Fragment {
                     e.printStackTrace();
                 }
             } else if (msg.what == 4) {
-                try {
-                    JSONObject json = new JSONObject((String) msg.obj);
 //                    String serverday = preferences.getString("serverday", "");
-                    String dgtime = json.getString("dgtime");
 //                    System.out.println("在线天数" + serverday + "剩余天数" + dgtime);
 //                    Double double_1 = Double.parseDouble(serverday);
 //                    Double double_2 = Double.parseDouble(dgtime);
@@ -245,71 +247,11 @@ public class YH_Fragment extends Fragment {
 //                            (double_2 +
 //                                    double_1 * 1.2)));
 //                    System.out.println("积分：" + double_finis);
-                    editor = preferences.edit();
-                    editor.putString("dgtime", dgtime);
-//                    editor.putString("score", double_finis+"");
-                    editor.apply();
-                    String code = json.getString("code");
-                    String black = json.getString("black");
-                    String data = json.getString("data");
-                    String vurl = json.getString("vurl");
-                    for (int i = 0, j = 0; i < 15; i += 2) {
-                        status[j++] = data.charAt(i) + "";
-                    }
-                    if (vurl.length() < 5) {
-                        //微视_1 是否填入URL检测
-                        status[8] = "0";
-                    } else {
-                        status[8] = "1";
-                    }
-                    CheckSwithImg(imageViews, status, textViews);
-                    int dgtime_int = Integer.parseInt(dgtime);
-                    if (code.equals("0")) {
-                        if (!black.equals("0")) {
-                            tv_bt_jiechu.setVisibility(View.VISIBLE);
-                            if (black.equals("1")) {
-                                tv_lhzt.setText("密码错误");
-                            } else if (black.equals("2")) {
-                                tv_lhzt.setText("QQ冻结");
-                            } else if (black.equals("3")) {
-                                tv_lhzt.setText("请关闭设备锁");
-                            }
-                        } else {
-                            if (Integer.parseInt(dgtime) < 0) {
-                                MainActivity.guoqi_button = "1";
-                                tv_lhzt.setText("已过期");
-                                tv_lhzt.setTextColor(Color.RED);
-                            } else {
-                                MainActivity.guoqi_button = "0";
-                                Time t = new Time();
-                                t.setToNow();
-                                int hour = t.hour;
-                                if (hour >= 0 && hour < 10) {
-                                    tv_lhzt.setText("代挂进行中");
-                                    tv_lhzt.setTextColor(Color.RED);
-                                } else if (hour >= 10 && hour < 16) {
-                                    tv_lhzt.setText("补挂提交中");
-                                    tv_lhzt.setTextColor(Color.GRAY);
-                                } else if (hour >= 16 && hour <= 23) {
-                                    tv_lhzt.setText("补挂进行中");
-                                    tv_lhzt.setTextColor(Color.RED);
-                                }
-                            }
-                        }
-                        setLevel();
-                    } else {
-                        Toast.makeText(getContext(), "登录状态失效，请退出重新登录", Toast.LENGTH_SHORT).show();
-                    }
 
-                    bt_xufei.setText("续费[剩余" + dgtime + "天]");
 
 //                    tv_viplevel.setText("此功能整修中...");
 //                    tv_viplevel.setTextColor(Color.GRAY);
 
-                } catch (JSONException e) {
-                    Toast.makeText(getContext(), "信息获取失败，请尝试重新登录", Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                }
             } else if (msg.what == 5) {
                 try {
                     JSONObject json = new JSONObject((String) msg.obj);
@@ -464,10 +406,17 @@ public class YH_Fragment extends Fragment {
                         pgdialog_cancel();
                     } else {
                         JSONObject json = new JSONObject((String) msg.obj);
+                        String dgtime = json.getString("dgtime");
                         String code = json.getString("code");
                         String adddate_str = json.getString("adddate");
-                        String dgtime = preferences.getString("dgtime", "");
-                        if (code.equals("1")) {
+                        String black = json.getString("black");
+                        String data = json.getString("data");
+                        String vurl = json.getString("vurl");
+                        editor = preferences.edit();
+                        editor.putString("dgtime", dgtime);
+//                    editor.putString("score", double_finis+"");
+                        editor.apply();
+                        if (code.equals("0")) {
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                             Date adddate = sdf.parse(adddate_str);
                             Date enddate = sdf.parse(sdf.format(new Date()));
@@ -494,7 +443,7 @@ public class YH_Fragment extends Fragment {
                              300       360   VIP4    年卡         306 < x < 720
                              660       MAX   VIP5                 720 < x
 
-                                             VIP 6                 1200 < x <
+                             VIP 6                 1200 < x <
                              公式：已用天数 * 1.2 + 剩余代挂天数 * 1 = x
                              *
                              */
@@ -513,6 +462,55 @@ public class YH_Fragment extends Fragment {
                                 tv_viplevel.setTextColor(Color.BLACK);
                                 tv_viplevel.setText("VIP 0");
                             }
+                            for (int i = 0, j = 0; i < 15; i += 2) {
+                                status[j++] = data.charAt(i) + "";
+                            }
+                            if (vurl.length() < 5) {
+                                //微视_1 是否填入URL检测
+                                status[8] = "0";
+                            } else {
+                                status[8] = "1";
+                            }
+                            CheckSwithImg(imageViews, status, textViews);
+                            int dgtime_int = Integer.parseInt(dgtime);
+                            if (code.equals("0")) {
+                                if (!black.equals("0")) {
+                                    tv_bt_jiechu.setVisibility(View.VISIBLE);
+                                    if (black.equals("1")) {
+                                        tv_lhzt.setText("密码错误");
+                                    } else if (black.equals("2")) {
+                                        tv_lhzt.setText("QQ冻结");
+                                    } else if (black.equals("3")) {
+                                        tv_lhzt.setText("请关闭设备锁");
+                                    }
+                                } else {
+                                    if (Integer.parseInt(dgtime) < 0) {
+                                        MainActivity.guoqi_button = "1";
+                                        tv_lhzt.setText("已过期");
+                                        tv_lhzt.setTextColor(Color.RED);
+                                    } else {
+                                        MainActivity.guoqi_button = "0";
+                                        Time t = new Time();
+                                        t.setToNow();
+                                        int hour = t.hour;
+                                        if (hour >= 0 && hour < 10) {
+                                            tv_lhzt.setText("代挂进行中");
+                                            tv_lhzt.setTextColor(Color.RED);
+                                        } else if (hour >= 10 && hour < 16) {
+                                            tv_lhzt.setText("补挂提交中");
+                                            tv_lhzt.setTextColor(Color.GRAY);
+                                        } else if (hour >= 16 && hour <= 23) {
+                                            tv_lhzt.setText("补挂进行中");
+                                            tv_lhzt.setTextColor(Color.RED);
+                                        }
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(getContext(), "登录状态失效，请退出重新登录", Toast.LENGTH_SHORT).show();
+                            }
+
+                            bt_xufei.setText("续费[剩余" + dgtime + "天]");
+
                         } else {
                             if (getActivity() != null) {
                                 getActivity().runOnUiThread(new Runnable() {
