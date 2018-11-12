@@ -12,6 +12,7 @@
 
     <dimen name="nav_header_margin_top">40dp</dimen>
     <dimen name="img_img1_layout_margin">8dp</dimen>
+    <dimen name="text_1_size_0">12sp</dimen>
     <dimen name="text_1_size">14sp</dimen>
     <dimen name="rel_rl2_height">200dp</dimen>
     <dimen name="ll_ll5_height">90dp</dimen>

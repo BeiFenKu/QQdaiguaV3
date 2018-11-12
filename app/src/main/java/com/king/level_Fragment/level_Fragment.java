@@ -16,9 +16,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.king.YH_Fragment.YH_Fragment;
 import com.king.YH_Fragment.bz_dialogfrg;
 import com.king.qqdaigua.R;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by KingLee on 2018/6/2.
@@ -54,6 +57,7 @@ public class level_Fragment extends Fragment {
     private ImageView iv_7;
     private TextView tv_7;
     private TextView tv_level_7;
+    private BootstrapButton bs_bt_1;
 
 
     @Nullable
@@ -83,6 +87,22 @@ public class level_Fragment extends Fragment {
         }
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
+        bs_bt_1 = (BootstrapButton) view.findViewById(R.id.bs_bt_1);
+        bs_bt_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("VIP3 奖励")
+                        .setConfirmButton("确定", new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                            }
+                        })
+                        .setContentText("您已成功领取奖励：【空间人气 - 1000】 兑换卡密为【nKBSa83pgPIXFIxaay】，请点击确定自动复制卡密，前往帝王代刷网兑换奖励").show();
+            }
+        });
         level_main = (LinearLayout) view.findViewById(R.id.level_main);
         textView17 = (TextView) view.findViewById(R.id.textView17);
         textView17.setOnClickListener(new View.OnClickListener() {
@@ -128,19 +148,19 @@ public class level_Fragment extends Fragment {
         iv_7 = (ImageView) view.findViewById(R.id.iv6);
         tv_7 = (TextView) view.findViewById(R.id.textView24);
         tv_level_7 = (TextView) view.findViewById(R.id.tv_7);
-        if (Integer.parseInt(score) < 30){
+        if (Integer.parseInt(score) < 30) {
             tv_level.setText("VIP 0");
-        } else if (Integer.parseInt(score) < 36 && Integer.parseInt(score) >= 30){
+        } else if (Integer.parseInt(score) < 36 && Integer.parseInt(score) >= 30) {
             tv_level.setText("VIP 1");
-        }else if (Integer.parseInt(score) < 126 && Integer.parseInt(score) >= 36){
+        } else if (Integer.parseInt(score) < 126 && Integer.parseInt(score) >= 36) {
             tv_level.setText("VIP 2");
-        }else if (Integer.parseInt(score) < 306 && Integer.parseInt(score) >= 126){
+        } else if (Integer.parseInt(score) < 306 && Integer.parseInt(score) >= 126) {
             tv_level.setText("VIP 3");
-        }else if (Integer.parseInt(score) < 720 && Integer.parseInt(score) >= 306){
+        } else if (Integer.parseInt(score) < 720 && Integer.parseInt(score) >= 306) {
             tv_level.setText("VIP 4");
-        }else if ( Integer.parseInt(score) >= 720&&Integer.parseInt(score) <= 1200){
+        } else if (Integer.parseInt(score) >= 720 && Integer.parseInt(score) <= 1200) {
             tv_level.setText("VIP 5");
-        }else if ( Integer.parseInt(score) >= 1200){
+        } else if (Integer.parseInt(score) >= 1200) {
             tv_level.setText("VIP 6");
         }
         if (Integer.parseInt(score) < 30) {

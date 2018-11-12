@@ -32,7 +32,7 @@
             android:text="@string/welcome"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_1_size"
+            android:textSize="@dimen/text_1_size_0"
             android:gravity="start" />
     </RelativeLayout>
 
@@ -182,88 +182,157 @@
             android:layout_alignParentLeft="true">
 
             <RelativeLayout
+                android:paddingLeft="@dimen/ll_ll_margin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/tv_dqqq"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="@dimen/text_tv_dqqq"
-                    android:layout_marginTop="@dimen/text_tv_dqqq"
-                    android:text="当前QQ：XXX"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_tv_size"
-                    android:textStyle="normal|bold"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/text_tv_dqqq" />
+                <LinearLayout
+                    android:paddingTop="@dimen/ll_ll_margin"
+                    android:paddingBottom="@dimen/ll_ll_margin"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_height="0dp">
 
-                <RelativeLayout
-                    android:id="@+id/rl4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_tv_dqqq"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="@dimen/ll_rl4_marginTop"
-                    android:layout_marginLeft="@dimen/ll_rl4_marginLeft"
-                    android:layout_alignParentLeft="true">
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:text="代挂等级："
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_tv_textView8"
-                        android:layout_alignParentLeft="true" />
+                        <TextView
+                            android:id="@+id/tv_dqqq"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="当前QQ：XXX"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_tv_size"
+                            android:textStyle="normal|bold" />
 
-                    <TextView
-                        android:id="@+id/tv_viplevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="VIP 5"
-                        android:textColor="@color/red"
-                        android:textSize="@dimen/text_tv_textView8"
-                        android:layout_alignLeft="@+id/textView8"
-                        android:layout_marginLeft="@dimen/tv_tv_viplevel_marginLeft"/>
-                </RelativeLayout>
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:text="当前状态："
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_tv_textView8" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+
+                            <com.beardedhen.androidbootstrap.BootstrapButton
+                                android:visibility="invisible"
+                                android:id="@+id/lhzt_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:text="拉黑"
+                                app:bootstrapBrand="danger"
+                                app:bootstrapSize="sm"
+                                app:buttonMode="regular"
+                                app:roundedCorners="true"
+                                app:showOutline="false" />
+
+                            <TextView
+                                android:id="@+id/lhzt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="5dp"
+                                android:text="拉黑状态"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_tv_textView8" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/rl4"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:text="代挂等级："
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_tv_textView8" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tv_viplevel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:text="VIP 5"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/text_tv_textView8" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/lhzt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/textView6"
-                    android:layout_alignBottom="@+id/textView6"
-                    android:layout_toEndOf="@+id/textView6"
-                    android:layout_toRightOf="@+id/textView6"
-                    android:padding="5dp"
-                    android:text="拉黑状态"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_tv_textView8" />
 
-                <TextView
-                    android:visibility="invisible"
-                    android:id="@+id/tv_bt_jiechu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/lhzt"
-                    android:layout_marginLeft="@dimen/tv_tv_bt_jiechu_marginLeft"
-                    android:text="解除拉黑"
-                    android:textColor="@color/red"/>
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="当前状态："
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_tv_textView8"
-                    android:layout_centerVertical="true"
-                    android:layout_alignStart="@+id/tv_dqqq"
-                    android:layout_alignLeft="@+id/tv_dqqq" />
+
+                <!--<TextView-->
+                <!--android:visibility="invisible"-->
+                <!--android:id="@+id/tv_bt_jiechu"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/lhzt"-->
+                <!--android:layout_marginLeft="@dimen/tv_tv_bt_jiechu_marginLeft"-->
+                <!--android:text="解除拉黑"-->
+                <!--android:textColor="@color/red"/>-->
+
 
 
             </RelativeLayout>

@@ -35,6 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.king.level_Fragment.level_Fragment;
 import com.king.qqdaigua.MainActivity;
 import com.king.qqdaigua.R;
@@ -95,7 +96,7 @@ public class YH_Fragment extends Fragment {
     private TextView tv_userqq;
     private TextView tv_board;
     private TextView tv_lhzt;
-    private TextView tv_bt_jiechu;
+//    private TextView tv_bt_jiechu;
     private Button bt_xufei;
     private TextView tv_viplevel;
     private ImageView img_xz;
@@ -127,10 +128,11 @@ public class YH_Fragment extends Fragment {
     private Button bt_lou_cancel, bt_lou_submit, bt_kf;
     private RadioGroup group_1;
     private RadioButton group_rb;
-    private RelativeLayout rl4;
+    private LinearLayout rl4;
     private Button bt_viplevel;
     private String skin_value;
     private Button bt_newuser;
+    private BootstrapButton lhzt_1;
 
     private List<Badge> badges;
 
@@ -475,13 +477,14 @@ public class YH_Fragment extends Fragment {
                             int dgtime_int = Integer.parseInt(dgtime);
                             if (code.equals("0")) {
                                 if (!black.equals("0")) {
-                                    tv_bt_jiechu.setVisibility(View.VISIBLE);
+                                    lhzt_1.setVisibility(View.VISIBLE);
+                                    tv_lhzt.setVisibility(View.GONE);
                                     if (black.equals("1")) {
-                                        tv_lhzt.setText("密码错误");
+                                        lhzt_1.setText("密码错误");
                                     } else if (black.equals("2")) {
-                                        tv_lhzt.setText("QQ冻结");
+                                        lhzt_1.setText("QQ冻结");
                                     } else if (black.equals("3")) {
-                                        tv_lhzt.setText("请关闭设备锁");
+                                        lhzt_1.setText("请关闭设备锁");
                                     }
                                 } else {
                                     if (Integer.parseInt(dgtime) < 0) {
@@ -607,6 +610,17 @@ public class YH_Fragment extends Fragment {
         animation1.setDuration(1000);
         animation1.setFillAfter(true);
 
+        lhzt_1 = (BootstrapButton) view.findViewById(R.id.lhzt_1);
+        lhzt_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE)
+                        .setTitleText("注意！")
+                        .setContentText("您正在尝试解除拉黑，请点击【更新密码】按钮，更新密码自动解除拉黑状态，（请随时保持密码与QQ密码一致）").show();
+
+            }
+        });
         bt_viplevel = (Button) view.findViewById(R.id.bt_viplevel);
         bt_viplevel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -734,7 +748,7 @@ public class YH_Fragment extends Fragment {
                 }
             }
         });
-        rl4 = (RelativeLayout) view.findViewById(R.id.rl4);
+        rl4 = (LinearLayout) view.findViewById(R.id.rl4);
         rl4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -927,17 +941,17 @@ public class YH_Fragment extends Fragment {
                 new xufei_dialog().show(getFragmentManager(), "");
             }
         });
-        tv_bt_jiechu = (TextView) view.findViewById(R.id.tv_bt_jiechu);
-        tv_bt_jiechu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                new jiechu_dialog().show(getFragmentManager(), "");
-                new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE)
-                        .setTitleText("注意！")
-                        .setContentText("无法直接解除，请点击【更新密码】按钮，进行密码更新自动解除拉黑状态，（请随时保持密码与QQ密码一致）").show();
-
-            }
-        });
+//        tv_bt_jiechu = (TextView) view.findViewById(R.id.tv_bt_jiechu);
+//        tv_bt_jiechu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                new jiechu_dialog().show(getFragmentManager(), "");
+//                new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE)
+//                        .setTitleText("注意！")
+//                        .setContentText("无法直接解除，请点击【更新密码】按钮，进行密码更新自动解除拉黑状态，（请随时保持密码与QQ密码一致）").show();
+//
+//            }
+//        });
         tv_lhzt = (TextView) view.findViewById(R.id.lhzt);
         tv_lhzt.setOnClickListener(new View.OnClickListener() {
             @Override

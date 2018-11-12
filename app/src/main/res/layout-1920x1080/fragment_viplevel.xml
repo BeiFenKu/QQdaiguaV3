@@ -22,7 +22,7 @@
             android:layout_centerVertical="true"
             android:text="100"
             android:textColor="@color/level_font1_red"
-            android:textSize="45dp"/>
+            android:textSize="45dp" />
 
         <TextView
             android:id="@+id/textView14"
@@ -30,20 +30,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView13"
             android:layout_centerHorizontal="true"
-            android:text="总积分"/>
+            android:text="总积分" />
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
             android:padding="8dp"
             android:text="@string/fanhui_cancel"
             android:textColor="@color/white"
-            android:textSize="21dp"
-            android:layout_alignParentLeft="true" />
+            android:textSize="21dp" />
 
         <LinearLayout
             android:id="@+id/ll11"
@@ -64,14 +64,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="17dp"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginStart="28dp"
                     android:text="已代挂： "
                     android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="28dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -80,10 +80,10 @@
                     android:layout_alignBaseline="@+id/textView2"
                     android:layout_alignBottom="@+id/textView2"
                     android:layout_toEndOf="@+id/textView2"
+                    android:layout_toRightOf="@+id/textView2"
                     android:text="XX"
                     android:textColor="@color/level_font_brown"
-                    android:textSize="30dp"
-                    android:layout_toRightOf="@+id/textView2" />
+                    android:textSize="30dp" />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -93,10 +93,10 @@
                     android:layout_alignBottom="@+id/textView10"
                     android:layout_marginLeft="5dp"
                     android:layout_toEndOf="@+id/textView10"
+                    android:layout_toRightOf="@+id/textView10"
                     android:text="天"
                     android:textColor="@color/black"
-                    android:textSize="10dp"
-                    android:layout_toRightOf="@+id/textView10" />
+                    android:textSize="10dp" />
 
             </RelativeLayout>
 
@@ -111,14 +111,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="17dp"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginStart="28dp"
                     android:text="代挂剩余： "
                     android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="28dp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -127,10 +127,10 @@
                     android:layout_alignBaseline="@+id/textView11"
                     android:layout_alignBottom="@+id/textView11"
                     android:layout_toEndOf="@+id/textView11"
+                    android:layout_toRightOf="@+id/textView11"
                     android:text="XX"
                     android:textColor="@color/level_font_brown"
-                    android:textSize="30dp"
-                    android:layout_toRightOf="@+id/textView11" />
+                    android:textSize="30dp" />
 
                 <TextView
                     android:id="@+id/textView26"
@@ -140,10 +140,10 @@
                     android:layout_alignBottom="@+id/textView12"
                     android:layout_marginLeft="5dp"
                     android:layout_toEndOf="@+id/textView12"
+                    android:layout_toRightOf="@+id/textView12"
                     android:text="天"
                     android:textColor="@color/black"
-                    android:textSize="10dp"
-                    android:layout_toRightOf="@+id/textView12" />
+                    android:textSize="10dp" />
 
             </RelativeLayout>
 
@@ -151,15 +151,15 @@
         </LinearLayout>
 
         <TextView
-            android:text="VIP 5"
-            android:textSize="12dp"
-            android:textColor="@color/level_font1_red"
+            android:id="@+id/textView25"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView25"
             android:layout_below="@+id/textView14"
             android:layout_centerHorizontal="true"
-            android:textStyle="normal|bold"/>
+            android:text="VIP 5"
+            android:textColor="@color/level_font1_red"
+            android:textSize="12dp"
+            android:textStyle="normal|bold" />
 
     </RelativeLayout>
 
@@ -174,14 +174,14 @@
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="帝王代挂VIP等级成长体系"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            android:layout_alignParentLeft="true" />
+            android:textSize="20dp" />
 
         <RelativeLayout
             android:id="@+id/rl7"
@@ -216,7 +216,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/level_progress_on"/>
+                            app:srcCompat="@mipmap/level_progress_on" />
 
                         <TextView
                             android:id="@+id/textView24"
@@ -227,10 +227,11 @@
                             android:padding="5dp"
                             android:text="30"
                             android:textColor="@color/black"
-                            android:textSize="17dp"/>
+                            android:textSize="17dp" />
                     </RelativeLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -249,7 +250,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/level_progress_on"/>
+                            app:srcCompat="@mipmap/level_progress_on" />
 
                         <TextView
                             android:id="@+id/textView18"
@@ -281,7 +282,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/level_progress_on"/>
+                            app:srcCompat="@mipmap/level_progress_on" />
 
                         <TextView
                             android:id="@+id/textView19"
@@ -313,7 +314,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/level_progress_on"/>
+                            app:srcCompat="@mipmap/level_progress_on" />
 
                         <TextView
                             android:id="@+id/textView20"
@@ -345,7 +346,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/level_progress_on"/>
+                            app:srcCompat="@mipmap/level_progress_on" />
 
                         <TextView
                             android:id="@+id/textView21"
@@ -377,7 +378,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/level_progress_on"/>
+                            app:srcCompat="@mipmap/level_progress_on" />
 
                         <TextView
                             android:id="@+id/textView22"
@@ -423,9 +424,10 @@
                         android:gravity="center"
                         android:text="VIP 1"
                         android:textColor="@color/black"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -518,26 +520,25 @@
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView15"
             android:gravity="center"
             android:text="总积分 = 已代挂 x 1.2 + 剩余天数 x 1.0"
-            android:textColor="@color/gray"
-            android:layout_alignParentLeft="true" />
+            android:textColor="@color/gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
             android:orientation="horizontal"
-            >
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
 
             <RelativeLayout
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <com.beardedhen.androidbootstrap.BootstrapButton
                     android:id="@+id/bs_bt_1"
@@ -556,11 +557,94 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
                 <com.beardedhen.androidbootstrap.BootstrapButton
                     android:id="@+id/bs_bt_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="领取"
+                    app:bootstrapBrand="info"
+                    app:bootstrapSize="sm"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="false" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/bs_bt_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="领取"
+                    app:bootstrapBrand="info"
+                    app:bootstrapSize="sm"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/bs_bt_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="领取"
+                    app:bootstrapBrand="info"
+                    app:bootstrapSize="sm"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="false" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/bs_bt_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="领取"
+                    app:bootstrapBrand="info"
+                    app:bootstrapSize="sm"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/bs_bt_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -571,36 +655,12 @@
                     app:bootstrapBrand="info"
                     app:bootstrapSize="sm"
                     app:buttonMode="regular"
-                    app:showOutline="false"
                     app:roundedCorners="true"
-                    />
+                    app:showOutline="false" />
             </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"></RelativeLayout>
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"></RelativeLayout>
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"></RelativeLayout>
 
 
         </LinearLayout>
-
 
 
         <!--<TextView-->
