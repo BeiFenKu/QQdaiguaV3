@@ -57,7 +57,7 @@ public class level_Fragment extends Fragment {
     private ImageView iv_7;
     private TextView tv_7;
     private TextView tv_level_7;
-    private BootstrapButton bs_bt_1;
+    private BootstrapButton bs_bt_1,bs_bt_2,bs_bt_3,bs_bt_4,bs_bt_5,bs_bt_6;
 
 
     @Nullable
@@ -103,6 +103,13 @@ public class level_Fragment extends Fragment {
                         .setContentText("您已成功领取奖励：【空间人气 - 1000】 兑换卡密为【nKBSa83pgPIXFIxaay】，请点击确定自动复制卡密，前往帝王代刷网兑换奖励").show();
             }
         });
+        bs_bt_2 = (BootstrapButton) view.findViewById(R.id.bs_bt_2);
+        bs_bt_3 = (BootstrapButton) view.findViewById(R.id.bs_bt_3);
+        bs_bt_4 = (BootstrapButton) view.findViewById(R.id.bs_bt_4);
+        bs_bt_5 = (BootstrapButton) view.findViewById(R.id.bs_bt_5);
+        bs_bt_6 = (BootstrapButton) view.findViewById(R.id.bs_bt_6);
+
+
         level_main = (LinearLayout) view.findViewById(R.id.level_main);
         textView17 = (TextView) view.findViewById(R.id.textView17);
         textView17.setOnClickListener(new View.OnClickListener() {
@@ -150,16 +157,37 @@ public class level_Fragment extends Fragment {
         tv_level_7 = (TextView) view.findViewById(R.id.tv_7);
         if (Integer.parseInt(score) < 30) {
             tv_level.setText("VIP 0");
+            bs_bt_1.setEnabled(false);
+            bs_bt_2.setEnabled(false);
+            bs_bt_3.setEnabled(false);
+            bs_bt_4.setEnabled(false);
+            bs_bt_5.setEnabled(false);
+            bs_bt_6.setEnabled(false);
         } else if (Integer.parseInt(score) < 36 && Integer.parseInt(score) >= 30) {
             tv_level.setText("VIP 1");
+            bs_bt_2.setEnabled(false);
+            bs_bt_3.setEnabled(false);
+            bs_bt_4.setEnabled(false);
+            bs_bt_5.setEnabled(false);
+            bs_bt_6.setEnabled(false);
         } else if (Integer.parseInt(score) < 126 && Integer.parseInt(score) >= 36) {
             tv_level.setText("VIP 2");
+            bs_bt_3.setEnabled(false);
+            bs_bt_4.setEnabled(false);
+            bs_bt_5.setEnabled(false);
+            bs_bt_6.setEnabled(false);
         } else if (Integer.parseInt(score) < 306 && Integer.parseInt(score) >= 126) {
             tv_level.setText("VIP 3");
+            bs_bt_4.setEnabled(false);
+            bs_bt_5.setEnabled(false);
+            bs_bt_6.setEnabled(false);
         } else if (Integer.parseInt(score) < 720 && Integer.parseInt(score) >= 306) {
             tv_level.setText("VIP 4");
+            bs_bt_5.setEnabled(false);
+            bs_bt_6.setEnabled(false);
         } else if (Integer.parseInt(score) >= 720 && Integer.parseInt(score) <= 1200) {
             tv_level.setText("VIP 5");
+            bs_bt_6.setEnabled(false);
         } else if (Integer.parseInt(score) >= 1200) {
             tv_level.setText("VIP 6");
         }
@@ -214,6 +242,9 @@ public class level_Fragment extends Fragment {
         }).start();
     }
 
+    private void setEnbled(int num){
+
+    }
     private void openURL(String s) {
         Intent intent = new Intent();
         intent.setAction("android.intent.action.VIEW");

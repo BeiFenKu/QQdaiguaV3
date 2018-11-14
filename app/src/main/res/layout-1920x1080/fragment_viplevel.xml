@@ -649,7 +649,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:enabled="false"
                     android:gravity="center"
                     android:text="领取"
                     app:bootstrapBrand="info"
